@@ -1,11 +1,3 @@
-//
-//  ClosureSleeve.swift
-//  Mafia
-//
-//  Created by Volodymyr Khmil on 4/9/20.
-//  Copyright © 2020 Mafia. All rights reserved.
-//
-
 import UIKit
 
 class ClosureSleeve {
