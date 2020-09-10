@@ -5,9 +5,9 @@
 //  Created by new user on 29.04.2020.
 //
 
-import Foundation
+import UIKit
 
-extension UIAlertController {
+public extension UIAlertController {
     typealias ActionHandler = () -> Void
 
     @discardableResult

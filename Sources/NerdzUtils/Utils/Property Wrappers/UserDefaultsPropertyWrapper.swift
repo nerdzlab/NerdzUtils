@@ -19,7 +19,7 @@ struct Defaults<T> {
 
     var wrappedValue: T {
         get {
-            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
+            return UserDefaults.standard.object(forKey: key) as? T ?? initialValue
         }
         set {
             UserDefaults.standard.set(newValue, forKey: key)
