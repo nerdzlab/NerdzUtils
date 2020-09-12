@@ -7,17 +7,17 @@
 
 import UIKit
 
-extension UIViewController {
+public extension UIViewController {
     
-    func addChild(_ childController: UIViewController, configurationAction: ((UIView, UIView) -> Void) = UIViewController.setupFullscreen) {
-        
+    func easilyAddChild(_ childController: UIViewController, configurationAction: ((UIView, UIView) -> Void) = UIViewController.setupFullscreen) {
         childController.willMove(toParent: self)
+        addChild(childController)
         view.addSubview(childController.view)
         configurationAction(childController.view, view)
         childController.didMove(toParent: self)
     }
     
-    private static func setupFullscreen(_ childView: UIView, on parentView: UIView) {
+    static func setupFullscreen(_ childView: UIView, on parentView: UIView) {
         let views = ["childView": childView]
         
         let horisontalConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[childView]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views)
