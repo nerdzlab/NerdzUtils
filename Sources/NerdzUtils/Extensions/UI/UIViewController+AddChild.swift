@@ -13,6 +13,7 @@ public extension UIViewController {
         childController.willMove(toParent: self)
         addChild(childController)
         view.addSubview(childController.view)
+        childController.view.translatesAutoresizingMaskIntoConstraints = false
         configurationAction(childController.view, view)
         childController.didMove(toParent: self)
     }
