@@ -38,8 +38,8 @@ public extension UITextField {
         let rightButton  = UIButton(type: .custom)
         rightButton.frame = CGRect(x:0, y:0, width:30, height:30)
         rightButton.addTarget(self, action: #selector(passwordVisibilityTogglePressed(_:)), for: .touchUpInside)
-        rightButton.setImage(UIImage(named: "passwordShow"), for: .selected)
-        rightButton.setImage(UIImage(named: "passwordHide"), for: .normal)
+        rightButton.setImage(UIImage(named: "PasswordShow"), for: .selected)
+        rightButton.setImage(UIImage(named: "PasswordHide"), for: .normal)
         rightButton.isSelected = true
         
         rightViewMode = .always
