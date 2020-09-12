@@ -18,9 +18,12 @@ extension UIViewController {
     }
     
     private static func setupFullscreen(_ childView: UIView, on parentView: UIView) {
-        childView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
-        childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
-        childView.topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
-        childView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
+        let views = ["childView": childView]
+        
+        let horisontalConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[childView]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views)
+        let verticalConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[childView]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views)
+
+        parentView.addConstraints(horisontalConstraint)
+        parentView.addConstraints(verticalConstraint)
     }
 }
