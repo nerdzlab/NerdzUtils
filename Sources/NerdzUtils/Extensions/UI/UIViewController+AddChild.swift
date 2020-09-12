@@ -13,7 +13,7 @@ extension UIViewController {
         
         childController.willMove(toParent: self)
         view.addSubview(childController.view)
-        configurationAction()
+        configurationAction(childController.view, view)
         childController.didMove(toParent: self)
     }
     
