@@ -8,16 +8,16 @@
 import Foundation
 
 @propertyWrapper
-struct Defaults<T> {
+public struct Defaults<T> {
     let key: String
     let initialValue: T
 
-    init(_ key: String, initial: T) {
+    public init(_ key: String, initial: T) {
         self.key = key
         self.initialValue = initial
     }
 
-    var wrappedValue: T {
+    public var wrappedValue: T {
         get {
             return UserDefaults.standard.object(forKey: key) as? T ?? initialValue
         }
