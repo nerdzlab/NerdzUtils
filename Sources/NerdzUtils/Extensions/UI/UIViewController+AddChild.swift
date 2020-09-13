@@ -9,6 +9,7 @@ import UIKit
 
 public extension UIViewController {
     
+    @available (iOS 9, *)
     func easilyAddChild(_ childController: UIViewController, configurationAction: ((UIView, UIView) -> Void) = UIViewController.setupFullscreen) {
         childController.willMove(toParent: self)
         addChild(childController)
@@ -18,13 +19,12 @@ public extension UIViewController {
         childController.didMove(toParent: self)
     }
     
+    @available (iOS 9, *)
     static func setupFullscreen(_ childView: UIView, on parentView: UIView) {
-        let views = ["childView": childView]
         
-        let horisontalConstraint = NSLayoutConstraint.constraints(withVisualFormat: "H:|-[childView]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views)
-        let verticalConstraint = NSLayoutConstraint.constraints(withVisualFormat: "V:|-[childView]-|", options: NSLayoutConstraint.FormatOptions(), metrics: nil, views: views)
-
-        parentView.addConstraints(horisontalConstraint)
-        parentView.addConstraints(verticalConstraint)
+        childView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
+        childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
+        childView.topAnchor.constraint(equalTo: parentView.topAnchor).isActive = true
+        childView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
     }
 }
