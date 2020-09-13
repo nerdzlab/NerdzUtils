@@ -10,12 +10,15 @@ import UIKit
 public extension UIViewController {
     
     @available (iOS 9, *)
-    func easilyAddChild(_ childController: UIViewController, configurationAction: ((UIView, UIView) -> Void) = UIViewController.setupFullscreen) {
+    func easilyAddChild(_ childController: UIViewController, on container: UIView? = nil, configurationAction: ((UIView, UIView) -> Void) = UIViewController.setupFullscreen) {
+        
+        let finalContainer: UIView = container ?? view
+        
         childController.willMove(toParent: self)
         addChild(childController)
-        view.addSubview(childController.view)
+        finalContainer.addSubview(childController.view)
         childController.view.translatesAutoresizingMaskIntoConstraints = false
-        configurationAction(childController.view, view)
+        configurationAction(childController.view, finalContainer)
         childController.didMove(toParent: self)
     }
     
