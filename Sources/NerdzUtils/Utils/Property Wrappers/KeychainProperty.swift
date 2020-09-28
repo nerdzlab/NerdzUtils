@@ -9,6 +9,7 @@ import Foundation
 import KeychainAccess
 
 @propertyWrapper
+@available(iOS 11.0, *)
 struct KeychainProperty<Type: Codable> {
     let key: String
     let initialValue: Type

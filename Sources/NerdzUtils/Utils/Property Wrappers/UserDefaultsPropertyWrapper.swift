@@ -8,6 +8,7 @@
 import Foundation
 
 @propertyWrapper
+@available(iOS 11.0, *)
 struct DefaultsProperty<Type: Codable> {
     let key: String
     let initialValue: Type

@@ -12,6 +12,7 @@ public extension Encodable {
     ///
     /// Return JSON data for given object
     ///
+    @available(iOS 11.0, *)
     var jsonData: Data? {
         do {
             let encoder = JSONEncoder()
