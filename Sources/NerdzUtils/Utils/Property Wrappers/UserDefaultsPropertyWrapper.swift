@@ -7,9 +7,9 @@
 
 import Foundation
 
-@available(iOS 11.0, *)
 @propertyWrapper
-struct DefaultsProperty<Type: Codable> {
+@available(iOS 11.0, *)
+public struct DefaultsProperty<Type: Codable> {
     let key: String
     let initialValue: Type
     let defaults = UserDefaults.standard

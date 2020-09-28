@@ -8,9 +8,9 @@
 import Foundation
 import KeychainAccess
 
-@available(iOS 11.0, *)
 @propertyWrapper
-struct KeychainProperty<Type: Codable> {
+@available(iOS 11.0, *)
+public struct KeychainProperty<Type: Codable> {
     let key: String
     let initialValue: Type
     let keychain = Keychain(service: Bundle.main.bundleIdentifier ?? "")
