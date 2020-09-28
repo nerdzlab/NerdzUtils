@@ -13,6 +13,7 @@ public extension Data {
     /// Return object from JSON Data
     /// - Parameter of: Target type
     ///
+    @available(iOS 11.0, *)
     func getObject<TResult: Decodable>(of _: TResult.Type) -> TResult? {
         do {
             let decoder = JSONDecoder()
@@ -28,6 +29,7 @@ public extension Data {
     /// Return object from JSON Data
     /// - Parameter of: Target type
     ///
+    @available(iOS 11.0, *)
     func getObject<TResult: Decodable>() -> TResult? {
         return self.getObject(of: TResult.self)
     }
