@@ -15,12 +15,12 @@ public struct KeychainProperty<Type: Codable> {
     let initialValue: Type
     let keychain = Keychain(service: Bundle.main.bundleIdentifier ?? "")
 
-    init(_ key: String, initial: Type) {
+    public init(_ key: String, initial: Type) {
         self.key = key
         self.initialValue = initial
     }
 
-    var wrappedValue: Type {
+    public var wrappedValue: Type {
         get {
             var returnValue: Type?
             do {

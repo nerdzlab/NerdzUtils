@@ -1,5 +1,5 @@
 //
-//  UserDefaultsPropertyWrapper.swift
+//  DefaultsProperty.swift
 //  
 //
 //  Created by new user on 20.04.2020.
@@ -14,12 +14,12 @@ public struct DefaultsProperty<Type: Codable> {
     let initialValue: Type
     let defaults = UserDefaults.standard
 
-    init(_ key: String, initial: Type) {
+    public init(_ key: String, initial: Type) {
         self.key = key
         self.initialValue = initial
     }
 
-    var wrappedValue: Type {
+    public var wrappedValue: Type {
         get {
             return (defaults.object(forKey: key) as? Data)?.getObject(of: Type.self) ?? initialValue
         }
