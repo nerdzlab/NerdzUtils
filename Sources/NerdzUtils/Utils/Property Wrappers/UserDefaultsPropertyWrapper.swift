@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  UserDefaultsPropertyWrapper.swift
 //  
 //
 //  Created by new user on 20.04.2020.
@@ -8,21 +8,23 @@
 import Foundation
 
 @propertyWrapper
-public struct Defaults<T> {
+struct DefaultsProperty<Type: Codable> {
     let key: String
-    let initialValue: T
+    let initialValue: Type
+    let defaults = UserDefaults.standard
 
-    public init(_ key: String, initial: T) {
+    init(_ key: String, initial: Type) {
         self.key = key
         self.initialValue = initial
     }
 
-    public var wrappedValue: T {
+    var wrappedValue: Type {
         get {
-            return UserDefaults.standard.object(forKey: key) as? T ?? initialValue
+            return (defaults.object(forKey: key) as? Data)?.getObject(of: Type.self) ?? initialValue
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: key)
+            guard let data = newValue.jsonData else { return }
+            defaults.setValue(data, forKey: key)
         }
     }
 }
