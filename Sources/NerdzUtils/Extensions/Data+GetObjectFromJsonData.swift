@@ -14,15 +14,10 @@ public extension Data {
     /// - Parameter of: Target type
     ///
     @available(iOS 11.0, *)
-    func getObject<TResult: Decodable>(of _: TResult.Type) -> TResult? {
-        do {
-            let decoder = JSONDecoder()
-            decoder.dateDecodingStrategy = .customISO8601
-            return try decoder.decode(TResult.self, from: self)
-        }
-        catch {
-            return nil
-        }
+    func object<TResult: Decodable>(of _: TResult.Type) throws -> TResult? {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+        return try decoder.decode(TResult.self, from: self)
     }
     
     ///
@@ -30,7 +25,7 @@ public extension Data {
     /// - Parameter of: Target type
     ///
     @available(iOS 11.0, *)
-    func getObject<TResult: Decodable>() -> TResult? {
-        return self.getObject(of: TResult.self)
+    func object<TResult: Decodable>() throws -> TResult? {
+        return try self.object(of: TResult.self)
     }
 }

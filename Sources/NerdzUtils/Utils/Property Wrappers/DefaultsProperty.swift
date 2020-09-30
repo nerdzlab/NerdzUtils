@@ -21,7 +21,7 @@ public struct DefaultsProperty<Type: Codable> {
 
     public var wrappedValue: Type {
         get {
-            return (defaults.object(forKey: key) as? Data)?.getObject(of: Type.self) ?? initialValue
+            return (try? defaults.data(forKey: key)?.object(of: Type.self)) ?? initialValue
         }
         set {
             guard let data = newValue.jsonData else { return }

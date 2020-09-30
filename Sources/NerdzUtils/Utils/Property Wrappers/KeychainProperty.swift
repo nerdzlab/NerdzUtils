@@ -24,10 +24,10 @@ public struct KeychainProperty<Type: Codable> {
         get {
             var returnValue: Type?
             do {
-                returnValue = try keychain.getData(key)?.getObject(of: Type.self)
+                returnValue = try keychain.getData(key)?.object(of: Type.self)
             }
             catch {
-                NSLog("Error retriving data from keychain")
+                print("Error retriving data from keychain")
             }
             return returnValue ?? initialValue
         }
