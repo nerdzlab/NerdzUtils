@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'NerdzLab' => 'supernerd@nerdzlab.com' }
   s.source           = { :git => 'https://github.com/nerdzlab/NerdzUtils.git', :tag => s.version }
-  s.dependency, 'KeychainAccess'
+  s.dependency 'KeychainAccess'
   s.social_media_url = 'https://nerdzlab.com'
   s.ios.deployment_target = '8.0'
   s.swift_versions = ['5.0']
