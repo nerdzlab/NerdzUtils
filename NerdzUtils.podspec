@@ -1,7 +1,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NerdzUtils'
-  s.version          = '1.0.18'
+  s.version          = '1.0.19'
   s.summary          = 'A list of small twiks to make it easy coding'
   s.homepage         = 'https://github.com/nerdzlab/NerdzUtils'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
