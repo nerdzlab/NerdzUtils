@@ -7,23 +7,116 @@
 
 import Foundation
 
-public enum DateUnit {
-    case second(_ value: Int)
-    case minute(_ value: Int)
-    case hour(_ value: Int)
-    case day(_ value: Int)
-    case month(_ value: Int)
-    case year(_ value: Int)
+public extension DateComponents {
+    subscript(_ component: Calendar.Component) -> Int? {
+        get {
+            value(for: component)
+        }
+        
+        set {
+            setValue(newValue, for: component)
+        }
+    }
+}
+
+public extension Calendar.Component {
+    
+    static var allComponents: [Calendar.Component] {
+        [
+            nanosecond, 
+            second, 
+            minute,
+            hour,
+            day, 
+            month, 
+            year, 
+            era, 
+            weekday, 
+            quarter, 
+            weekOfMonth, 
+            weekOfYear, 
+            timeZone, 
+            yearForWeekOfYear,
+            timeZone,
+            calendar
+        ]
+    }
+    
+    var allComponents: [Calendar.Component] {
+        includedComponents + [self]
+    }
+    
+    var includedComponents: [Calendar.Component] {
+        switch self {
+        case .era:
+            return Calendar.Component.year.allComponents
+            
+        case .year, .yearForWeekOfYear:
+            return Calendar.Component.month.allComponents
+            
+        case .quarter:
+            return Calendar.Component.month.allComponents
+            
+        case .month:
+            return Calendar.Component.day.allComponents
+            
+        case .weekOfYear, .weekOfMonth:
+            return Calendar.Component.weekday.allComponents
+            
+        case .day, .weekday, .weekdayOrdinal:
+            return Calendar.Component.hour.allComponents
+            
+        case .hour:
+            return Calendar.Component.minute.allComponents
+            
+        case .minute:
+            return Calendar.Component.second.allComponents
+            
+        case .second:
+            return Calendar.Component.nanosecond.allComponents
+            
+        case .nanosecond:
+            return []
+            
+        case .calendar, .timeZone:
+            return []
+            
+        @unknown default:
+            return []
+        }
+    }
+}
+
+public struct DateRange {
+    let component: Calendar.Component
+    let value: Int
     
     fileprivate func fill(into components: inout DateComponents) {
-        switch self {
-        case .second(let value): components.second = value
-        case .minute(let value): components.minute = value
-        case .hour(let value): components.hour = value
-        case .day(let value): components.day = value
-        case .month(let value): components.month = value
-        case .year(let value): components.year = value
-        }
+        components[component] = value
+    }
+    
+    public static func second(_ value: Int) -> DateRange {
+        DateRange(component: .second, value: value)
+    }
+    
+    public static func minute(_ value: Int) -> DateRange {
+        DateRange(component: .minute, value: value)
+    }
+    
+    public static func hour(_ value: Int) -> DateRange {
+        DateRange(component: .hour, value: value)
+    }
+    
+    public static func day(_ value: Int) -> DateRange {
+        DateRange(component: .day, value: value)
+    }
+    
+    public static func month(_ value: Int) -> DateRange {
+        DateRange(component: .month, value: value)
+    }
+    
+    public static func year(_ value: Int) -> DateRange {
+        DateRange(component: .year, value: value)
     }
 }
 
@@ -31,33 +124,32 @@ public extension Date {
     static var now: Date {
         Date()
     }
-    
-    var dayStart: Date {
-        Calendar.current.startOfDay(for: self)
-    }
-    
-    var dayEnd: Date {
-        dayStart.adding(.day(1), .second(-1))
+
+    var allComponents: DateComponents {
+        Calendar.current.dateComponents(Set(Calendar.Component.allComponents), from: .now)
     }
     
     func isInSameDay(as date: Date) -> Bool {
         Calendar.current.isDate(date, inSameDayAs: self)
     }
     
-    func adding(_ units: DateUnit...) -> Date {
-        var components = DateComponents()
-        
-        for unit in units {
-            unit.fill(into: &components)
-        }
-        
-        return Calendar.current.date(byAdding: components, to: self) ?? self
+    func adding(_ range: DateRange) -> Date {        
+        return Calendar.current.date(byAdding: range.component, value: range.value, to: self) ?? self
     }
     
-    func next(_ unit: DateUnit) -> Date {
-        var components = DateComponents()
-        unit.fill(into: &components)
+    func start(of component: Calendar.Component) -> Date {
+        var components = allComponents
         
-        return Calendar.current.nextDate(after: self, matching: components, matchingPolicy: .nextTimePreservingSmallerComponents) ?? self
+        for innerComponent in component.includedComponents {
+            components[innerComponent] = 0
+        }
+        
+        return Calendar.current.date(from: components) ?? self
+    }
+
+    func end(of component: Calendar.Component) -> Date {
+        start(of: component)
+            .adding(DateRange(component: component, value: 1))
+            .adding(.second(-1))
     }
 }
