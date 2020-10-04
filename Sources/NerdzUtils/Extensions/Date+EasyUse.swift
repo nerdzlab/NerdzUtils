@@ -138,12 +138,14 @@ public extension Date {
         Calendar.current.dateComponents(Set(Calendar.Component.allComponents), from: self)
     }
     
-    func isInSameDay(as date: Date) -> Bool {
-        Calendar.current.isDate(date, inSameDayAs: self)
+    subscript(_ component: Calendar.Component) -> Int? {
+        get {
+            Calendar.current.component(component, from: self)
+        }
     }
     
-    func value(for component: Calendar.Component) -> Int? {
-        Calendar.current.component(component, from: self)
+    func isInSameDay(as date: Date) -> Bool {
+        Calendar.current.isDate(date, inSameDayAs: self)
     }
     
     func adding(_ range: DateRange) -> Date {        
@@ -157,12 +159,23 @@ public extension Date {
             components[innerComponent] = 0
         }
         
-        return Calendar.current.date(from: components) ?? self
+        var result = Calendar.current.date(from: components) ?? self
+        
+        // Strange fix for weeks
+        if let weekday = self[.weekday], component == .weekOfMonth || component == .weekOfYear {
+            result = result.adding(.day(-weekday))
+        }
+        
+        return result
     }
 
     func end(of component: Calendar.Component) -> Date {
         start(of: component)
             .adding(DateRange(component: component, value: 1))
             .adding(.second(-1))
+    }
+    
+    static func + (lhs: Self, rhs: DateRange) -> Self {
+        lhs.adding(rhs)
     }
 }
