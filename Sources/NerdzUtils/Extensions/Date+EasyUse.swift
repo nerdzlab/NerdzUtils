@@ -126,7 +126,7 @@ public extension Date {
     }
 
     var allComponents: DateComponents {
-        Calendar.current.dateComponents(Set(Calendar.Component.allComponents), from: .now)
+        Calendar.current.dateComponents(Set(Calendar.Component.allComponents), from: self)
     }
     
     func isInSameDay(as date: Date) -> Bool {
