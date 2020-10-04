@@ -112,6 +112,14 @@ public struct DateRange {
         DateRange(component: .day, value: value)
     }
     
+    public static func weekOfYear(_ value: Int) -> DateRange {
+        DateRange(component: .weekOfYear, value: value)
+    }
+    
+    public static func weekOfMonth(_ value: Int) -> DateRange {
+        DateRange(component: .weekOfMonth, value: value)
+    }
+    
     public static func month(_ value: Int) -> DateRange {
         DateRange(component: .month, value: value)
     }
@@ -132,6 +140,10 @@ public extension Date {
     
     func isInSameDay(as date: Date) -> Bool {
         Calendar.current.isDate(date, inSameDayAs: self)
+    }
+    
+    func value(for component: Calendar.Component) -> Int? {
+        Calendar.current.component(component, from: self)
     }
     
     func adding(_ range: DateRange) -> Date {        
