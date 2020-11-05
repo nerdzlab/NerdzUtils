@@ -29,7 +29,10 @@ public class AtomicAsyncOperation {
             }
             
             guard self.isRunning else {
-                self.pendingCompletions.append(completion)
+                if let completion = completion {
+                    self.pendingCompletions.append(completion)
+                }
+                
                 return
             }
             
