@@ -116,7 +116,10 @@ public class LoadableImageView: UIImageView {
         
         if let imageInfo = type(of: self).cache[url] {
             self.image = imageInfo.image
+            return
         }
+        
+        image = placeholderImage
         
         DispatchQueue.global(qos: .background).async {
             if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
