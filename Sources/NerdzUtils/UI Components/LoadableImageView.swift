@@ -93,7 +93,7 @@ public class LoadableImageView: UIImageView {
             reload(with: data, scale: scale)
             
         case .fromUrl(let url, let policy):
-            reload(with: url, storePolicy: policy)
+            reload(with: url, storingPolicy: policy)
         }
     }
     
@@ -106,7 +106,7 @@ public class LoadableImageView: UIImageView {
         image = UIImage(data: data, scale: scale)
     }
     
-    private func reload(with url: URL?, storePolicy: ImageStoringPolicy) {
+    private func reload(with url: URL?, storingPolicy: ImageStoringPolicy) {
         clearExpiredCache()
         
         guard let url = url else {
@@ -124,12 +124,12 @@ public class LoadableImageView: UIImageView {
         DispatchQueue.global(qos: .background).async {
             if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
                 DispatchQueue.main.async {
-                    if case .cache(let timeout) = storePolicy {
+                    if case .cache(let timeout) = storingPolicy {
                         let expirationDate = timeout.flatMap({ Date(timeInterval: $0, since: Date()) })
                         type(of: self).cache[url] = (expirationDate, image)
                     }
                     
-                    if case .fromUrl(let currentUrl, _) = self.loadableImage, currentUrl == url {
+                    if self.loadableImage == .fromUrl(url, storingPolicy: storingPolicy) {
                         self.image = image
                     }
                     else {
