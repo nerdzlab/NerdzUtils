@@ -8,7 +8,7 @@
 import Foundation
 
 public class AtomicAsyncOperation {
-    public typealias Operation = (() -> Void) -> Void
+    public typealias Operation = (@escaping () -> Void) -> Void
     public typealias Completion = () -> Void
     
     public let operation: Operation
