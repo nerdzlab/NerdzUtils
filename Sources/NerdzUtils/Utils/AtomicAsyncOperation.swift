@@ -31,7 +31,7 @@ public class AtomicAsyncOperation {
             
             self.semaphone.wait()
             
-            guard self.isRunning else {
+            guard !self.isRunning else {
                 if let completion = completion {
                     self.pendingCompletions.append(completion)
                 }
