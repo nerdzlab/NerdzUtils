@@ -31,11 +31,11 @@ public class AtomicAsyncOperation {
             
             self.semaphone.wait()
             
+            if let completion = completion {
+                self.pendingCompletions.append(completion)
+            }
+            
             guard !self.isRunning else {
-                if let completion = completion {
-                    self.pendingCompletions.append(completion)
-                }
-                
                 self.semaphone.signal()
                 return
             }
