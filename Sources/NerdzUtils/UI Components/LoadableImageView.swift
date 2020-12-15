@@ -92,8 +92,8 @@ public class LoadableImageView: UIImageView {
         case .fromData(let data, let scale):
             reload(with: data, scale: scale)
             
-        case .fromUrl(let url, let policy):
-            reload(with: url, storingPolicy: policy)
+        case .fromUrl(let url, let policy, let completion):
+            reload(with: url, storingPolicy: policy, completion: completion)
         }
     }
     
