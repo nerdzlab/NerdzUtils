@@ -147,8 +147,8 @@ public class LoadableImageView: UIImageView {
                 }
             }
             else {
-                DispatchQueue.main.async {
-                    self.loadableImage = .placeholder
+                DispatchQueue.main.async { [weak self] in
+                    self?.loadableImage = .placeholder
                     completion?(nil)
                 }
             }
