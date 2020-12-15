@@ -123,9 +123,14 @@ public class LoadableImageView: UIImageView {
         
         image = placeholderImage
         
-        DispatchQueue.global(qos: .background).async { []
+        DispatchQueue.global(qos: .background).async { [weak self] in
             if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else {
+                        completion?(nil)
+                        return
+                    }
+                    
                     if case .cache(let timeout) = storingPolicy {
                         let expirationDate = timeout.flatMap({ Date(timeInterval: $0, since: Date()) })
                         type(of: self).cache[url] = (expirationDate, image)
