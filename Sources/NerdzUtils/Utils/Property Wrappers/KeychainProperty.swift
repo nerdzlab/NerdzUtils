@@ -8,6 +8,7 @@
 import Foundation
 import KeychainAccess
 
+// Can only be used with non basic types
 @propertyWrapper
 @available(iOS 11.0, *)
 public struct KeychainProperty<Type: Codable> {
@@ -32,7 +33,10 @@ public struct KeychainProperty<Type: Codable> {
             return returnValue ?? initialValue
         }
         set {
-            guard let data = newValue.jsonData else { return }
+            guard let data = newValue.jsonData else {
+                try? keychain.remove(key)
+                return
+            }
             try? keychain.set(data, key: key)
         }
     }
