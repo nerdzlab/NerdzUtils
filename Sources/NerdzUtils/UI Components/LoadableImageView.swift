@@ -13,14 +13,14 @@ public enum ImageStoringPolicy {
 }
 
 public enum LoadableImage: Equatable {
-    case fromUrl(_ url: URL?, storingPolicy: ImageStoringPolicy)
+    case fromUrl(_ url: URL?, storingPolicy: ImageStoringPolicy, completion: ((UIImage?) -> Void)? = nil)
     case fromData(_ data: Data?, scale: CGFloat = 1)
     case named(_ name: String)
     case image(_ image: UIImage)
     case placeholder
     
     static public func == (lhs: LoadableImage, rhs: LoadableImage) -> Bool {
-        if case .fromUrl(let lhsUrl, _) = lhs, case .fromUrl(let rhsUrl, _) = rhs {
+        if case .fromUrl(let lhsUrl, _, _) = lhs, case .fromUrl(let rhsUrl, _, _) = rhs {
             return lhsUrl == rhsUrl
         }
         else if case .fromData(let lhsData, let lhsScale) = lhs, case .fromData(let rhsData, let rhsScale) = rhs {
@@ -63,12 +63,12 @@ public class LoadableImageView: UIImageView {
         }
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setToDefault()
     }
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         setToDefault()
     }
@@ -92,8 +92,8 @@ public class LoadableImageView: UIImageView {
         case .fromData(let data, let scale):
             reload(with: data, scale: scale)
             
-        case .fromUrl(let url, let policy):
-            reload(with: url, storingPolicy: policy)
+        case .fromUrl(let url, let policy, let completion):
+            reload(with: url, storingPolicy: policy, completion: completion)
         }
     }
     
@@ -106,24 +106,31 @@ public class LoadableImageView: UIImageView {
         image = UIImage(data: data, scale: scale)
     }
     
-    private func reload(with url: URL?, storingPolicy: ImageStoringPolicy) {
+    private func reload(with url: URL?, storingPolicy: ImageStoringPolicy, completion: ((UIImage?) -> Void)? = nil) {
         clearExpiredCache()
         
         guard let url = url else {
             loadableImage = .placeholder
+            completion?(nil)
             return
         }
         
         if let imageInfo = type(of: self).cache[url] {
             self.image = imageInfo.image
+            completion?(imageInfo.image)
             return
         }
         
         image = placeholderImage
         
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async { [weak self] in
             if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {
-                DispatchQueue.main.async {
+                DispatchQueue.main.async { [weak self] in
+                    guard let self = self else {
+                        completion?(nil)
+                        return
+                    }
+                    
                     if case .cache(let timeout) = storingPolicy {
                         let expirationDate = timeout.flatMap({ Date(timeInterval: $0, since: Date()) })
                         type(of: self).cache[url] = (expirationDate, image)
@@ -131,19 +138,18 @@ public class LoadableImageView: UIImageView {
                     
                     if self.loadableImage == .fromUrl(url, storingPolicy: storingPolicy) {
                         self.image = image
+                        completion?(image)
                     }
                     else {
+                        completion?(nil)
                         return
                     }
-                    
-                    self.image = image
-                    
-                    
                 }
             }
             else {
-                DispatchQueue.main.async {
-                    self.loadableImage = .placeholder
+                DispatchQueue.main.async { [weak self] in
+                    self?.loadableImage = .placeholder
+                    completion?(nil)
                 }
             }
         }

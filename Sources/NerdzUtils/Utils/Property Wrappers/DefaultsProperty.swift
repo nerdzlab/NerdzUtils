@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Can only be used with non basic types
 @propertyWrapper
 @available(iOS 11.0, *)
 public struct DefaultsProperty<Type: Codable> {
@@ -24,7 +25,10 @@ public struct DefaultsProperty<Type: Codable> {
             return (try? defaults.data(forKey: key)?.object(of: Type.self)) ?? initialValue
         }
         set {
-            guard let data = newValue.jsonData else { return }
+            guard let data = newValue.jsonData else {
+                defaults.removeObject(forKey: key)
+                return
+            }
             defaults.setValue(data, forKey: key)
         }
     }
