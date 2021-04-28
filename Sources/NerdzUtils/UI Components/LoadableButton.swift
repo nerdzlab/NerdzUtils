@@ -119,6 +119,7 @@ open class LoadableButton: UIButton {
         setTitle(isLoading ? "" : titleBeforeLoadingStateChange, for: .normal)
         setImage(isLoading ? nil : imageBeforeLoadingStateChange, for: .normal)
         activityIndicatorView.isHidden = !isLoading
+        isUserInteractionEnabled = !isLoading
         isLoading ? onStartLoading?() : onFinishLoading?()
     }
 }
