@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class LoadableButton: UIButton {
+open class LoadableButton: UIButton {
     
     public var onStartLoading: (() -> Void)?
     public var onFinishLoading: (() -> Void)?
