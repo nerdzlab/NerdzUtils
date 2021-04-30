@@ -9,14 +9,20 @@ import UIKit
 
 open class LoadableButton: UIButton {
     
-    public var onStartLoading: (() -> Void)?
-    public var onFinishLoading: (() -> Void)?
+    typealias EmpytAction = () -> Void
+    
+    public var onStartLoading: EmpytAction?
+    public var onFinishLoading: EmptyAction?
     // Activity indicator spacing, must be set before reasingning of activity indicator view
-    public var topBottomIndicatorPadding = CGFloat(10)
+    public var topBottomIndicatorPadding: CGFloat = 10
 
     // Variable that represents loading state, change it if you want to show/hide loading indicator
     public var isLoading: Bool = false {
         didSet {
+            guard oldValue != isLoading else {
+                return
+            }
+            
             configureLoadingStateChange()
         }
     }
@@ -116,7 +122,7 @@ open class LoadableButton: UIButton {
             imageBeforeLoadingStateChange = image(for: .normal)
         }
         
-        setTitle(isLoading ? "" : titleBeforeLoadingStateChange, for: .normal)
+        setTitle(isLoading ? nil : titleBeforeLoadingStateChange, for: .normal)
         setImage(isLoading ? nil : imageBeforeLoadingStateChange, for: .normal)
         activityIndicatorView.isHidden = !isLoading
         isUserInteractionEnabled = !isLoading
