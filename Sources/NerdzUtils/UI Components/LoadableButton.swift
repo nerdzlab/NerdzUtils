@@ -8,9 +8,10 @@
 import UIKit
 
 open class LoadableButton: UIButton {
+    public typealias LoadableButtonEmptyAction = () -> Void
         
-    public var onStartLoading: (() -> Void)?
-    public var onFinishLoading: (() -> Void)?
+    public var onStartLoading: LoadableButtonEmptyAction?
+    public var onFinishLoading: LoadableButtonEmptyAction?
     // Activity indicator spacing, must be set before reasingning of activity indicator view
     public var topBottomIndicatorPadding: CGFloat = 10
 
