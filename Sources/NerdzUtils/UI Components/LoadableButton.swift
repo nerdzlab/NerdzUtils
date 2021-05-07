@@ -60,58 +60,14 @@ open class LoadableButton: UIButton {
     private func configureView() {
         activityIndicatorView.tintColor = .white
         addSubview(activityIndicatorView)
-        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint(
-            item: activityIndicatorView,
-            attribute: .top,
-            relatedBy: .equal,
-            toItem: self,
-            attribute: .top,
-            multiplier: 1,
-            constant: topBottomIndicatorPadding
-        ).isActive = true
-        
-        NSLayoutConstraint(
-            item: activityIndicatorView,
-            attribute: .bottom,
-            relatedBy: .equal,
-            toItem: self,
-            attribute: .bottom,
-            multiplier: 1,
-            constant: -topBottomIndicatorPadding
-        ).isActive = true
-        
-        NSLayoutConstraint(
-            item: activityIndicatorView,
-            attribute: .width,
-            relatedBy: .equal,
-            toItem: activityIndicatorView,
-            attribute: .height,
-            multiplier: 1,
-            constant: 0
-        ).isActive = true
-        
-        NSLayoutConstraint(
-            item: activityIndicatorView,
-            attribute: .centerX,
-            relatedBy: .equal,
-            toItem: self,
-            attribute: .centerX,
-            multiplier: 1,
-            constant: 0
-        ).isActive = true
-        
-        NSLayoutConstraint(
-            item: activityIndicatorView,
-            attribute: .centerY,
-            relatedBy: .equal,
-            toItem: self,
-            attribute: .centerY,
-            multiplier: 1,
-            constant: 0
-        ).isActive = true
-        
         activityIndicatorView.isHidden = true
+        activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        activityIndicatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: topBottomIndicatorPadding).isActive = true
+        activityIndicatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -topBottomIndicatorPadding).isActive = true
+        activityIndicatorView.heightAnchor.constraint(equalTo: activityIndicatorView.widthAnchor).isActive = true
+        activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private func configureLoadingStateChange() {
