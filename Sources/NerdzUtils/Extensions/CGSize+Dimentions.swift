@@ -8,19 +8,19 @@
 import CoreGraphics
 
 public extension CGSize {
-    static var w16xh9: CGSize {
+    static var w16_h9: CGSize {
         CGSize(width: 16, height: 9)
     }
     
-    static var w9xh16: CGSize {
+    static var w9_h16: CGSize {
         CGSize(width: 9, height: 16)
     }
     
-    static var w4xh3: CGSize {
+    static var w4_h3: CGSize {
         CGSize(width: 4, height: 3)
     }
     
-    static var w3xh4: CGSize {
+    static var w3_h4: CGSize {
         CGSize(width: 3, height: 4)
     }
     
