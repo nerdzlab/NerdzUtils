@@ -7,7 +7,7 @@
 
 import CoreGraphics
 
-extension CGSize {
+public extension CGSize {
     static var w16xh9: CGSize {
         CGSize(width: 16, height: 9)
     }
