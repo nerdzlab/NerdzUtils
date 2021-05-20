@@ -7,7 +7,7 @@
 
 import UIKit
 
-extension UIImage {
+public extension UIImage {
     func scaled(toWidth value: CGFloat) -> UIImage {
         let scale = value / size.width
         return scaled(by: scale)
