@@ -17,6 +17,7 @@ public enum LoadableImage: Equatable {
     case fromData(_ data: Data?, scale: CGFloat = 1)
     case named(_ name: String)
     case image(_ image: UIImage)
+    case blurHash(_ blurHash: String?, size: CGSize, storingPolicy: ImageStoringPolicy)
     case placeholder
     
     static public func == (lhs: LoadableImage, rhs: LoadableImage) -> Bool {
@@ -28,6 +29,9 @@ public enum LoadableImage: Equatable {
         }
         else if case .named(let lhsName) = lhs, case .named(let rhsName) = rhs {
             return lhsName == rhsName
+        }
+        else if case .blurHash(let lhsHash, let lhsSize, _) = lhs, case .blurHash(let rhsHash, let rhsSize, _) = rhs {
+            return lhsHash == rhsHash && lhsSize == rhsSize
         }
         else if case .placeholder = lhs, case .placeholder = rhs {
             return true
@@ -41,7 +45,8 @@ public enum LoadableImage: Equatable {
 public class LoadableImageView: UIImageView {
     typealias CacheInfo = (expirationDate: Date?, image: UIImage)
     
-    private static var cache: [URL: CacheInfo] = [:]
+    private static var urlCache: [URL: CacheInfo] = [:]
+    private static var blurCache: [String: CacheInfo] = [:]
     
     @IBInspectable
     public var placeholderImage: UIImage?
@@ -94,6 +99,9 @@ public class LoadableImageView: UIImageView {
             
         case .fromUrl(let url, let policy, let completion):
             reload(with: url, storingPolicy: policy, completion: completion)
+            
+        case .blurHash(let hash, let size, let policy):
+            reload(with: hash, size: size, storingPolicy: policy)
         }
     }
     
@@ -106,6 +114,31 @@ public class LoadableImageView: UIImageView {
         image = UIImage(data: data, scale: scale)
     }
     
+    private func reload(with blurHash: String?, size: CGSize, storingPolicy: ImageStoringPolicy) {
+        clearExpiredCache()
+        
+        guard let blurHash = blurHash else {
+            return
+        }
+        
+        if let imageInfo = type(of: self).blurCache[blurHash] {
+            image = imageInfo.image
+            return
+        }
+        
+        guard let image = UIImage(blurHash: blurHash, size: size) else {
+            loadableImage = .placeholder
+            return
+        }
+        
+        self.image = image
+        
+        if case .cache(let timeout) = storingPolicy {
+            let expirationDate = timeout.flatMap({ Date(timeInterval: $0, since: Date()) })
+            type(of: self).blurCache[blurHash] = (expirationDate, image)
+        }
+    }
+    
     private func reload(with url: URL?, storingPolicy: ImageStoringPolicy, completion: ((UIImage?) -> Void)? = nil) {
         clearExpiredCache()
         
@@ -115,7 +148,7 @@ public class LoadableImageView: UIImageView {
             return
         }
         
-        if let imageInfo = type(of: self).cache[url] {
+        if let imageInfo = type(of: self).urlCache[url] {
             self.image = imageInfo.image
             completion?(imageInfo.image)
             return
@@ -133,7 +166,7 @@ public class LoadableImageView: UIImageView {
                     
                     if case .cache(let timeout) = storingPolicy {
                         let expirationDate = timeout.flatMap({ Date(timeInterval: $0, since: Date()) })
-                        type(of: self).cache[url] = (expirationDate, image)
+                        type(of: self).urlCache[url] = (expirationDate, image)
                     }
                     
                     if self.loadableImage == .fromUrl(url, storingPolicy: storingPolicy) {
@@ -156,9 +189,15 @@ public class LoadableImageView: UIImageView {
     }
     
     private func clearExpiredCache() {
-        for (key, value) in type(of: self).cache {
+        for (key, value) in type(of: self).urlCache {
             if let expirationDate = value.expirationDate, expirationDate > Date() {
-                type(of: self).cache.removeValue(forKey: key)
+                type(of: self).urlCache.removeValue(forKey: key)
+            }
+        }
+        
+        for (key, value) in type(of: self).blurCache {
+            if let expirationDate = value.expirationDate, expirationDate > Date() {
+                type(of: self).blurCache.removeValue(forKey: key)
             }
         }
     }
