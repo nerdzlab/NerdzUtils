@@ -37,8 +37,6 @@ extension UIImage {
     }
     
     func scaled(toFit targetSize: CGSize) -> UIImage {
-        let size = image.size
-        
         let widthRatio  = targetSize.width  / size.width
         let heightRatio = targetSize.height / size.height
         
@@ -56,10 +54,10 @@ extension UIImage {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage!
+        return newImage ?? self
     }
     
-    func scaled(by scale: CGFloat) -> UIImage? {
+    func scaled(by scale: CGFloat) -> UIImage {
         let scaledSize = CGSize(width: size.width * scale, height: size.height * scale)
         return scaled(toFit: scaledSize)
     }
