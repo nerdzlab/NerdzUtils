@@ -7,12 +7,12 @@
 
 import UIKit
 
-public struct HashInfo {
-    let blurHash: String
-    let size: CGSize
-    let punch: Float
+public struct BlurHashInfo {
+    public let blurHash: String
+    public let size: CGSize
+    public let punch: Float
     
-    init(hash: String, size: CGSize, punch: Float = 1) {
+    public init(hash: String, size: CGSize, punch: Float = 1) {
         self.blurHash = hash
         self.size = size
         self.punch = punch
@@ -21,7 +21,7 @@ public struct HashInfo {
 
 extension UIImage {
     
-    public convenience init?(info: HashInfo) {
+    public convenience init?(info: BlurHashInfo) {
         self.init(blurHash: info.blurHash, size: info.size, punch: info.punch)
     }
     

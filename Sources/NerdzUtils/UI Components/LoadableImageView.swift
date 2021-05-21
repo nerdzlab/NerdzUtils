@@ -16,7 +16,7 @@ public enum LoadableImage: Equatable {
     case fromUrl(
             _ url: URL?,
             storingPolicy: ImageStoringPolicy,
-            blurHash: HashInfo? = nil,
+            blurHash: BlurHashInfo? = nil,
             completion: ((UIImage?) -> Void)? = nil)
     
     case fromData(_ data: Data?, scale: CGFloat = 1)
@@ -112,7 +112,7 @@ public class LoadableImageView: UIImageView {
         image = UIImage(data: data, scale: scale)
     }
     
-    private func setBlurHash(_ info: HashInfo, storingPolicy: ImageStoringPolicy) -> Bool {
+    private func setBlurHash(_ info: BlurHashInfo, storingPolicy: ImageStoringPolicy) -> Bool {
         
         if let imageInfo = type(of: self).blurCache[info.blurHash] {
             image = imageInfo.image
@@ -136,7 +136,7 @@ public class LoadableImageView: UIImageView {
     private func reload(
         with url: URL?, 
         storingPolicy: ImageStoringPolicy,
-        hashInfo: HashInfo? = nil,
+        hashInfo: BlurHashInfo? = nil,
         completion: ((UIImage?) -> Void)? = nil) {
         clearExpiredCache()
         
