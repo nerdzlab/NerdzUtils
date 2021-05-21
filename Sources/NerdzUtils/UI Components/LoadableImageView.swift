@@ -13,15 +13,19 @@ public enum ImageStoringPolicy {
 }
 
 public enum LoadableImage: Equatable {
-    case fromUrl(_ url: URL?, storingPolicy: ImageStoringPolicy, completion: ((UIImage?) -> Void)? = nil)
+    case fromUrl(
+            _ url: URL?,
+            storingPolicy: ImageStoringPolicy,
+            blurHash: HashInfo? = nil,
+            completion: ((UIImage?) -> Void)? = nil)
+    
     case fromData(_ data: Data?, scale: CGFloat = 1)
     case named(_ name: String)
     case image(_ image: UIImage)
-    case blurHash(_ blurHash: String?, size: CGSize, storingPolicy: ImageStoringPolicy)
     case placeholder
     
     static public func == (lhs: LoadableImage, rhs: LoadableImage) -> Bool {
-        if case .fromUrl(let lhsUrl, _, _) = lhs, case .fromUrl(let rhsUrl, _, _) = rhs {
+        if case .fromUrl(let lhsUrl, _, _, _) = lhs, case .fromUrl(let rhsUrl, _, _, _) = rhs {
             return lhsUrl == rhsUrl
         }
         else if case .fromData(let lhsData, let lhsScale) = lhs, case .fromData(let rhsData, let rhsScale) = rhs {
@@ -29,9 +33,6 @@ public enum LoadableImage: Equatable {
         }
         else if case .named(let lhsName) = lhs, case .named(let rhsName) = rhs {
             return lhsName == rhsName
-        }
-        else if case .blurHash(let lhsHash, let lhsSize, _) = lhs, case .blurHash(let rhsHash, let rhsSize, _) = rhs {
-            return lhsHash == rhsHash && lhsSize == rhsSize
         }
         else if case .placeholder = lhs, case .placeholder = rhs {
             return true
@@ -97,11 +98,8 @@ public class LoadableImageView: UIImageView {
         case .fromData(let data, let scale):
             reload(with: data, scale: scale)
             
-        case .fromUrl(let url, let policy, let completion):
-            reload(with: url, storingPolicy: policy, completion: completion)
-            
-        case .blurHash(let hash, let size, let policy):
-            reload(with: hash, size: size, storingPolicy: policy)
+        case .fromUrl(let url, let policy, let hashInfo, let completion):
+            reload(with: url, storingPolicy: policy, hashInfo: hashInfo, completion: completion)
         }
     }
     
@@ -114,32 +112,32 @@ public class LoadableImageView: UIImageView {
         image = UIImage(data: data, scale: scale)
     }
     
-    private func reload(with blurHash: String?, size: CGSize, storingPolicy: ImageStoringPolicy) {
-        clearExpiredCache()
+    private func setBlurHash(_ info: HashInfo, storingPolicy: ImageStoringPolicy) -> Bool {
         
-        guard let blurHash = blurHash else {
-            return
-        }
-        
-        if let imageInfo = type(of: self).blurCache[blurHash] {
+        if let imageInfo = type(of: self).blurCache[info.blurHash] {
             image = imageInfo.image
-            return
+            return true
         }
         
-        guard let image = UIImage(blurHash: blurHash, size: size) else {
-            loadableImage = .placeholder
-            return
+        guard let image = UIImage(info: info) else {
+            return false
         }
         
         self.image = image
         
         if case .cache(let timeout) = storingPolicy {
             let expirationDate = timeout.flatMap({ Date(timeInterval: $0, since: Date()) })
-            type(of: self).blurCache[blurHash] = (expirationDate, image)
+            type(of: self).blurCache[info.blurHash] = (expirationDate, image)
         }
+        
+        return true
     }
     
-    private func reload(with url: URL?, storingPolicy: ImageStoringPolicy, completion: ((UIImage?) -> Void)? = nil) {
+    private func reload(
+        with url: URL?, 
+        storingPolicy: ImageStoringPolicy,
+        hashInfo: HashInfo? = nil,
+        completion: ((UIImage?) -> Void)? = nil) {
         clearExpiredCache()
         
         guard let url = url else {
@@ -154,7 +152,14 @@ public class LoadableImageView: UIImageView {
             return
         }
         
-        image = placeholderImage
+        if let hashInfo = hashInfo {
+            if !setBlurHash(hashInfo, storingPolicy: storingPolicy) {
+                image = placeholderImage
+            }
+        }
+        else {
+            image = placeholderImage
+        }
         
         DispatchQueue.global(qos: .background).async { [weak self] in
             if let data = try? Data(contentsOf: url), let image = UIImage(data: data) {

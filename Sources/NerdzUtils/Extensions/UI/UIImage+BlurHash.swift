@@ -7,7 +7,24 @@
 
 import UIKit
 
+public struct HashInfo {
+    let blurHash: String
+    let size: CGSize
+    let punch: Float
+    
+    init(hash: String, size: CGSize, punch: Float = 1) {
+        self.blurHash = hash
+        self.size = size
+        self.punch = punch
+    }
+}
+
 extension UIImage {
+    
+    public convenience init?(info: HashInfo) {
+        self.init(blurHash: info.blurHash, size: info.size, punch: info.punch)
+    }
+    
     public convenience init?(blurHash: String, size: CGSize, punch: Float = 1) {
         guard blurHash.count >= 6 else { return nil }
 
