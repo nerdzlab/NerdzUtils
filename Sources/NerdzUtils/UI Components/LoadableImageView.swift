@@ -50,7 +50,13 @@ public class LoadableImageView: UIImageView {
     private static var blurCache: [String: CacheInfo] = [:]
     
     @IBInspectable
-    public var placeholderImage: UIImage?
+    public var placeholderImage: UIImage? {
+        didSet {
+            if case .placeholder = loadableImage {
+                reload()
+            }
+        }
+    }
     
     public lazy var loadableImage: LoadableImage = {
         if let image = image {
