@@ -14,6 +14,13 @@ public class DelayedAction {
     
     public init() { }
     
+    @discardableResult
+    public func cancel() -> Bool {
+        workItem?.cancel()
+        
+        return workItem != nil
+    }
+    
     public func perform(after delay: TimeInterval, queue: DispatchQueue = .main, action: @escaping Action) {
         workItem?.cancel()
         let workItem = DispatchWorkItem(block: action)
