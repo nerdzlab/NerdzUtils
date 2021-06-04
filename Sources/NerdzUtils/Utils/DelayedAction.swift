@@ -12,6 +12,8 @@ public class DelayedAction {
     
     private var workItem: DispatchWorkItem?
     
+    public init() { }
+    
     public func perform(after delay: TimeInterval, queue: DispatchQueue = .main, action: @escaping Action) {
         workItem?.cancel()
         let workItem = DispatchWorkItem(block: action)
