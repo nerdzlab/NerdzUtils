@@ -8,6 +8,8 @@
 import UIKit
 
 public extension UIDevice {
+    
+    /// Provides device model
     var model: String? {
         var systemInfo = utsname()
         uname(&systemInfo)

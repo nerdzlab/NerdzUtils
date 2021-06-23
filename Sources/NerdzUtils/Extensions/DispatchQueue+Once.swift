@@ -10,18 +10,19 @@ import Foundation
 public extension DispatchQueue {
     private static var _onceTracker = [String]()
 
+    /// Execute once per provided token
+    /// - Parameters:
+    ///   - token: A uniqueue associated with 
+    ///   - action: Execution acrtion
     class func once(per object: AnyObject, token: String, action: () -> Void) {
         let finalToken = self.token(for: object) + "." + token
         once(for: finalToken, action: action)
     }
-
-    /**
-     Executes a block of code, associated with a unique token, only once.  The code is thread safe and will
-     only execute the code once even in the presence of multithreaded calls.
-
-     - parameter token: A unique reverse DNS style name such as com.vectorform.<name> or a GUID
-     - parameter block: Block to execute once
-     */
+    
+    /// Execute once per provided token
+    /// - Parameters:
+    ///   - token: A uniqueue associated with 
+    ///   - action: Execution acrtion
    class func once(for token: String, action: () -> Void) {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
 

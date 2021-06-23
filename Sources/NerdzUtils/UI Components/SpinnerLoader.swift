@@ -8,7 +8,7 @@
 import UIKit
 
 @available(iOS 9.0, *)
-class SpinnerLoader {
+public class SpinnerLoader {
     fileprivate static var loaders: [SpinnerLoader] = []
 
     fileprivate let view: UIView
@@ -71,11 +71,16 @@ class SpinnerLoader {
 @available(iOS 9.0, *)
 public extension UIView {
     
+    /// Starts loading with spinner
+    /// - Parameters:
+    ///   - color: Loader color
+    ///   - size: Loader size
     func startLoading(with color: UIColor? = nil, size: CGFloat? = nil) {
         let loader = SpinnerLoader(view: self)
         loader.startLoading(withColor: color, size: size)
     }
     
+    /// Stops loading
     func stopLoading() {
         guard let loader = SpinnerLoader.loaders.first(where: { $0.view === self }) else {
             return

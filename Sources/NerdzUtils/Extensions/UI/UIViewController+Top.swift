@@ -8,6 +8,8 @@
 import UIKit
 
 public extension UIViewController {
+    
+    /// Top presented or pushed view controller
     var topController: UIViewController {
         return topViewController(from: self) ?? self
     }

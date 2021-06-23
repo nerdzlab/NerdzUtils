@@ -9,17 +9,32 @@ import UIKit
 
 public extension UIAlertController {
     typealias ActionHandler = () -> Void
-
+    
+    /// Adding default action to alert
+    /// - Parameters:
+    ///   - title: Action title
+    ///   - handler: Action handler
+    /// - Returns: Same alert for future configuration
     @discardableResult
     func action(title: String?, handler: ActionHandler? = nil) -> UIAlertController {
         return addButton(withStyle: .default, title: title, handler: handler)
     }
 
+    /// Adding desctructive action to alert
+    /// - Parameters:
+    ///   - title: Action title
+    ///   - handler: Action handler
+    /// - Returns: Same alert for future configuration
     @discardableResult
     func destructive(title: String?, handler: ActionHandler? = nil) -> UIAlertController {
         return addButton(withStyle: .destructive, title: title, handler: handler)
     }
 
+    /// Adding cancel action to alert
+    /// - Parameters:
+    ///   - title: Action title
+    ///   - handler: Action handler
+    /// - Returns: Same alert for future configuration
     @discardableResult
     func cancel(title: String?, handler: ActionHandler? = nil) -> UIAlertController {
         return addButton(withStyle: .cancel, title: title, handler: handler)
@@ -33,7 +48,10 @@ public extension UIAlertController {
         addAction(action)
         return self
     }
-
+    
+    /// Setting up controller source view for tablets
+    /// - Parameter source: Source view
+    /// - Returns: Same alert for future configuration
     @discardableResult
     func source(_ source: UIView) -> UIAlertController {
         popoverPresentationController?.sourceView = source
@@ -41,7 +59,10 @@ public extension UIAlertController {
         
         return self
     }
-
+    
+    /// Presenting on controller
+    /// - Parameter controller: Presenting controller
+    /// - Returns: Return `true` if presentation might be successful
     @discardableResult
     func show(on controller: UIViewController) -> Bool {
         if validateBulider() {

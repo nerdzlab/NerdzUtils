@@ -9,6 +9,7 @@ import UIKit
 
 public extension UIColor {
     
+    /// Inverted color to current
     var inversed: UIColor {
         var alpha: CGFloat = 1.0
         

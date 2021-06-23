@@ -8,10 +8,12 @@
 import Foundation
 
 public extension NSObject {
+    /// Current class name
     static var className: String {
         String(describing: self)
     }
     
+    /// Current class name
     var className: String {
         String(describing: type(of: self))
     }

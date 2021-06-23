@@ -9,6 +9,7 @@ import UIKit
 
 public extension UITextField {
     
+    /// Enabling password visibility view on text field
     @IBInspectable
     var isPasswordVisiblityToggleEnabled: Bool {
         set {

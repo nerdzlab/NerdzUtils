@@ -9,23 +9,19 @@ import Foundation
 
 public extension Data {
     
-    ///
     /// Return object from JSON Data
     /// - Parameter of: Target type
-    ///
     @available(iOS 11.0, *)
-    func object<TResult: Decodable>(of _: TResult.Type) throws -> TResult? {
+    func object<T: Decodable>(of _: T.Type) throws -> T? {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .iso8601
-        return try decoder.decode(TResult.self, from: self)
+        return try decoder.decode(T.self, from: self)
     }
     
-    ///
     /// Return object from JSON Data
     /// - Parameter of: Target type
-    ///
     @available(iOS 11.0, *)
-    func object<TResult: Decodable>() throws -> TResult? {
-        return try self.object(of: TResult.self)
+    func object<T: Decodable>() throws -> T? {
+        return try self.object(of: T.self)
     }
 }

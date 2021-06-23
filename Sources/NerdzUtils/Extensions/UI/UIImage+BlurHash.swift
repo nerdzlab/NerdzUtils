@@ -7,11 +7,24 @@
 
 import UIKit
 
+/// Struct that represents an information about image blur hash
 public struct BlurHashInfo {
+    /// Blur hash
     public let blurHash: String
+    
+    /// Blur rendering size. 
+    /// Do not make is super huge as rendering function will become super time expensive
     public let size: CGSize
+    
+    /// Blur punch
+    /// By default should be 1
     public let punch: Float
     
+    /// Initialize information
+    /// - Parameters:
+    ///   - hash: Blur hash
+    ///   - size: Rendering size
+    ///   - punch: Blur punch
     public init(hash: String, size: CGSize, punch: Float = 1) {
         self.blurHash = hash
         self.size = size
@@ -21,10 +34,17 @@ public struct BlurHashInfo {
 
 extension UIImage {
     
+    /// Initialize image with hash information object
+    /// - Parameter info: Hash information object
     public convenience init?(info: BlurHashInfo) {
         self.init(blurHash: info.blurHash, size: info.size, punch: info.punch)
     }
     
+    /// Initialize image with hash information separately
+    /// - Parameters:
+    ///   - blurHash: Blur hash
+    ///   - size: Rendering size
+    ///   - punch: Blur punch
     public convenience init?(blurHash: String, size: CGSize, punch: Float = 1) {
         guard blurHash.count >= 6 else { return nil }
 

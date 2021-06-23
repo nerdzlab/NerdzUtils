@@ -9,6 +9,8 @@ import UIKit
 
 public extension UILabel {
     
+    /// Localized text 
+    /// Useful for setting localized text from nib files
     @IBInspectable var textLocalization: String? {
         set {
             if let identifier = newValue {
@@ -24,6 +26,8 @@ public extension UILabel {
 
 public extension UITextField {
     
+    /// Localized text 
+    /// Useful for setting localized text from nib files
     @IBInspectable var textLocalization: String? {
         set {
             if let identifier = newValue {
@@ -36,6 +40,8 @@ public extension UITextField {
         }
     }
     
+    /// Localized placeholder 
+    /// Useful for setting localized placeholder from nib files
     @IBInspectable var placeholderLocalization: String? {
         set {
             if let identifier = newValue {
@@ -51,6 +57,8 @@ public extension UITextField {
 
 public extension UIButton {
     
+    /// Localized text 
+    /// Useful for setting localized text from nib files
     @IBInspectable var textLocalization: String? {
         set {
             if let identifier = newValue {

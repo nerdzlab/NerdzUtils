@@ -9,6 +9,11 @@ import UIKit
 
 public extension UIViewController {
     
+    /// Adding child to controller with all necessary configuration
+    /// - Parameters:
+    ///   - childController: Controller to add as a child
+    ///   - container: Container in with needs to be added. If not provided - `view` will be used
+    ///   - configurationAction: Configuration action to setup all constraints. If not provided - will becoe full size of a container
     @available (iOS 9, *)
     func easilyAddChild(_ childController: UIViewController, on container: UIView? = nil, configurationAction: ((UIView, UIView) -> Void) = UIViewController.setupFullscreen) {
         
@@ -21,7 +26,7 @@ public extension UIViewController {
         configurationAction(childController.view, finalContainer)
         childController.didMove(toParent: self)
     }
-    
+
     @available (iOS 9, *)
     static func setupFullscreen(_ childView: UIView, on parentView: UIView) {
         

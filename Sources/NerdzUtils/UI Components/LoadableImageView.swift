@@ -7,21 +7,45 @@
 
 import UIKit
 
+/// Represents a way of storing loaded image by `LoadableImageView` class
 public enum ImageStoringPolicy {
+    
+    /// No storing needed
     case none
+    
+    /// Loaded image needs to be cached
+    /// - *timeout*: A duration after what cached image needs to be reloaded
     case cache(timeout: TimeInterval? = nil)
 }
 
+/// An enum that represents different ways of loading image for `LoadableImageView`
 public enum LoadableImage: Equatable {
+    
+    /// Representation of an image in `URL` format
+    /// - *url*: A url from witch image should be loaded
+    /// - *storingPolicy*: A storing policy for loaded image
+    /// - *blurHash*: An informatiom for image `blur.sh` if it is supported by image
+    /// - *completion*: Completion closure that will be called after image is loaded
     case fromUrl(
             _ url: URL?,
-            storingPolicy: ImageStoringPolicy,
+            storingPolicy: ImageStoringPolicy = .cache(),
             blurHash: BlurHashInfo? = nil,
             completion: ((UIImage?) -> Void)? = nil)
     
+    /// Representation of an image in `Data` format
+    /// - *data*: A data from witch image needs to be loaded
+    /// - *scale*: A scale factor for data image
     case fromData(_ data: Data?, scale: CGFloat = 1)
+    
+    /// Representation  of a local image that can be retrived by name
+    /// - *name*: Image local name
     case named(_ name: String)
+    
+    /// Representation  of a `UIImage`
+    /// - *image*: Image that needs to be set
     case image(_ image: UIImage)
+    
+    /// Setting image to placeholder state
     case placeholder
     
     static public func == (lhs: LoadableImage, rhs: LoadableImage) -> Bool {
@@ -43,14 +67,17 @@ public enum LoadableImage: Equatable {
     }
 }
 
+/// An image view that automatically handle loading image from `URL`, supports placeholders, `blur.sh`, and caching of preloaded image
+/// > Using of native `image` property of `UIImageView` class will lead to incorrect behaviour
+/// >You should always use `loadableImage` property for setting an image
 public class LoadableImageView: UIImageView {
     typealias CacheInfo = (expirationDate: Date?, image: UIImage)
     
     private static var urlCache: [URL: CacheInfo] = [:]
     private static var blurCache: [String: CacheInfo] = [:]
     
-    @IBInspectable
-    public var placeholderImage: UIImage? {
+    /// An image that will be used as a placeholder during loading process
+    @IBInspectable public var placeholderImage: UIImage? {
         didSet {
             if case .placeholder = loadableImage {
                 reload()
@@ -58,6 +85,7 @@ public class LoadableImageView: UIImageView {
         }
     }
     
+    /// A representation of an image that needs to be loaded
     public lazy var loadableImage: LoadableImage = {
         if let image = image {
             return .image(image)

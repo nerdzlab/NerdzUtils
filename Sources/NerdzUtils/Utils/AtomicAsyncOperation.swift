@@ -7,22 +7,36 @@
 
 import Foundation
 
+/// A class incapsulate a logic of a single operation at a time
+/// If operation already in progress - next requests will just be added into completions list that will be called after operation finish
+/// This approach decreasing an omount of executions by not running same operation when it's currently initiated by somebody else, and just notifying all requests completions after initial operation finish
+/// Useful, for example, when you need to lazy initialize some service when somebody requesting a data. In this case you can guarantee that service will not be initialised twice
+/// Or when you want to optimise requests executing. 
+/// If you save all retrieved data to database - this class might be a good solution to avoid race conditions and unnecessary database storing execution
+/// **NOTE**:  Operation is using backeground queue underhood, so wrap all your UI actiong into `main` queue
 public class AtomicAsyncOperation {
-    public typealias Operation = (@escaping () -> Void) -> Void
+    public typealias Action = (@escaping () -> Void) -> Void
     public typealias Completion = () -> Void
     
-    public let operation: Operation
+    /// Executing action
+    /// The user of this class is responsible to call back a closure to notify class about Action finishing
+    public let action: Action
     
+    /// Specifying if operation is in the process of execution
     private(set) public var isRunning = false
     
     private var pendingCompletions: [Completion] = []
     private let queue = DispatchQueue(label: "AtomicAsyncOperationQueue", attributes: .concurrent)
     private let semaphone = DispatchSemaphore(value: 1)
     
-    public init(operation: @escaping Operation) {
-        self.operation = operation
+    /// Initialize operation with action that needs to be executed
+    /// - Parameter action: Execution action
+    public init(action: @escaping Action) {
+        self.action = action
     }
     
+    /// Performing operation if it is not running yet, or adding into completions list if it is running
+    /// - Parameter completion: Completion that needs to be called when execution finished
     public func perform(completion: Completion? = nil) {
         queue.async { [weak self] in
             guard let self = self else {
@@ -42,7 +56,7 @@ public class AtomicAsyncOperation {
             
             self.isRunning = true
             
-            self.operation { [weak self] in
+            self.action { [weak self] in
                 guard let self = self else {
                     return
                 }

@@ -10,6 +10,10 @@ class ClosureSleeve {
     }
 }
 public extension UIControl {
+    /// Addind target for event by closure
+    /// - Parameters:
+    ///   - controlEvents: Target control event
+    ///   - closure: Closure to execute
     func addAction(for controlEvents: UIControl.Event, _ closure: @escaping ()->()) {
         let sleeve = ClosureSleeve(closure)
         addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: controlEvents)
