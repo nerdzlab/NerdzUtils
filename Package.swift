@@ -21,9 +21,6 @@ let package = Package(
         .target(
             name: "NerdzUtils",
             dependencies: ["KeychainAccess"]
-        ),
-        .testTarget(
-            name: "NerdzUtilsTests",
-            dependencies: ["NerdzUtils"]),
+        )
     ]
 )
