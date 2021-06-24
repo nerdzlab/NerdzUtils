@@ -9,7 +9,8 @@ import Foundation
 import KeychainAccess
 
 /// A property wrapper that automatically syncing property into keychain
-@available(iOS 11.0, *) @propertyWrapper public struct KeychainProperty<Type: Codable> {
+@available(iOS 11.0, macOS 10.12, *) 
+@propertyWrapper public struct KeychainProperty<Type: Codable> {
     let key: String
     let initialValue: Type
     let keychain = Keychain(service: Bundle.main.bundleIdentifier ?? "")

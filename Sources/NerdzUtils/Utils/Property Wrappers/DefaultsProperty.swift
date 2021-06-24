@@ -8,7 +8,8 @@
 import Foundation
 
 /// A property wrapper that automatically syncing property into user defaults
-@available(iOS 11.0, *) @propertyWrapper public struct DefaultsProperty<Type: Codable> {
+@available(iOS 11.0, macOS 10.12, *) 
+@propertyWrapper public struct DefaultsProperty<Type: Codable> {
     let key: String
     let initialValue: Type
     let defaults = UserDefaults.standard
