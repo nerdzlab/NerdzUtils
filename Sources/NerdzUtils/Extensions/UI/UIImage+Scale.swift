@@ -5,6 +5,8 @@
 //  Created by new user on 20.05.2021.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public extension UIImage {
@@ -80,3 +82,5 @@ public extension UIImage {
         return scaled(toFit: scaledSize)
     }
 }
+
+#endif

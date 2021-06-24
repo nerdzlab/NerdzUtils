@@ -5,6 +5,8 @@
 //  Created by new user on 20.04.2020.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public extension UIDevice {
@@ -25,6 +27,6 @@ public extension UIDevice {
         
         return iOSDevices.value(forKey: identifier) as? String
     }
-    
-    
 }
+
+#endif

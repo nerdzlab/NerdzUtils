@@ -5,6 +5,8 @@
 //  Created by new user on 08.11.2020.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 @available(iOS 9.0, *)
@@ -89,3 +91,5 @@ public extension UIView {
         loader.stopLoading()
     }
 }
+
+#endif

@@ -8,19 +8,22 @@
 import Foundation
 import KeychainAccess
 
-// Can only be used with non basic types
-@propertyWrapper
-@available(iOS 11.0, *)
-public struct KeychainProperty<Type: Codable> {
+/// A property wrapper that automatically syncing property into keychain
+@available(iOS 11.0, *) @propertyWrapper public struct KeychainProperty<Type: Codable> {
     let key: String
     let initialValue: Type
     let keychain = Keychain(service: Bundle.main.bundleIdentifier ?? "")
 
+    /// Initialize property
+    /// - Parameters:
+    ///   - key: Keychain storing key
+    ///   - initial: Initial value for case when keychain value empty
     public init(_ key: String, initial: Type) {
         self.key = key
         self.initialValue = initial
     }
-
+    
+    /// Wrapped value
     public var wrappedValue: Type {
         get {
             var returnValue: Type?

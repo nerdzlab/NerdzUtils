@@ -5,6 +5,8 @@
 //  Created by new user on 12.09.2020.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public extension UIViewController {
@@ -36,3 +38,5 @@ public extension UIViewController {
         childView.bottomAnchor.constraint(equalTo: parentView.bottomAnchor).isActive = true
     }
 }
+
+#endif

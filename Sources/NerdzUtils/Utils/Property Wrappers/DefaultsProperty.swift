@@ -7,19 +7,22 @@
 
 import Foundation
 
-// Can only be used with non basic types
-@propertyWrapper
-@available(iOS 11.0, *)
-public struct DefaultsProperty<Type: Codable> {
+/// A property wrapper that automatically syncing property into user defaults
+@available(iOS 11.0, *) @propertyWrapper public struct DefaultsProperty<Type: Codable> {
     let key: String
     let initialValue: Type
     let defaults = UserDefaults.standard
-
+    
+    /// Initialize property
+    /// - Parameters:
+    ///   - key: Defaults storing key
+    ///   - initial: Initial value for case when defaults value empty
     public init(_ key: String, initial: Type) {
         self.key = key
         self.initialValue = initial
     }
-
+    
+    /// Wrapped value
     public var wrappedValue: Type {
         get {
             return (try? defaults.data(forKey: key)?.object(of: Type.self)) ?? initialValue

@@ -5,6 +5,8 @@
 //  Created by new user on 20.04.2020.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public extension UIView {
@@ -61,3 +63,5 @@ public extension UIView {
         set { layer.shadowRadius = newValue / 2 }
     }
 }
+
+#endif

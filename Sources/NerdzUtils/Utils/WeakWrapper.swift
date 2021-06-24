@@ -1,3 +1,4 @@
+
 import Foundation
 
 /// Adding a possibility of having a weak referance in strong wrapper. 

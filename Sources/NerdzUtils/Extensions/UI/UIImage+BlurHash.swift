@@ -5,6 +5,8 @@
 //  Created by new user on 16.05.2021.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 /// Struct that represents an information about image blur hash
@@ -188,3 +190,5 @@ private extension String {
         return self[start..<end]
     }
 }
+
+#endif

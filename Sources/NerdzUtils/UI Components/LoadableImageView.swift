@@ -5,6 +5,8 @@
 //  Created by new user on 07.11.2020.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 /// Represents a way of storing loaded image by `LoadableImageView` class
@@ -241,3 +243,5 @@ public class LoadableImageView: UIImageView {
         }
     }
 }
+
+#endif

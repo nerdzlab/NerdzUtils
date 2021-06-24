@@ -1,3 +1,6 @@
+
+#if canImport(UIKit)
+
 import UIKit
 
 class ClosureSleeve {
@@ -21,3 +24,5 @@ public extension UIControl {
                                  objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN)
     }
 }
+
+#endif

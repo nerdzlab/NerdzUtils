@@ -5,6 +5,8 @@
 //  Created by new user on 20.04.2020.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public extension UIViewController {
@@ -29,3 +31,5 @@ public extension UIViewController {
         }
     }
 }
+
+#endif

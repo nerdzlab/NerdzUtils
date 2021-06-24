@@ -5,6 +5,8 @@
 //  Created by new user on 12.09.2020.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public extension UITextField {
@@ -47,3 +49,5 @@ public extension UITextField {
         rightView = rightButton
     }
 }
+
+#endif

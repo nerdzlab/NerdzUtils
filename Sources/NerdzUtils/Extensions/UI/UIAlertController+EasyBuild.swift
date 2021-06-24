@@ -5,6 +5,8 @@
 //  Created by new user on 29.04.2020.
 //
 
+#if canImport(UIKit)
+
 import UIKit
 
 public extension UIAlertController {
@@ -147,3 +149,5 @@ public extension UIAlertController {
         return self.assignPopoverDirectionBasedUponGivenView(sourcePosition: sourcePosition, sourceSize: sourceSize)
     }
 }
+
+#endif
