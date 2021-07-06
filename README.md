@@ -6,33 +6,18 @@
 <br>
 <br>
 
-# @ `LoadableImageView` class
+## `LoadableImageView`
 
-**TYPE**: `class`
-
-**INHERITS**: `UIImageView`
-
-### Subtypes
-
-- `LoadableImage`
-- `ImageStoringPolicy`
-
-An image view that automatically handle loading image from `URL`, supports placeholders, `blur.sh`, and caching of preloaded image
-
-> Using of native `image` property of `UIImageView` class will lead to incorrect behaviour
-
-> You should always use `loadableImage` property for setting an image
-
-<br>
-
-### Usage examples
+Simple loading image from url
 
 ```
 avatarImageView.loadableImage = .fromUrl(object.url)
 ```
 
+Loading image from url with caching
+
 ```
-avatarImageView.loadableImage = .named("emoji-avatar")
+avatarImageView.loadableImage = .fromUrl(object.url)
 ```
 
 ```

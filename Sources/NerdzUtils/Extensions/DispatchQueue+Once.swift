@@ -8,6 +8,10 @@
 import Foundation
 
 public extension DispatchQueue {
+    private enum Constants {
+        static var tokenAssociationKey = "tokenAssociationKey"
+    }
+    
     private static var _onceTracker = [String]()
 
     /// Execute once per provided token
@@ -35,6 +39,15 @@ public extension DispatchQueue {
     }
 
     fileprivate static func token(for object: AnyObject) -> String {
-        return String(UInt(bitPattern: ObjectIdentifier(object)))
+        
+        if let token = objc_getAssociatedObject(object, &Constants.tokenAssociationKey) as? String {
+            return token
+        }
+        else {
+            let token = UUID().uuidString
+            objc_setAssociatedObject(object, &Constants.tokenAssociationKey, token, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            
+            return token
+        }
     }
 }

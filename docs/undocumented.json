@@ -1,0 +1,145 @@
+{
+  "warnings": [
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/Extensions/Locale+CountryList.swift",
+      "line": 11,
+      "symbol": "Locale.Country",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/Extensions/UI/UIAlertController+EasyBuild.swift",
+      "line": 13,
+      "symbol": "UIAlertController.ActionHandler",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/Extensions/UI/UIAlertController+EasyBuild.swift",
+      "line": 118,
+      "symbol": "UIAlertController.assignPopoverDirectionBasedUponGivenView(sourcePosition:sourceSize:screenSize:alertSize:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/Extensions/UI/UIAlertController+EasyBuild.swift",
+      "line": 148,
+      "symbol": "UIAlertController.assignPopoverDirection(sourcePosition:sourceSize:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/Extensions/UI/UIViewController+AddChild.swift",
+      "line": 33,
+      "symbol": "UIViewController.setupFullscreen(_:on:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.static",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 10,
+      "symbol": "LoadableButton",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 11,
+      "symbol": "LoadableButton.LoadableButtonEmptyAction",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 13,
+      "symbol": "LoadableButton.onStartLoading",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 14,
+      "symbol": "LoadableButton.onFinishLoading",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 16,
+      "symbol": "LoadableButton.topBottomIndicatorPadding",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 19,
+      "symbol": "LoadableButton.isLoading",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 30,
+      "symbol": "LoadableButton.activityIndicatorView",
+      "symbol_kind": "source.lang.swift.decl.var.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 49,
+      "symbol": "LoadableButton.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableButton.swift",
+      "line": 55,
+      "symbol": "LoadableButton.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableImageView.swift",
+      "line": 108,
+      "symbol": "LoadableImageView.init(coder:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/LoadableImageView.swift",
+      "line": 113,
+      "symbol": "LoadableImageView.init(frame:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/UI Components/SpinnerLoader.swift",
+      "line": 13,
+      "symbol": "SpinnerLoader",
+      "symbol_kind": "source.lang.swift.decl.class",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/Utils/AtomicAsyncOperation.swift",
+      "line": 18,
+      "symbol": "AtomicAsyncOperation.Action",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/Utils/AtomicAsyncOperation.swift",
+      "line": 19,
+      "symbol": "AtomicAsyncOperation.Completion",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils/Sources/NerdzUtils/Utils/DelayedAction.swift",
+      "line": 13,
+      "symbol": "DelayedAction.Action",
+      "symbol_kind": "source.lang.swift.decl.typealias",
+      "warning": "undocumented"
+    }
+  ],
+  "source_directory": "/Users/vahniyandriy/Desktop/NerdzLab/NerdzUtils"
+}

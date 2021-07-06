@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "nerdz-lab-docs"
+  },
+  "targets": {
+    "nerdz-lab-docs": {
+      "hosting": {
+        "utils": [
+          "nerdzutils"
+        ]
+      }
+    }
+  }
+}

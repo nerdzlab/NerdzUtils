@@ -1,0 +1,17 @@
+{
+  "hosting": {
+    "public": "docs",
+    "target": "utils",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
+}

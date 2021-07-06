@@ -1,0 +1,448 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 52;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3D03A048252A10EF00521395 /* DefaultsProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D03A046252A10EF00521395 /* DefaultsProperty.swift */; };
+		3D03A049252A10EF00521395 /* KeychainProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D03A047252A10EF00521395 /* KeychainProperty.swift */; };
+		3D1F14B52556AD2800107B87 /* LoadableImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F14B42556AD2800107B87 /* LoadableImageView.swift */; };
+		3D1F14E525583A8F00107B87 /* UIColor+Inversed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F14E425583A8F00107B87 /* UIColor+Inversed.swift */; };
+		3D1F14EB25583CDC00107B87 /* SpinnerLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D1F14EA25583CDC00107B87 /* SpinnerLoader.swift */; };
+		3D3E9C19268133170060A973 /* Formatter+iso8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C0C268133160060A973 /* Formatter+iso8601.swift */; };
+		3D3E9C1A268133170060A973 /* DateDecodingStrategy+CustomISO8601.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C0D268133160060A973 /* DateDecodingStrategy+CustomISO8601.swift */; };
+		3D3E9C1B268133170060A973 /* DispatchQueue+Once.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C0E268133170060A973 /* DispatchQueue+Once.swift */; };
+		3D3E9C1C268133170060A973 /* Data+GetObjectFromJsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C0F268133170060A973 /* Data+GetObjectFromJsonData.swift */; };
+		3D3E9C1D268133170060A973 /* Encodable+JsonData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C10268133170060A973 /* Encodable+JsonData.swift */; };
+		3D3E9C1E268133170060A973 /* NSObject+ClassName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C11268133170060A973 /* NSObject+ClassName.swift */; };
+		3D3E9C1F268133170060A973 /* Locale+CountryList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C12268133170060A973 /* Locale+CountryList.swift */; };
+		3D3E9C20268133170060A973 /* CGSize+Dimentions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C13268133170060A973 /* CGSize+Dimentions.swift */; };
+		3D3E9C22268133170060A973 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C15268133170060A973 /* String+Localization.swift */; };
+		3D3E9C24268133170060A973 /* String+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C17268133170060A973 /* String+Attributed.swift */; };
+		3D3E9C25268133170060A973 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C18268133170060A973 /* Array+Safe.swift */; };
+		3D415D27255359B900E6942A /* AtomicAsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */; };
+		3D487136265683C200E8CBD9 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D487135265683C200E8CBD9 /* UIImage+Scale.swift */; };
+		3D8438BD265178240020131F /* UIImage+BlurHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8438BC265178240020131F /* UIImage+BlurHash.swift */; };
+		3DE52DCD250CECE7001C7C19 /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE52DCC250CECE7001C7C19 /* UIViewController+AddChild.swift */; };
+		3DE52DD1250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE52DD0250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift */; };
+		3DE52DD5250D2DE7001C7C19 /* UILabel+NibLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE52DD4250D2DE7001C7C19 /* UILabel+NibLocalized.swift */; };
+		3DF1214B2626F1F800F8AFD5 /* DelayedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */; };
+		3DF5C2D22656B40B00E343DF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3DF5C2D12656B40B00E343DF /* KeychainAccess */; };
+		OBJ_54 /* UIAlertController+EasyBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* UIAlertController+EasyBuild.swift */; };
+		OBJ_55 /* UIDevice+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* UIDevice+Info.swift */; };
+		OBJ_57 /* UINavigationBar+Translucent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* UINavigationBar+Translucent.swift */; };
+		OBJ_58 /* UIView+InspectableLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* UIView+InspectableLayer.swift */; };
+		OBJ_59 /* UIViewController+Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* UIViewController+Top.swift */; };
+		OBJ_60 /* UIControl+ClosureSleeve.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_28 /* UIControl+ClosureSleeve.swift */; };
+		OBJ_61 /* UINavigationController+Completion.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_30 /* UINavigationController+Completion.swift */; };
+		OBJ_63 /* WeakWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_35 /* WeakWrapper.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		3D03A046252A10EF00521395 /* DefaultsProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DefaultsProperty.swift; sourceTree = "<group>"; };
+		3D03A047252A10EF00521395 /* KeychainProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainProperty.swift; sourceTree = "<group>"; };
+		3D1F14B42556AD2800107B87 /* LoadableImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadableImageView.swift; sourceTree = "<group>"; };
+		3D1F14E425583A8F00107B87 /* UIColor+Inversed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Inversed.swift"; sourceTree = "<group>"; };
+		3D1F14EA25583CDC00107B87 /* SpinnerLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpinnerLoader.swift; sourceTree = "<group>"; };
+		3D3E9C0C268133160060A973 /* Formatter+iso8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Formatter+iso8601.swift"; sourceTree = "<group>"; };
+		3D3E9C0D268133160060A973 /* DateDecodingStrategy+CustomISO8601.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DateDecodingStrategy+CustomISO8601.swift"; sourceTree = "<group>"; };
+		3D3E9C0E268133170060A973 /* DispatchQueue+Once.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Once.swift"; sourceTree = "<group>"; };
+		3D3E9C0F268133170060A973 /* Data+GetObjectFromJsonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Data+GetObjectFromJsonData.swift"; sourceTree = "<group>"; };
+		3D3E9C10268133170060A973 /* Encodable+JsonData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Encodable+JsonData.swift"; sourceTree = "<group>"; };
+		3D3E9C11268133170060A973 /* NSObject+ClassName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassName.swift"; sourceTree = "<group>"; };
+		3D3E9C12268133170060A973 /* Locale+CountryList.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Locale+CountryList.swift"; sourceTree = "<group>"; };
+		3D3E9C13268133170060A973 /* CGSize+Dimentions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGSize+Dimentions.swift"; sourceTree = "<group>"; };
+		3D3E9C15268133170060A973 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
+		3D3E9C17268133170060A973 /* String+Attributed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Attributed.swift"; sourceTree = "<group>"; };
+		3D3E9C18268133170060A973 /* Array+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Safe.swift"; sourceTree = "<group>"; };
+		3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicAsyncOperation.swift; sourceTree = "<group>"; };
+		3D487135265683C200E8CBD9 /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
+		3D8438BC265178240020131F /* UIImage+BlurHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+BlurHash.swift"; sourceTree = "<group>"; };
+		3DE52DCC250CECE7001C7C19 /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
+		3DE52DD0250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordVisibility.swift"; sourceTree = "<group>"; };
+		3DE52DD4250D2DE7001C7C19 /* UILabel+NibLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+NibLocalized.swift"; sourceTree = "<group>"; };
+		3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedAction.swift; sourceTree = "<group>"; };
+		"NerdzUtils::NerdzUtils::Product" /* NerdzUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NerdzUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		OBJ_21 /* UIAlertController+EasyBuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+EasyBuild.swift"; sourceTree = "<group>"; };
+		OBJ_22 /* UIDevice+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Info.swift"; sourceTree = "<group>"; };
+		OBJ_24 /* UINavigationBar+Translucent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Translucent.swift"; sourceTree = "<group>"; };
+		OBJ_25 /* UIView+InspectableLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InspectableLayer.swift"; sourceTree = "<group>"; };
+		OBJ_26 /* UIViewController+Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Top.swift"; sourceTree = "<group>"; };
+		OBJ_28 /* UIControl+ClosureSleeve.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+ClosureSleeve.swift"; sourceTree = "<group>"; };
+		OBJ_30 /* UINavigationController+Completion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+Completion.swift"; sourceTree = "<group>"; };
+		OBJ_35 /* WeakWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeakWrapper.swift; sourceTree = "<group>"; };
+		OBJ_43 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		OBJ_6 /* Package.swift */ = {isa = PBXFileReference; explicitFileType = sourcecode.swift; path = Package.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		OBJ_64 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 0;
+			files = (
+				3DF5C2D22656B40B00E343DF /* KeychainAccess in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3D1F14B32556ACF300107B87 /* UI Components */ = {
+			isa = PBXGroup;
+			children = (
+				3D1F14B42556AD2800107B87 /* LoadableImageView.swift */,
+				3D1F14EA25583CDC00107B87 /* SpinnerLoader.swift */,
+			);
+			path = "UI Components";
+			sourceTree = "<group>";
+		};
+		OBJ_20 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				3D487135265683C200E8CBD9 /* UIImage+Scale.swift */,
+				3D8438BC265178240020131F /* UIImage+BlurHash.swift */,
+				3DE52DD4250D2DE7001C7C19 /* UILabel+NibLocalized.swift */,
+				OBJ_21 /* UIAlertController+EasyBuild.swift */,
+				OBJ_22 /* UIDevice+Info.swift */,
+				OBJ_24 /* UINavigationBar+Translucent.swift */,
+				OBJ_25 /* UIView+InspectableLayer.swift */,
+				OBJ_26 /* UIViewController+Top.swift */,
+				OBJ_28 /* UIControl+ClosureSleeve.swift */,
+				OBJ_30 /* UINavigationController+Completion.swift */,
+				3DE52DCC250CECE7001C7C19 /* UIViewController+AddChild.swift */,
+				3DE52DD0250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift */,
+				3D1F14E425583A8F00107B87 /* UIColor+Inversed.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		OBJ_31 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_35 /* WeakWrapper.swift */,
+				3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */,
+				3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */,
+				OBJ_32 /* Property Wrappers */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		OBJ_32 /* Property Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				3D03A046252A10EF00521395 /* DefaultsProperty.swift */,
+				3D03A047252A10EF00521395 /* KeychainProperty.swift */,
+			);
+			path = "Property Wrappers";
+			sourceTree = "<group>";
+		};
+		OBJ_40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				"NerdzUtils::NerdzUtils::Product" /* NerdzUtils.framework */,
+			);
+			name = Products;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		OBJ_5 = {
+			isa = PBXGroup;
+			children = (
+				OBJ_6 /* Package.swift */,
+				OBJ_43 /* README.md */,
+				OBJ_7 /* Sources */,
+				OBJ_40 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		OBJ_7 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_8 /* NerdzUtils */,
+			);
+			name = Sources;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_8 /* NerdzUtils */ = {
+			isa = PBXGroup;
+			children = (
+				OBJ_31 /* Utils */,
+				3D1F14B32556ACF300107B87 /* UI Components */,
+				OBJ_9 /* Extensions */,
+			);
+			name = NerdzUtils;
+			path = Sources/NerdzUtils;
+			sourceTree = SOURCE_ROOT;
+		};
+		OBJ_9 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				3D3E9C18268133170060A973 /* Array+Safe.swift */,
+				3D3E9C13268133170060A973 /* CGSize+Dimentions.swift */,
+				3D3E9C0F268133170060A973 /* Data+GetObjectFromJsonData.swift */,
+				3D3E9C0D268133160060A973 /* DateDecodingStrategy+CustomISO8601.swift */,
+				3D3E9C0E268133170060A973 /* DispatchQueue+Once.swift */,
+				3D3E9C10268133170060A973 /* Encodable+JsonData.swift */,
+				3D3E9C0C268133160060A973 /* Formatter+iso8601.swift */,
+				3D3E9C12268133170060A973 /* Locale+CountryList.swift */,
+				3D3E9C11268133170060A973 /* NSObject+ClassName.swift */,
+				3D3E9C17268133170060A973 /* String+Attributed.swift */,
+				3D3E9C15268133170060A973 /* String+Localization.swift */,
+				OBJ_20 /* UI */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		"NerdzUtils::NerdzUtils" /* NerdzUtils */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = OBJ_45 /* Build configuration list for PBXNativeTarget "NerdzUtils" */;
+			buildPhases = (
+				OBJ_48 /* Sources */,
+				OBJ_64 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = NerdzUtils;
+			packageProductDependencies = (
+				3DF5C2D12656B40B00E343DF /* KeychainAccess */,
+			);
+			productName = NerdzUtils;
+			productReference = "NerdzUtils::NerdzUtils::Product" /* NerdzUtils.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		OBJ_1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftMigration = 9999;
+				LastUpgradeCheck = 9999;
+			};
+			buildConfigurationList = OBJ_2 /* Build configuration list for PBXProject "NerdzUtils" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = OBJ_5;
+			packageReferences = (
+				3DF5C2D02656B40B00E343DF /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+			);
+			productRefGroup = OBJ_40 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				"NerdzUtils::NerdzUtils" /* NerdzUtils */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		OBJ_48 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 0;
+			files = (
+				3D1F14E525583A8F00107B87 /* UIColor+Inversed.swift in Sources */,
+				3D1F14B52556AD2800107B87 /* LoadableImageView.swift in Sources */,
+				3D03A048252A10EF00521395 /* DefaultsProperty.swift in Sources */,
+				3D8438BD265178240020131F /* UIImage+BlurHash.swift in Sources */,
+				OBJ_54 /* UIAlertController+EasyBuild.swift in Sources */,
+				3D3E9C19268133170060A973 /* Formatter+iso8601.swift in Sources */,
+				OBJ_55 /* UIDevice+Info.swift in Sources */,
+				3DE52DD5250D2DE7001C7C19 /* UILabel+NibLocalized.swift in Sources */,
+				3D3E9C20268133170060A973 /* CGSize+Dimentions.swift in Sources */,
+				3D3E9C25268133170060A973 /* Array+Safe.swift in Sources */,
+				3D3E9C22268133170060A973 /* String+Localization.swift in Sources */,
+				OBJ_57 /* UINavigationBar+Translucent.swift in Sources */,
+				3D3E9C1A268133170060A973 /* DateDecodingStrategy+CustomISO8601.swift in Sources */,
+				3D3E9C24268133170060A973 /* String+Attributed.swift in Sources */,
+				OBJ_58 /* UIView+InspectableLayer.swift in Sources */,
+				OBJ_59 /* UIViewController+Top.swift in Sources */,
+				3D3E9C1F268133170060A973 /* Locale+CountryList.swift in Sources */,
+				3DE52DCD250CECE7001C7C19 /* UIViewController+AddChild.swift in Sources */,
+				3D03A049252A10EF00521395 /* KeychainProperty.swift in Sources */,
+				3D3E9C1C268133170060A973 /* Data+GetObjectFromJsonData.swift in Sources */,
+				3DE52DD1250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift in Sources */,
+				OBJ_60 /* UIControl+ClosureSleeve.swift in Sources */,
+				3D3E9C1E268133170060A973 /* NSObject+ClassName.swift in Sources */,
+				3D487136265683C200E8CBD9 /* UIImage+Scale.swift in Sources */,
+				3D415D27255359B900E6942A /* AtomicAsyncOperation.swift in Sources */,
+				3D1F14EB25583CDC00107B87 /* SpinnerLoader.swift in Sources */,
+				OBJ_61 /* UINavigationController+Completion.swift in Sources */,
+				OBJ_63 /* WeakWrapper.swift in Sources */,
+				3D3E9C1D268133170060A973 /* Encodable+JsonData.swift in Sources */,
+				3D3E9C1B268133170060A973 /* DispatchQueue+Once.swift in Sources */,
+				3DF1214B2626F1F800F8AFD5 /* DelayedAction.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		OBJ_3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_NS_ASSERTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+					"DEBUG=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				ONLY_ACTIVE_ARCH = YES;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE DEBUG";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				USE_HEADERMAP = NO;
+			};
+			name = Debug;
+		};
+		OBJ_4 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COMBINE_HIDPI_IMAGES = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"SWIFT_PACKAGE=1",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_SWIFT_FLAGS = "$(inherited) -DXcode";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) SWIFT_PACKAGE";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				USE_HEADERMAP = NO;
+			};
+			name = Release;
+		};
+		OBJ_46 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = NerdzUtils.xcodeproj/NerdzUtils_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = NerdzUtils;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = NerdzUtils;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Debug;
+		};
+		OBJ_47 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ENABLE_TESTABILITY = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PLATFORM_DIR)/Developer/Library/Frameworks",
+				);
+				HEADER_SEARCH_PATHS = "$(inherited)";
+				INFOPLIST_FILE = NerdzUtils.xcodeproj/NerdzUtils_Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(TOOLCHAIN_DIR)/usr/lib/swift/macosx",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				OTHER_CFLAGS = "$(inherited)";
+				OTHER_LDFLAGS = "$(inherited)";
+				OTHER_SWIFT_FLAGS = "$(inherited)";
+				PRODUCT_BUNDLE_IDENTIFIER = NerdzUtils;
+				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited)";
+				SWIFT_VERSION = 5.0;
+				TARGET_NAME = NerdzUtils;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
+				WATCHOS_DEPLOYMENT_TARGET = 2.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		OBJ_2 /* Build configuration list for PBXProject "NerdzUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_3 /* Debug */,
+				OBJ_4 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		OBJ_45 /* Build configuration list for PBXNativeTarget "NerdzUtils" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				OBJ_46 /* Debug */,
+				OBJ_47 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		3DF5C2D02656B40B00E343DF /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		3DF5C2D12656B40B00E343DF /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 3DF5C2D02656B40B00E343DF /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = OBJ_1 /* Project object */;
+}
