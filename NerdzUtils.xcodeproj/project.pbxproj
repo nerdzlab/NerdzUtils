@@ -25,6 +25,7 @@
 		3D3E9C25268133170060A973 /* Array+Safe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D3E9C18268133170060A973 /* Array+Safe.swift */; };
 		3D415D27255359B900E6942A /* AtomicAsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */; };
 		3D487136265683C200E8CBD9 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D487135265683C200E8CBD9 /* UIImage+Scale.swift */; };
+		3D8068C9269C8AFC008D553A /* UIVIewController+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8068C8269C8AFC008D553A /* UIVIewController+Overlay.swift */; };
 		3D8438BD265178240020131F /* UIImage+BlurHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8438BC265178240020131F /* UIImage+BlurHash.swift */; };
 		3DE52DCD250CECE7001C7C19 /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE52DCC250CECE7001C7C19 /* UIViewController+AddChild.swift */; };
 		3DE52DD1250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE52DD0250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift */; };
@@ -60,6 +61,7 @@
 		3D3E9C18268133170060A973 /* Array+Safe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Safe.swift"; sourceTree = "<group>"; };
 		3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicAsyncOperation.swift; sourceTree = "<group>"; };
 		3D487135265683C200E8CBD9 /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
+		3D8068C8269C8AFC008D553A /* UIVIewController+Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Overlay.swift"; sourceTree = "<group>"; };
 		3D8438BC265178240020131F /* UIImage+BlurHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+BlurHash.swift"; sourceTree = "<group>"; };
 		3DE52DCC250CECE7001C7C19 /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
 		3DE52DD0250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordVisibility.swift"; sourceTree = "<group>"; };
@@ -99,6 +101,14 @@
 			path = "UI Components";
 			sourceTree = "<group>";
 		};
+		3D8068C5269C84FC008D553A /* Overlay Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				3D8068C8269C8AFC008D553A /* UIVIewController+Overlay.swift */,
+			);
+			path = "Overlay Presentation";
+			sourceTree = "<group>";
+		};
 		OBJ_20 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -125,6 +135,7 @@
 				OBJ_35 /* WeakWrapper.swift */,
 				3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */,
 				3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */,
+				3D8068C5269C84FC008D553A /* Overlay Presentation */,
 				OBJ_32 /* Property Wrappers */,
 			);
 			path = Utils;
@@ -281,6 +292,7 @@
 				OBJ_63 /* WeakWrapper.swift in Sources */,
 				3D3E9C1D268133170060A973 /* Encodable+JsonData.swift in Sources */,
 				3D3E9C1B268133170060A973 /* DispatchQueue+Once.swift in Sources */,
+				3D8068C9269C8AFC008D553A /* UIVIewController+Overlay.swift in Sources */,
 				3DF1214B2626F1F800F8AFD5 /* DelayedAction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
