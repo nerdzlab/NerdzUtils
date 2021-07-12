@@ -101,14 +101,6 @@
 			path = "UI Components";
 			sourceTree = "<group>";
 		};
-		3D8068C5269C84FC008D553A /* Overlay Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				3D8068C8269C8AFC008D553A /* UIVIewController+Overlay.swift */,
-			);
-			path = "Overlay Presentation";
-			sourceTree = "<group>";
-		};
 		OBJ_20 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -135,7 +127,6 @@
 				OBJ_35 /* WeakWrapper.swift */,
 				3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */,
 				3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */,
-				3D8068C5269C84FC008D553A /* Overlay Presentation */,
 				OBJ_32 /* Property Wrappers */,
 			);
 			path = Utils;
@@ -190,6 +181,7 @@
 		OBJ_9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3D8068C8269C8AFC008D553A /* UIVIewController+Overlay.swift */,
 				3D3E9C18268133170060A973 /* Array+Safe.swift */,
 				3D3E9C13268133170060A973 /* CGSize+Dimentions.swift */,
 				3D3E9C0F268133170060A973 /* Data+GetObjectFromJsonData.swift */,
