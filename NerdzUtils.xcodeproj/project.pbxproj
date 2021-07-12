@@ -26,6 +26,7 @@
 		3D415D27255359B900E6942A /* AtomicAsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */; };
 		3D487136265683C200E8CBD9 /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D487135265683C200E8CBD9 /* UIImage+Scale.swift */; };
 		3D8068C9269C8AFC008D553A /* UIVIewController+Overlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8068C8269C8AFC008D553A /* UIVIewController+Overlay.swift */; };
+		3D8068D1269CD972008D553A /* String+VersionCompare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8068D0269CD972008D553A /* String+VersionCompare.swift */; };
 		3D8438BD265178240020131F /* UIImage+BlurHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D8438BC265178240020131F /* UIImage+BlurHash.swift */; };
 		3DE52DCD250CECE7001C7C19 /* UIViewController+AddChild.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE52DCC250CECE7001C7C19 /* UIViewController+AddChild.swift */; };
 		3DE52DD1250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE52DD0250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift */; };
@@ -62,6 +63,7 @@
 		3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AtomicAsyncOperation.swift; sourceTree = "<group>"; };
 		3D487135265683C200E8CBD9 /* UIImage+Scale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
 		3D8068C8269C8AFC008D553A /* UIVIewController+Overlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIVIewController+Overlay.swift"; sourceTree = "<group>"; };
+		3D8068D0269CD972008D553A /* String+VersionCompare.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+VersionCompare.swift"; sourceTree = "<group>"; };
 		3D8438BC265178240020131F /* UIImage+BlurHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+BlurHash.swift"; sourceTree = "<group>"; };
 		3DE52DCC250CECE7001C7C19 /* UIViewController+AddChild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+AddChild.swift"; sourceTree = "<group>"; };
 		3DE52DD0250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordVisibility.swift"; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 		OBJ_9 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				3D8068D0269CD972008D553A /* String+VersionCompare.swift */,
 				3D8068C8269C8AFC008D553A /* UIVIewController+Overlay.swift */,
 				3D3E9C18268133170060A973 /* Array+Safe.swift */,
 				3D3E9C13268133170060A973 /* CGSize+Dimentions.swift */,
@@ -260,6 +263,7 @@
 				3D8438BD265178240020131F /* UIImage+BlurHash.swift in Sources */,
 				OBJ_54 /* UIAlertController+EasyBuild.swift in Sources */,
 				3D3E9C19268133170060A973 /* Formatter+iso8601.swift in Sources */,
+				3D8068D1269CD972008D553A /* String+VersionCompare.swift in Sources */,
 				OBJ_55 /* UIDevice+Info.swift in Sources */,
 				3DE52DD5250D2DE7001C7C19 /* UILabel+NibLocalized.swift in Sources */,
 				3D3E9C20268133170060A973 /* CGSize+Dimentions.swift in Sources */,
