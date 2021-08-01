@@ -13,6 +13,7 @@ import UIKit
 
 public extension UIApplication {
     
+    /// Verifying if current device might be jailbroken
     var isJailbroken: Bool {
         #if targetEnvironment(simulator)
         return false
