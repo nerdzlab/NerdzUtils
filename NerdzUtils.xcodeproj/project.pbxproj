@@ -39,7 +39,6 @@
 		84AE26CB269CD33100BBD45B /* LoadableButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE26CA269CD33100BBD45B /* LoadableButton.swift */; };
 		84AE26CF269CD4B800BBD45B /* UIApplication+TopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AE26CE269CD4B700BBD45B /* UIApplication+TopViewController.swift */; };
 		OBJ_54 /* UIAlertController+EasyBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* UIAlertController+EasyBuild.swift */; };
-		OBJ_55 /* UIDevice+Info.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_22 /* UIDevice+Info.swift */; };
 		OBJ_57 /* UINavigationBar+Translucent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* UINavigationBar+Translucent.swift */; };
 		OBJ_58 /* UIView+InspectableLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* UIView+InspectableLayer.swift */; };
 		OBJ_59 /* UIViewController+Top.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_26 /* UIViewController+Top.swift */; };
@@ -78,11 +77,9 @@
 		3DE52DD4250D2DE7001C7C19 /* UILabel+NibLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+NibLocalized.swift"; sourceTree = "<group>"; };
 		3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedAction.swift; sourceTree = "<group>"; };
 		84AE26CA269CD33100BBD45B /* LoadableButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadableButton.swift; sourceTree = "<group>"; };
-		84AE26CD269CD37600BBD45B /* DeviceModels.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DeviceModels.plist; sourceTree = "<group>"; };
 		84AE26CE269CD4B700BBD45B /* UIApplication+TopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+TopViewController.swift"; sourceTree = "<group>"; };
 		"NerdzUtils::NerdzUtils::Product" /* NerdzUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NerdzUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_21 /* UIAlertController+EasyBuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+EasyBuild.swift"; sourceTree = "<group>"; };
-		OBJ_22 /* UIDevice+Info.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Info.swift"; sourceTree = "<group>"; };
 		OBJ_24 /* UINavigationBar+Translucent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Translucent.swift"; sourceTree = "<group>"; };
 		OBJ_25 /* UIView+InspectableLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InspectableLayer.swift"; sourceTree = "<group>"; };
 		OBJ_26 /* UIViewController+Top.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Top.swift"; sourceTree = "<group>"; };
@@ -116,15 +113,6 @@
 			path = "UI Components";
 			sourceTree = "<group>";
 		};
-		84AE26CC269CD37600BBD45B /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				84AE26CD269CD37600BBD45B /* DeviceModels.plist */,
-			);
-			name = Resources;
-			path = Sources/NerdzUtils/Resources;
-			sourceTree = SOURCE_ROOT;
-		};
 		OBJ_20 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -134,7 +122,6 @@
 				3D8438BC265178240020131F /* UIImage+BlurHash.swift */,
 				3DE52DD4250D2DE7001C7C19 /* UILabel+NibLocalized.swift */,
 				OBJ_21 /* UIAlertController+EasyBuild.swift */,
-				OBJ_22 /* UIDevice+Info.swift */,
 				OBJ_24 /* UINavigationBar+Translucent.swift */,
 				OBJ_25 /* UIView+InspectableLayer.swift */,
 				OBJ_26 /* UIViewController+Top.swift */,
@@ -199,7 +186,6 @@
 			isa = PBXGroup;
 			children = (
 				OBJ_31 /* Utils */,
-				84AE26CC269CD37600BBD45B /* Resources */,
 				3D1F14B32556ACF300107B87 /* UI Components */,
 				OBJ_9 /* Extensions */,
 			);
@@ -293,7 +279,6 @@
 				OBJ_54 /* UIAlertController+EasyBuild.swift in Sources */,
 				3D3E9C19268133170060A973 /* Formatter+iso8601.swift in Sources */,
 				3D8068D1269CD972008D553A /* String+VersionCompare.swift in Sources */,
-				OBJ_55 /* UIDevice+Info.swift in Sources */,
 				3DE52DD5250D2DE7001C7C19 /* UILabel+NibLocalized.swift in Sources */,
 				3D3E9C20268133170060A973 /* CGSize+Dimentions.swift in Sources */,
 				3D3E9C25268133170060A973 /* Array+Safe.swift in Sources */,
