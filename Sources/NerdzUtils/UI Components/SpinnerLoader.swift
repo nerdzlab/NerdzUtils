@@ -77,13 +77,13 @@ public extension UIView {
     /// - Parameters:
     ///   - color: Loader color
     ///   - size: Loader size
-    func startLoading(with color: UIColor? = nil, size: CGFloat? = nil) {
+    func startSpinnerLoading(with color: UIColor? = nil, size: CGFloat? = nil) {
         let loader = SpinnerLoader(view: self)
         loader.startLoading(withColor: color, size: size)
     }
     
     /// Stops loading
-    func stopLoading() {
+    func stopSpinnerLoading() {
         guard let loader = SpinnerLoader.loaders.first(where: { $0.view === self }) else {
             return
         }
