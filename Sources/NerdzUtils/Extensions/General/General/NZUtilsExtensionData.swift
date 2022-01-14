@@ -22,10 +22,10 @@ public protocol NZUtilsExtensionCompatible {
     associatedtype NZExtensionBase
 
     /// NZ extensions.
-    static var nz: NZUtilsExtensionData<NZExtensionBase>.Type { get set }
+    static var nz: NZUtilsExtensionData<NZExtensionBase>.Type { get }
 
     /// NZ extensions.
-    var nz: NZUtilsExtensionData<NZExtensionBase> { get set }
+    var nz: NZUtilsExtensionData<NZExtensionBase> { get }
 }
 
 extension NZUtilsExtensionCompatible {
@@ -33,12 +33,10 @@ extension NZUtilsExtensionCompatible {
     /// NZ extensions.
     public static var nz: NZUtilsExtensionData<Self>.Type {
         get { NZUtilsExtensionData<Self>.self }
-        set { }
     }
 
     /// Reactive extensions.
     public var nz: NZUtilsExtensionData<Self> {
         get { NZUtilsExtensionData(self) }
-        set { }
     }
 }
