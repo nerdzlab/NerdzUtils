@@ -3,7 +3,7 @@
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UINavigationController {
+public extension NZUtilsExtensionData where Base: UINavigationController {
     
     /// Pushing view controller view completion
     /// - Parameters:

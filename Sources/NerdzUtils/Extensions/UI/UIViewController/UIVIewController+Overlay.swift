@@ -24,7 +24,7 @@ public enum OverlayPresentationError: Error {
     }
 }
 
-public extension NZUTilsExtensionData where Base: UIViewController {
+public extension NZUtilsExtensionData where Base: UIViewController {
     
     /// Presenting current view controller as overlay
     func presentAsOverlay() {

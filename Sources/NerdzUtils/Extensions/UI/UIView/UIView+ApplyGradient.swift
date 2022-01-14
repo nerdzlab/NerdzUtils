@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UIView {
+public extension NZUtilsExtensionData where Base: UIView {
     // Add gradient to view
     @available(iOS 11.0, macOS 10.12, *)
     @discardableResult

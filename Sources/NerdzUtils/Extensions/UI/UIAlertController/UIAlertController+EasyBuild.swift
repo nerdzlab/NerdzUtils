@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UIAlertController {
+public extension NZUtilsExtensionData where Base: UIAlertController {
     typealias ActionHandler = () -> Void
     
     /// Adding default action to alert

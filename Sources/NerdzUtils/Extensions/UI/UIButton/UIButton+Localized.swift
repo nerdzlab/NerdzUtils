@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UIButton {
+public extension NZUtilsExtensionData where Base: UIButton {
     /// Localized text
     /// Useful for setting localized text from nib files
     var textLocalization: String? {

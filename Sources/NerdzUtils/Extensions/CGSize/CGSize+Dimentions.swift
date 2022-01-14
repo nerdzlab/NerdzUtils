@@ -9,7 +9,7 @@ import CoreGraphics
 
 extension CGSize: NZUtilsExtensionCompatible { }
 
-public extension NZUTilsExtensionData where Base == CGSize {
+public extension NZUtilsExtensionData where Base == CGSize {
     /// Minimal size with ratio 16x9
     static var w16_h9: CGSize {
         CGSize(width: 16, height: 9)

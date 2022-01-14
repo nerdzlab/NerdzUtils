@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UINavigationBar {
+public extension NZUtilsExtensionData where Base: UINavigationBar {
     
     /// Change navigation bar translucent state
     /// - Parameter isTranslucent: Specify if bar needs to be translucent

@@ -9,7 +9,7 @@ import Foundation
 
 extension NSObject: NZUtilsExtensionCompatible { }
 
-public extension NZUTilsExtensionData where Base: NSObject {
+public extension NZUtilsExtensionData where Base: NSObject {
     /// Current class name
     static var className: String {
         String(describing: Base.self)

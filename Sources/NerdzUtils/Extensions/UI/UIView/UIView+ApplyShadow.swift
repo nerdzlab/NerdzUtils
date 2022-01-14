@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UIView {
+public extension NZUtilsExtensionData where Base: UIView {
     
     // Add shadow to view
     func applyShadow(

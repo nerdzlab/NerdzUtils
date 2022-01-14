@@ -11,7 +11,7 @@ import UIKit
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UIApplication {
+public extension NZUtilsExtensionData where Base: UIApplication {
     
     /// Verifying if current device might be jailbroken
     var isJailbroken: Bool {

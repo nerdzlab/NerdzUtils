@@ -1,5 +1,5 @@
 //
-//  String+NZUTilsExtensionData.swift
+//  String+NZUtilsExtensionData.swift
 //  NerdzUtils
 //
 //  Created by Roman Kovalchuk on 14.01.2022.

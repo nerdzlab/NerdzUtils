@@ -36,7 +36,7 @@
 		3DE52DD5250D2DE7001C7C19 /* UILabel+NibLocalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DE52DD4250D2DE7001C7C19 /* UILabel+NibLocalized.swift */; };
 		3DF1214B2626F1F800F8AFD5 /* DelayedAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */; };
 		3DF5C2D22656B40B00E343DF /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 3DF5C2D12656B40B00E343DF /* KeychainAccess */; };
-		8409353C27905A8000F9BBD0 /* NZUTilsExtensionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409353B27905A8000F9BBD0 /* NZUTilsExtensionData.swift */; };
+		8409353C27905A8000F9BBD0 /* NZUtilsExtensionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409353B27905A8000F9BBD0 /* NZUtilsExtensionData.swift */; };
 		8409354E2790FB4A00F9BBD0 /* UITextField+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409354D2790FB4A00F9BBD0 /* UITextField+Localized.swift */; };
 		840935502790FB8800F9BBD0 /* UIButton+Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409354F2790FB8800F9BBD0 /* UIButton+Localized.swift */; };
 		840935532790FD3500F9BBD0 /* String+NZExtensionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840935522790FD3500F9BBD0 /* String+NZExtensionData.swift */; };
@@ -82,7 +82,7 @@
 		3DE52DD0250D2BA6001C7C19 /* UITextField+PasswordVisibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordVisibility.swift"; sourceTree = "<group>"; };
 		3DE52DD4250D2DE7001C7C19 /* UILabel+NibLocalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+NibLocalized.swift"; sourceTree = "<group>"; };
 		3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedAction.swift; sourceTree = "<group>"; };
-		8409353B27905A8000F9BBD0 /* NZUTilsExtensionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NZUTilsExtensionData.swift; sourceTree = "<group>"; };
+		8409353B27905A8000F9BBD0 /* NZUtilsExtensionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NZUtilsExtensionData.swift; sourceTree = "<group>"; };
 		8409354D2790FB4A00F9BBD0 /* UITextField+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+Localized.swift"; sourceTree = "<group>"; };
 		8409354F2790FB8800F9BBD0 /* UIButton+Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Localized.swift"; sourceTree = "<group>"; };
 		840935522790FD3500F9BBD0 /* String+NZExtensionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+NZExtensionData.swift"; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 		8409353A2790546B00F9BBD0 /* General */ = {
 			isa = PBXGroup;
 			children = (
-				8409353B27905A8000F9BBD0 /* NZUTilsExtensionData.swift */,
+				8409353B27905A8000F9BBD0 /* NZUtilsExtensionData.swift */,
 			);
 			name = General;
 			path = General/General;
@@ -501,7 +501,7 @@
 				3D3E9C22268133170060A973 /* String+Localization.swift in Sources */,
 				OBJ_57 /* UINavigationBar+Translucent.swift in Sources */,
 				3D3E9C1A268133170060A973 /* DateDecodingStrategy+CustomISO8601.swift in Sources */,
-				8409353C27905A8000F9BBD0 /* NZUTilsExtensionData.swift in Sources */,
+				8409353C27905A8000F9BBD0 /* NZUtilsExtensionData.swift in Sources */,
 				3D9F543B26B7135D00AF55F9 /* UIApplication+Jailbreak.swift in Sources */,
 				3D3E9C24268133170060A973 /* String+Attributed.swift in Sources */,
 				OBJ_58 /* UIView+InspectableLayer.swift in Sources */,

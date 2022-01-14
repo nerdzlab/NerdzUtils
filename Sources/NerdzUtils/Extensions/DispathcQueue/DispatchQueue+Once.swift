@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-public extension NZUTilsExtensionData where Base: DispatchQueue {
+public extension NZUtilsExtensionData where Base: DispatchQueue {
     
     /// Execute once per provided token
     /// - Parameters:

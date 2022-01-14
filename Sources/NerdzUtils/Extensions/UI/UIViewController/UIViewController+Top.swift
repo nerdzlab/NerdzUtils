@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UIViewController {
+public extension NZUtilsExtensionData where Base: UIViewController {
     
     /// Top presented or pushed view controller
     var topController: UIViewController {

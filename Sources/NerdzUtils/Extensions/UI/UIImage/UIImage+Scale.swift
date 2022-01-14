@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZUTilsExtensionData where Base: UIImage {
+public extension NZUtilsExtensionData where Base: UIImage {
     /// Scale image to specific width
     /// - Parameter value: Expected width
     /// - Returns: Result image

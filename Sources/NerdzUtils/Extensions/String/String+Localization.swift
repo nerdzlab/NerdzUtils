@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension NZUTilsExtensionData where Base == String {
+public extension NZUtilsExtensionData where Base == String {
     /// Return localized representation of current string
     var localized: String {
         NSLocalizedString(base, comment: "")
