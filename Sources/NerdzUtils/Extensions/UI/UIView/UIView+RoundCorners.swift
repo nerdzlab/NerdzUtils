@@ -9,7 +9,7 @@
 
 import UIKit
 
-extension NZExtensionData where Base: UIView {
+extension NZUTilsExtensionData where Base: UIView {
     
     // Apply round corner and add border. An extension method of UIView.
     @available(iOS 11.0, macOS 10.12, *)

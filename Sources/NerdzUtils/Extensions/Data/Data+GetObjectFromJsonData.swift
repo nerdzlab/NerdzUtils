@@ -7,9 +7,9 @@
 
 import Foundation
 
-extension Data: NZExtensionCompatible { }
+extension Data: NZUtilsExtensionCompatible { }
 
-public extension NZExtensionData where Base == Data {
+public extension NZUTilsExtensionData where Base == Data {
     /// Return object from JSON Data
     /// - Parameter type: Target type
     @available(iOS 11.0, macOS 10.12, *)

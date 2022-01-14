@@ -7,9 +7,9 @@
 
 import Foundation
 
-extension JSONDecoder.DataDecodingStrategy: NZExtensionCompatible { }
+extension JSONDecoder.DataDecodingStrategy: NZUtilsExtensionCompatible { }
 
-public extension NZExtensionData where Base == JSONDecoder.DateDecodingStrategy {
+public extension NZUTilsExtensionData where Base == JSONDecoder.DateDecodingStrategy {
     /// Return formate for time with fractal seconds
     @available(iOS 11.0, macOS 10.13, *)
     static let customISO8601: JSONDecoder.DateDecodingStrategy = JSONDecoder.DateDecodingStrategy.custom { decoder throws -> Date in

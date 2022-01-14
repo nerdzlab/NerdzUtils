@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZExtensionData where Base: UIViewController {
+public extension NZUTilsExtensionData where Base: UIViewController {
     
     /// Adding child to controller with all necessary configuration
     /// - Parameters:

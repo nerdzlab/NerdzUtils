@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension NZExtensionData where Base: Bundle {
+public extension NZUTilsExtensionData where Base: Bundle {
     /// Current application version
     var appVersion: String? {
         Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String

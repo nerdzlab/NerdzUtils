@@ -7,9 +7,9 @@
 
 import Foundation
 
-extension Locale: NZExtensionCompatible { }
+extension Locale: NZUtilsExtensionCompatible { }
 
-public extension NZExtensionData where Base == Locale {
+public extension NZUTilsExtensionData where Base == Locale {
     typealias Country = (code: String, name: String)
     
     /// Returns countries list base on current device locale

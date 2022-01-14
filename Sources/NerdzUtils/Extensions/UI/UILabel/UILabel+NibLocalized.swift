@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZExtensionData where Base: UILabel {
+public extension NZUTilsExtensionData where Base: UILabel {
     
     /// Localized text
     /// Useful for setting localized text from nib files

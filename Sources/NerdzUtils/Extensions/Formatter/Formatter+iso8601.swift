@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension NZExtensionData where Base: Formatter {
+public extension NZUTilsExtensionData where Base: Formatter {
     /// Return iso8601 with fractional seconds
     @available(iOS 11.0, macOS 10.13, *)
     static var iso8601WithFS: ISO8601DateFormatter {

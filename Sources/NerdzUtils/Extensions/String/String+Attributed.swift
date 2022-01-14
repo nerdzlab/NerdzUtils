@@ -7,7 +7,7 @@
 
 import Foundation
 
-public extension NZExtensionData where Base == String {
+public extension NZUTilsExtensionData where Base == String {
     /// Form an attributed string from `String` class
     /// - Parameter attributes: An array of attributes that needs to be applied
     /// - Returns: Transformed attributed string

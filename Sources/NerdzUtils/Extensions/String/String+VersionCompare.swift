@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension NZExtensionData where Base == String {
+public extension NZUTilsExtensionData where Base == String {
     func isVersion(equalTo targetVersion: String) -> Bool {
         compare(toVersion: targetVersion) == .orderedSame
     }

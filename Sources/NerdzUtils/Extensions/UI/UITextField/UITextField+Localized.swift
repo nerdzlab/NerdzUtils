@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZExtensionData where Base: UITextField {
+public extension NZUTilsExtensionData where Base: UITextField {
     /// Localized text
     /// Useful for setting localized text from nib files
     var textLocalization: String? {

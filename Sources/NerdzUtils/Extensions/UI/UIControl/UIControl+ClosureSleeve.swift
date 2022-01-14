@@ -18,7 +18,7 @@ class ClosureSleeve {
     }
 }
 
-public extension NZExtensionData where Base: UIControl {
+public extension NZUTilsExtensionData where Base: UIControl {
     /// Addind target for event by closure
     /// - Parameters:
     ///   - controlEvents: Target control event

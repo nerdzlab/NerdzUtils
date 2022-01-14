@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZExtensionData where Base: UIColor {
+public extension NZUTilsExtensionData where Base: UIColor {
     
     /// Inverted color to current
     var inversed: UIColor {

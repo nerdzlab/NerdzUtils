@@ -9,7 +9,7 @@
 
 import UIKit
 
-public extension NZExtensionData where Base: UIView {
+public extension NZUTilsExtensionData where Base: UIView {
     // Add dashed border to view
     @discardableResult
     func addDashedBorder(
