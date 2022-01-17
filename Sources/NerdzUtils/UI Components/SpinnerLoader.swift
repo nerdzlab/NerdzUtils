@@ -37,7 +37,7 @@ public class SpinnerLoader {
         indicator.widthAnchor.constraint(equalToConstant: size).isActive = true
         indicator.heightAnchor.constraint(equalToConstant: size).isActive = true
 
-        indicator.color = spinnerColor ?? view.backgroundColor?.inversed
+        indicator.color = spinnerColor ?? view.backgroundColor?.nz.inversed
 
         if let button = view as? UIButton {
             let title = button.titleLabel?.text
