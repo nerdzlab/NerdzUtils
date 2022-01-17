@@ -43,7 +43,7 @@ public extension UITextField {
     
     /// Localized text
     /// Useful for setting localized text from nib files
-    @IBInspectable var textLocalization: String? {
+    @IBInspectable var nz_textLocalization: String? {
         set {
             nz.textLocalization = newValue
         }
@@ -55,7 +55,7 @@ public extension UITextField {
     
     /// Localized placeholder
     /// Useful for setting localized placeholder from nib files
-    @IBInspectable var placeholderLocalization: String? {
+    @IBInspectable var nz_placeholderLocalization: String? {
         set {
             nz.placeholderLocalization = newValue
         }
