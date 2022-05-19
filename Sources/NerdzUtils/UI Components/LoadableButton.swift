@@ -1,6 +1,6 @@
 //
 //  LoadableButton.swift
-//  
+//
 //
 //  Created by Roman Kovalchuk on 28.04.2021.
 //
@@ -11,11 +11,16 @@ import UIKit
 
 open class LoadableButton: UIButton {
     public typealias LoadableButtonEmptyAction = () -> Void
+    
+    private enum Constants {
+        static let defaultPadding: CGFloat = 10
+    }
         
     public var onStartLoading: LoadableButtonEmptyAction?
     public var onFinishLoading: LoadableButtonEmptyAction?
+    
     // Activity indicator spacing, must be set before reasingning of activity indicator view
-    public var topBottomIndicatorPadding: CGFloat = 10
+    public var topBottomIndicatorPadding: CGFloat = Constants.defaultPadding
 
     // Variable that represents loading state, change it if you want to show/hide loading indicator
     public var isLoading: Bool = false {
@@ -44,9 +49,14 @@ open class LoadableButton: UIButton {
         }
     }
     
-    private var indicatorView: UIView = UIActivityIndicatorView()
     private var titleBeforeLoadingStateChange: String?
     private var imageBeforeLoadingStateChange: UIImage?
+    
+    private var indicatorView: UIView = {
+        let activityIndicatorView = UIActivityIndicatorView()
+        activityIndicatorView.tintColor = .white
+        return activityIndicatorView
+    }()
     
     override public init(frame: CGRect) {
         super.init(frame: frame)
@@ -61,16 +71,20 @@ open class LoadableButton: UIButton {
     }
     
     private func configureView() {
-        activityIndicatorView.tintColor = .white
         addSubview(activityIndicatorView)
         activityIndicatorView.isHidden = true
         activityIndicatorView.translatesAutoresizingMaskIntoConstraints = false
         
-        activityIndicatorView.topAnchor.constraint(equalTo: self.topAnchor, constant: topBottomIndicatorPadding).isActive = true
-        activityIndicatorView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -topBottomIndicatorPadding).isActive = true
-        activityIndicatorView.heightAnchor.constraint(equalTo: activityIndicatorView.widthAnchor).isActive = true
-        activityIndicatorView.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-        activityIndicatorView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        activityIndicatorView.topAnchor
+            .constraint(equalTo: self.topAnchor, constant: topBottomIndicatorPadding).isActive = true
+        activityIndicatorView.bottomAnchor
+            .constraint(equalTo: self.bottomAnchor, constant: -topBottomIndicatorPadding).isActive = true
+        activityIndicatorView.heightAnchor
+            .constraint(equalTo: activityIndicatorView.widthAnchor).isActive = true
+        activityIndicatorView.centerYAnchor
+            .constraint(equalTo: self.centerYAnchor).isActive = true
+        activityIndicatorView.centerXAnchor
+            .constraint(equalTo: self.centerXAnchor).isActive = true
     }
     
     private func configureLoadingStateChange() {
@@ -81,8 +95,14 @@ open class LoadableButton: UIButton {
         
         setTitle(isLoading ? nil : titleBeforeLoadingStateChange, for: .normal)
         setImage(isLoading ? nil : imageBeforeLoadingStateChange, for: .normal)
-        activityIndicatorView.isHidden = !isLoading
+        
         isUserInteractionEnabled = !isLoading
+        activityIndicatorView.isHidden = !isLoading
+        
+        if let activityIndicatorView = activityIndicatorView as? UIActivityIndicatorView {
+            isLoading ? activityIndicatorView.startAnimating() : activityIndicatorView.stopAnimating()
+        }
+        
         isLoading ? onStartLoading?() : onFinishLoading?()
     }
 }

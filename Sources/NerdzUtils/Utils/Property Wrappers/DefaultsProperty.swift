@@ -26,10 +26,10 @@ import Foundation
     /// Wrapped value
     public var wrappedValue: Type {
         get {
-            return (try? defaults.data(forKey: key)?.object(of: Type.self)) ?? initialValue
+            return (try? defaults.data(forKey: key)?.nz.object(of: Type.self)) ?? initialValue
         }
         set {
-            guard let data = newValue.jsonData else {
+            guard let data = newValue.nz_jsonData else {
                 defaults.removeObject(forKey: key)
                 return
             }

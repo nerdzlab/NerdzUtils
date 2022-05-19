@@ -29,7 +29,7 @@ import KeychainAccess
         get {
             var returnValue: Type?
             do {
-                returnValue = try keychain.getData(key)?.object(of: Type.self)
+                returnValue = try keychain.getData(key)?.nz.object(of: Type.self)
             }
             catch {
                 print("Error retriving data from keychain")
@@ -37,7 +37,7 @@ import KeychainAccess
             return returnValue ?? initialValue
         }
         set {
-            guard let data = newValue.jsonData else {
+            guard let data = newValue.nz_jsonData else {
                 try? keychain.remove(key)
                 return
             }
