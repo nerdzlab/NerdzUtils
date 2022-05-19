@@ -15,7 +15,7 @@ public extension NZUtilsExtensionData where Base: UIButton {
     var textLocalization: String? {
         set {
             if let identifier = newValue {
-                base.setTitle(NSLocalizedString(identifier, comment: ""), for: .normal)
+                base.setTitle(identifier.nz.localized, for: .normal)
             }
         }
         

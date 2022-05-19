@@ -15,7 +15,7 @@ public extension NZUtilsExtensionData where Base: UITextField {
     var textLocalization: String? {
         set {
             if let identifier = newValue {
-                base.text = NSLocalizedString(identifier, comment: "")
+                base.text = identifier.nz.localized
             }
         }
         
@@ -29,7 +29,7 @@ public extension NZUtilsExtensionData where Base: UITextField {
     var placeholderLocalization: String? {
         set {
             if let identifier = newValue {
-                base.placeholder = NSLocalizedString(identifier, comment: "")
+                base.placeholder = identifier.nz.localized
             }
         }
         
