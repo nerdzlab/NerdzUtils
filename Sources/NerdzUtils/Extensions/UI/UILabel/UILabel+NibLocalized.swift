@@ -16,7 +16,7 @@ public extension NZUtilsExtensionData where Base: UILabel {
     var textLocalization: String? {
         set {
             if let identifier = newValue {
-                base.text = NSLocalizedString(identifier, comment: "")
+                base.text = identifier.nz.localized
             }
         }
         
