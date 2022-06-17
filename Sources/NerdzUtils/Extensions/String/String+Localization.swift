@@ -14,7 +14,8 @@ public extension NZUtilsExtensionData where Base == String {
     var localized: String {
         var bundle: Bundle = .main
         
-        if let path = Bundle.main.path(forResource: String.nz.overridenLocale, ofType: "lproj") {
+        if let path = Bundle.main.path(forResource: String.nz.overridenLocale, ofType: "lproj"),
+           !(String.nz.overridenLocale?.nz.isWhiteSpaceOrEmpty ?? true) {
             bundle = Bundle(path: path) ?? .main
         }
         
