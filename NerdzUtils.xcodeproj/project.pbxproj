@@ -46,6 +46,7 @@
 		8409356427910C1F00F9BBD0 /* UIView+AddDashedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409356327910C1F00F9BBD0 /* UIView+AddDashedBorder.swift */; };
 		84CDD13927BE7AE1001AF5DA /* String+IsWhiteSpaceOrEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDD13827BE7AE1001AF5DA /* String+IsWhiteSpaceOrEmpty.swift */; };
 		84CDD13B27BE7B3F001AF5DA /* UIView+AsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDD13A27BE7B3F001AF5DA /* UIView+AsImage.swift */; };
+		B085747128E3647800FA9027 /* NullEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B085747028E3647800FA9027 /* NullEncodable.swift */; };
 		OBJ_54 /* UIAlertController+EasyBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* UIAlertController+EasyBuild.swift */; };
 		OBJ_57 /* UINavigationBar+Translucent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* UINavigationBar+Translucent.swift */; };
 		OBJ_58 /* UIView+InspectableLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_25 /* UIView+InspectableLayer.swift */; };
@@ -94,6 +95,7 @@
 		8409356327910C1F00F9BBD0 /* UIView+AddDashedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddDashedBorder.swift"; sourceTree = "<group>"; };
 		84CDD13827BE7AE1001AF5DA /* String+IsWhiteSpaceOrEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+IsWhiteSpaceOrEmpty.swift"; sourceTree = "<group>"; };
 		84CDD13A27BE7B3F001AF5DA /* UIView+AsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AsImage.swift"; sourceTree = "<group>"; };
+		B085747028E3647800FA9027 /* NullEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullEncodable.swift; sourceTree = "<group>"; };
 		"NerdzUtils::NerdzUtils::Product" /* NerdzUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NerdzUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_21 /* UIAlertController+EasyBuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+EasyBuild.swift"; sourceTree = "<group>"; };
 		OBJ_24 /* UINavigationBar+Translucent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Translucent.swift"; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 		OBJ_32 /* Property Wrappers */ = {
 			isa = PBXGroup;
 			children = (
+				B085747028E3647800FA9027 /* NullEncodable.swift */,
 				3D03A046252A10EF00521395 /* DefaultsProperty.swift */,
 				3D03A047252A10EF00521395 /* KeychainProperty.swift */,
 			);
@@ -501,6 +504,7 @@
 				8409355E27910A0100F9BBD0 /* UIView+ApplyShadow.swift in Sources */,
 				OBJ_54 /* UIAlertController+EasyBuild.swift in Sources */,
 				3D3E9C19268133170060A973 /* Formatter+iso8601.swift in Sources */,
+				B085747128E3647800FA9027 /* NullEncodable.swift in Sources */,
 				3D8068D1269CD972008D553A /* String+VersionCompare.swift in Sources */,
 				3DE52DD5250D2DE7001C7C19 /* UILabel+NibLocalized.swift in Sources */,
 				3D3E9C20268133170060A973 /* CGSize+Dimentions.swift in Sources */,
