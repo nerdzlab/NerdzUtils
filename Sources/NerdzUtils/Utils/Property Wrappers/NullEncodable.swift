@@ -8,7 +8,7 @@
 import Foundation
 
 @available(iOS 11.0, macOS 10.12, *)
-@propertyWrapper struct NullEncodable<T>: Encodable where T: Encodable {
+@propertyWrapper public struct NullEncodable<T>: Encodable where T: Encodable {
     
     var wrappedValue: T?
 
