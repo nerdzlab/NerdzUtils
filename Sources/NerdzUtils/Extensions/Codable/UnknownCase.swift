@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol UnknownCase: RawRepresentable, CaseIterable where RawValue: Equatable & Codable {
+public protocol UnknownCase: RawRepresentable, CaseIterable where RawValue: Equatable & Codable {
     static var unknownCase: Self { get }
 }
 
-extension UnknownCase {
+public extension UnknownCase {
     init(rawValue: RawValue) {
         let value = Self.allCases.first { $0.rawValue == rawValue }
         self = value ?? Self.unknownCase
