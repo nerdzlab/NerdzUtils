@@ -12,15 +12,16 @@ import Foundation
 @propertyWrapper public struct DefaultsProperty<Type: Codable> {
     let key: String
     let initialValue: Type
-    let defaults = UserDefaults.standard
+    let defaults: UserDefaults
     
     /// Initialize property
     /// - Parameters:
     ///   - key: Defaults storing key
     ///   - initial: Initial value for case when defaults value empty
-    public init(_ key: String, initial: Type) {
+    public init(_ key: String, initial: Type, defaults: UserDefaults = .standard) {
         self.key = key
         self.initialValue = initial
+        self.defaults = defaults
     }
     
     /// Wrapped value
@@ -33,6 +34,7 @@ import Foundation
                 defaults.removeObject(forKey: key)
                 return
             }
+            
             defaults.setValue(data, forKey: key)
         }
     }
