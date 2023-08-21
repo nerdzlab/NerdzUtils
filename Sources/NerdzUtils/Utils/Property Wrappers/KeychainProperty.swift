@@ -13,15 +13,16 @@ import KeychainAccess
 @propertyWrapper public struct KeychainProperty<Type: Codable> {
     let key: String
     let initialValue: Type
-    let keychain = Keychain(service: Bundle.main.bundleIdentifier ?? "")
+    let keychain: Keychain
 
     /// Initialize property
     /// - Parameters:
     ///   - key: Keychain storing key
     ///   - initial: Initial value for case when keychain value empty
-    public init(_ key: String, initial: Type) {
+    public init(_ key: String, initial: Type, keychain: Keychain = Keychain(service: Bundle.main.bundleIdentifier ?? "")) {
         self.key = key
         self.initialValue = initial
+        self.keychain = keychain
     }
     
     /// Wrapped value
@@ -41,6 +42,7 @@ import KeychainAccess
                 try? keychain.remove(key)
                 return
             }
+            
             try? keychain.set(data, key: key)
         }
     }
