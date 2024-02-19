@@ -13,6 +13,56 @@
 
 <br>
 
+## ***Contents***:
+
+* **Extensions**
+    * [**Extensions (Foundation)**](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#--extensions-foundation)
+        * [Array](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#arraysafe)
+        * [Bundle](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#bundlecurrentversion)
+        * [CGSize](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#cgsizedimentions)
+        * [Codable](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#unknowncase)
+        * [Data](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#datagetobjectfromjsondata)
+        * [DataDecodingStrategy](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#datedecodingstrategycustomiso8601)
+        * [DispatchQueue](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#dispatchqueueonce)
+        * [Encodable](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#encodablejsondata)
+        * [Formatter](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#formatteriso8601)
+        * [General](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#nzutilsextensiondata)
+        * [Locale](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#localecountrylist)
+        * [NSObject](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#nsobjectclassname)
+        * [String](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#stringattributed)
+    * [**Extensions (UIKit)**](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#--extensions-uikit)
+        * [UIAlertController](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uialertcontrollereasybuild)
+        * [UIApplication](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiapplicationjailbreak)
+        * [UIButton](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uibuttonlocalized)
+        * [UIColor](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uicolorinversed)
+        * [UIControl](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uicontrolclosuresleeve)
+        * [UIImage](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiimageblurhash)
+        * [UILabel](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uilabelniblocalized)
+        * [UINavigationBar](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uinavigationbartranslucent)
+        * [UITextField](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uitextfieldlocalized)
+        * [UIView](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiviewadddashedborder)
+        * [UIViewController](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiviewcontrolleraddchild)
+        * [UIApplication](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiapplicationopensettings)
+        * [UIColor](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uicolorhex)
+* **[UI Components]()**
+    * [LoadableButton]()
+    * [LoadableImageView]()
+    * [SpinnerLoader]()
+* **[Utils]()**
+    * **[Property Wrappers]()**
+        * [DefaultsProperty]()
+        * [KeychainProperty]()
+        * [NullEncodable]()
+    * [AtomicAsyncOperation]()
+    * [DelayedAction]()
+    * [IdType]()
+    * [SyncPropertyActor]()
+    * [WeakWrapper]()
+
+<br>
+
+---
+
 # ***- Extensions (Foundation)***
 ## Array+Safe
 
@@ -42,6 +92,8 @@ else {
 ```
 <br>
 
+---
+
 ## Bundle+CurrentAppVersion
 
 The `Bundle+CurrentAppVersion` extension adds a computed property `appVersion` to the `Bundle` type. This property provides a convenient way to retrieve the current application version from the app's `Info.plist` file.
@@ -52,6 +104,8 @@ The `Bundle+CurrentAppVersion` extension adds a computed property `appVersion` t
 let currentVersion = Bundle.main.appVersion
 ```
 <br>
+
+---
 
 ## CGSize+Dimentions
 
@@ -80,6 +134,8 @@ let sizeScaled = CGSize(width: 10, height: 5).scaled(by: 2.0)
 // ... (use other aspect ratios and methods as needed)
 ```
 <br>
+
+---
 
 ## UnknownCase
 
@@ -129,6 +185,8 @@ The `UnknownCase` protocol simplifies handling of unknown or unexpected raw valu
     ```
 <br>
 
+---
+
 ## Data+GetObjectFromJsonData
 
 The `Data+GetObjectFromJsonData` extension simplifies the process of decoding JSON data into Swift objects using the `Decodable` protocol.
@@ -164,6 +222,8 @@ catch {
 ```
 <br>
 
+---
+
 ## DateDecodingStrategy+CustomISO8601
 
 The `DateDecodingStrategy+CustomISO8601` extension provides a custom `DateDecodingStrategy` for parsing ISO 8601 dates with fractional seconds.
@@ -191,6 +251,8 @@ let jsonData = """
 let decodedObject = try decoder.decode(MyObject.self, from: jsonData)
 ```
 <br>
+
+---
 
 ## DispatchQueue+Once
 
@@ -226,6 +288,8 @@ The `DispatchQueue+Once` extension provides a mechanism to ensure that a block o
    ```
 <br>
 
+---
+
 ## Encodable+JsonData
 
 The `Encodable+JsonData` extension simplifies the process of converting objects conforming to the `Encodable` protocol into JSON data.
@@ -252,6 +316,8 @@ if let jsonData = myObject.nz_jsonData {
 ```
 <br>
 
+---
+
 ## Formatter+iso8601
 
 The `Formatter+iso8601` extension provides ISO8601 date formatters with and without fractional seconds.
@@ -273,6 +339,8 @@ let currentDate = Date()
 let formattedWithoutFS = Formatter.iso8601.string(from: currentDate)
 ```
 <br>
+
+---
 
 ## `NZUtilsExtensionData`
 
@@ -314,6 +382,8 @@ let baseValue = wrappedInstance.base // This will be an instance of MyStruct
 ```
 <br>
 
+---
+
 ## Locale+CountryList
 
 The `Locale+CountryList` extension provides convenient methods to retrieve a list of countries and obtain details for a specific country based on the current device locale.
@@ -335,6 +405,8 @@ if let countryDetails = Locale.current.country(from: "US") {
 }
 ```
 <br>
+
+---
 
 ## NSObject+ClassName
 
@@ -365,8 +437,7 @@ The `NSObject+ClassName` extension provides convenient methods to retrieve the c
    ```
 <br>
 
-# `String`
-<br>
+---
 
 ## String+Attributed
 
@@ -390,6 +461,8 @@ let attributedString = originalString.nz.attributed(with: attributes)
 ```
 <br>
 
+---
+
 ## String+IsWhiteSpaceOrEmpty
 
 The `String+IsWhiteSpaceOrEmpty` extension provides a convenient method to check whether a string is empty or consists only of white spaces and new lines.
@@ -399,6 +472,7 @@ The `String+IsWhiteSpaceOrEmpty` extension provides a convenient method to check
 - **isWhiteSpaceOrEmpty**: Returns `true` if the string is empty or consists only of white spaces and new lines; otherwise, returns `false`.
 
 ### Usage
+
 ```swift
 let emptyString = ""
 let whitespaceString = "     "
@@ -409,6 +483,8 @@ let isWhitespace = whitespaceString.nz.isWhiteSpaceOrEmpty // true
 let isNonEmpty = nonEmptyString.nz.isWhiteSpaceOrEmpty // false
 ```
 <br>
+
+---
 
 ## String+Localization
 
@@ -444,6 +520,8 @@ The `String+Localization` extension provides a convenient method to obtain the l
     ```
     Note: Ensure that the overridden locale is a valid locale identifier (e.g., "fr" for French).
 <br>
+
+---
     
 ## String+VersionCompare
 
@@ -459,24 +537,25 @@ The `String+VersionCompare` extension provides methods to compare string version
 
 ### Usage
 
-To use the `String+VersionCompare` extension, follow these steps:
+```swift
+// Example: Comparing string versions
+let currentVersion = "1.2.3"
+let targetVersion = "1.2.0"
 
-1. **Compare Versions**:
-   ```swift
-   // Example: Comparing string versions
-   let currentVersion = "1.2.3"
-   let targetVersion = "1.2.0"
+let isEqual = currentVersion.nz.isVersion(equalTo: targetVersion) // false
+let isGreater = currentVersion.nz.isVersion(greaterThan: targetVersion) // true
+let isGreaterOrEqual = currentVersion.nz.isVersion(greaterThanOrEqualTo: targetVersion) // true
+let isLess = currentVersion.nz.isVersion(lessThan: targetVersion) // false
+let isLessOrEqual = currentVersion.nz.isVersion(lessThanOrEqualTo: targetVersion) // false
+```
 
-   let isEqual = currentVersion.nz.isVersion(equalTo: targetVersion) // false
-   let isGreater = currentVersion.nz.isVersion(greaterThan: targetVersion) // true
-   let isGreaterOrEqual = currentVersion.nz.isVersion(greaterThanOrEqualTo: targetVersion) // true
-   let isLess = currentVersion.nz.isVersion(lessThan: targetVersion) // false
-   let isLessOrEqual = currentVersion.nz.isVersion(lessThanOrEqualTo: targetVersion) // false
-   ```
-<br>
 <br>
 
-# **UIKit extensions**
+---
+
+<br>
+
+# **Extensions (UIKit)**
 <br>
 <br>
 
@@ -496,6 +575,8 @@ application.openSettings()
 ```
 <br>
 
+---
+
 # UIApplication+Jailbreak
 
 The `UIApplication+Jailbreak` extension provides a utility method to check whether the current device might be jailbroken.
@@ -511,6 +592,8 @@ let application = UIApplication.shared
 let isJailbroken = application.nz.isJailbroken
 ```
 <br>
+
+---
 
 ## UIColor+Hex
 
@@ -529,6 +612,8 @@ let alphaValue: CGFloat = 1.0
 let color = UIColor(hex: hexColor, alpha: alphaValue)
 ```
 <br>
+
+---
 
 ## UIAlertController+Extensions
 
@@ -563,6 +648,8 @@ alertController.nz
 ```
 <br>
 
+---
+
 ## UIButton+Localized
 
 The `UIButton+Localized` extension provides a convenient way to set localized text for `UIButton` instances, especially useful when working with nib files.
@@ -573,8 +660,6 @@ The `UIButton+Localized` extension provides a convenient way to set localized te
 - **nz_textLocalization**: An `@IBInspectable` property for setting localized text directly in Interface Builder.
 
 ### Usage
-
-To use the `UIButton+Localized` extension, follow these steps:
 
 1. **Set Localized Text Programmatically**:
 
@@ -589,6 +674,8 @@ To use the `UIButton+Localized` extension, follow these steps:
    
     ![Screenshot 2024-02-16 at 15 50 23](https://github.com/nerdzlab/NerdzUtils/assets/37474736/efc2448a-b159-4db1-98a3-58acbd3ebb9b)
 <br>
+
+---
 
 ## UIColor+Inversed
 
@@ -621,6 +708,8 @@ The `UIColor+Inversed` extension provides a simple way to obtain the inverse col
     ```
 <br>
 
+---
+
 ## UIControl+ClosureAction
 
 The `UIControl+ClosureAction` extension allows you to easily add closure-based actions to a `UIControl`. This provides a more concise and expressive way to handle control events.
@@ -652,6 +741,8 @@ The `UIControl+ClosureAction` extension allows you to easily add closure-based a
     ```
 <br>
 
+---
+
 ## UIImage+BlurHash
 
 The `UIImage+BlurHash` extension provides an easy way to initialize a `UIImage` using the BlurHash algorithm. BlurHash is a compact representation of a placeholder for an image, useful for lazy loading images with a placeholder effect.
@@ -673,6 +764,8 @@ if let blurredImage = UIImage(info: blurHashInfo) {
 }
 ```
 <br>
+
+---
 
 ## UIImage+Scale
 
@@ -729,6 +822,8 @@ The `UIImage+Scale` extension provides convenient methods for scaling `UIImage` 
    ```
 <br>
 
+---
+
 ## UILabel+NibLocalized
 
 The `UILabel+NibLocalized` extension provides a convenient way to set localized text for `UILabel` elements directly from `.nib` files.
@@ -753,36 +848,12 @@ The `UILabel+NibLocalized` extension provides a convenient way to set localized 
    ![Screenshot 2024-02-16 at 16 27 10](https://github.com/nerdzlab/NerdzUtils/assets/37474736/00087041-0bfa-4dac-94d2-6881c7bcd299)
 
 <br>
+
+---
+
 <br>
 
 # `UIKIt` extensions
-
-### `LoadableImageView`
-
-Simple loading image from url
-
-```
-avatarImageView.loadableImage = .fromUrl(object.url)
-```
-
-Loading image from url with caching
-
-```
-avatarImageView.loadableImage = .fromUrl(object.url)
-```
-
-```
-let blurInfo = BlurHashInfo(
-    hash: object.hash, 
-    size: CGSize(width: 16, height: 16
-)
-
-avatarImageView.loadableImage = .fromUrl(
-    object.url, 
-    storingPolicy: .cache(timeout: 3600), 
-    blurHash: blurInfo)
-
-```
 
 <br>
 
@@ -802,6 +873,8 @@ navigationBar.nz.makeTranslucent(true)
 navigationBar.nz.makeTranslucent(false)
 ```
 <br>
+
+---
 
 ## UINavigationController+Completion
 
@@ -859,6 +932,8 @@ The `UINavigationController+Completion` extension in the NerdzUtils framework en
     ```
 <br>
 
+---
+
 ## UITextField+Localized
 
 The `UITextField+Localized` extension enhances the UITextField by providing functionality to set localized text and placeholder directly from Interface Builder or programmatically.
@@ -905,6 +980,8 @@ The `UITextField+Localized` extension enhances the UITextField by providing func
      ```
 <br>
 
+---
+
 ## UITextField+PasswordVisibility
 
 The `UITextField+PasswordVisibility` extension enhances the UITextField by providing a password visibility toggle.
@@ -919,7 +996,7 @@ The `UITextField+PasswordVisibility` extension enhances the UITextField by provi
 | ---- | ---- | -------------- | ----------- |
 | `nz_isPasswordVisibilityToggleEnabled` | `Bool` | `read-write` `IBInspectable` | Enable or disable the password visibility toggle directly from Interface Builder or programmatically. |
 
-### Usage
+## Usage
 
 ### Enable Password Visibility Toggle
 
@@ -927,20 +1004,17 @@ The `UITextField+PasswordVisibility` extension enhances the UITextField by provi
 
 Set the `nz_isPasswordVisibilityToggleEnabled` property in the Attributes inspector of the UITextField.
 
-![Interface Builder - Password Visibility Toggle](Images/UITextField_PasswordVisibility_Toggle_IB.png)
+<img width="267" alt="Screenshot 2024-02-18 at 15 35 57" src="https://github.com/nerdzlab/NerdzUtils/assets/37474736/100d3c84-e5da-4e72-bbe8-9284a487c3f6">
 
 #### Programmatically:
 
 ```swift
-import NerdzUtils
-
 let passwordTextField: UITextField = // Your UITextField instance
 passwordTextField.nz_isPasswordVisibilityToggleEnabled = true
 ```
-
 <br>
 
-## `UIView`
+---
 
 ## UIView+AddDashedBorder
 
@@ -980,6 +1054,8 @@ let dashedBorderLayer = myView.nz.addDashedBorder(
 ```
 <br>
 
+---
+
 ## UIView+ApplyGradient
 
 The `UIView+ApplyGradient` extension enhances the UIView class by providing a method to easily apply a gradient to a view.
@@ -1012,6 +1088,8 @@ let gradientLayer = myView.nz.applyGradient(
 ```
 <br>
 
+---
+
 ## UIView+ApplyShadow
 
 The `UIView+ApplyShadow` extension enhances the UIView class by providing a method to easily apply a shadow to a view.
@@ -1043,6 +1121,8 @@ myView.nz.applyShadow(
 ```
 <br>
 
+---
+
 ## UIView+AsImage
 
 The `UIView+AsImage` extension extends the UIView class by providing a method to capture a screenshot of the view.
@@ -1058,6 +1138,8 @@ let myView: UIView = // Your UIView instance
 let screenshotImage = myView.nz.asImage()
 ```
 <br>
+
+---
 
 ## UIView+InspectableLayer
 
@@ -1106,6 +1188,8 @@ The `UIView+InspectableLayer` extension provides inspectable properties for conf
     ```
 <br>
 
+---
+
 ## UIView+RoundCorners
 
 The `UIView+RoundCorners` extension provides a method to apply rounded corners to specific corners of a UIView and optionally add a border.
@@ -1137,7 +1221,7 @@ myView.nz.roundCorners(
 ```
 <br>
 
-## `UIViewController`
+---
 
 ## UIViewController+AddChild
 
@@ -1170,6 +1254,8 @@ parentViewController.nz.easilyAddChild(childViewController, on: customContainerV
 ```
 <br>
 
+---
+
 ## UIViewController+Overlay
 
 The `UIViewController+Overlay` extension provides methods to present and dismiss the current view controller as an overlay.
@@ -1201,6 +1287,8 @@ catch {
 ```
 <br>
 
+---
+
 ## UIViewController+Top
 
 The `UIViewController+Top` extension provides a property to get the top presented or pushed view controller.
@@ -1217,74 +1305,75 @@ let topController = viewController.nz.topController
 ```
 <br>
 
+---
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-## UITextField+PasswordVisibility
-
-The `UITextField+PasswordVisibility` extension enhances the UITextField by providing a password visibility toggle.
-
-## Features
-
-- **Password Visibility Toggle**: Enable or disable a visibility toggle for the password field.
-
-## Properties
-
-| Name | Type | Accessibility | Description |
-| ---- | ---- | -------------- | ----------- |
-| `nz_isPasswordVisibilityToggleEnabled` | `Bool` | `read-write` `IBInspectable` | Enable or disable the password visibility toggle directly from Interface Builder or programmatically. |
-
-## Usage
-
-### Enable Password Visibility Toggle
-
-#### From Interface Builder:
-
-Set the `nz_isPasswordVisibilityToggleEnabled` property in the Attributes inspector of the UITextField.
-
-<img width="267" alt="Screenshot 2024-02-18 at 15 35 57" src="https://github.com/nerdzlab/NerdzUtils/assets/37474736/100d3c84-e5da-4e72-bbe8-9284a487c3f6">
-
-#### Programmatically:
-
-```swift
-let passwordTextField: UITextField = // Your UITextField instance
-passwordTextField.nz_isPasswordVisibilityToggleEnabled = true
-```
 <br>
+
+# **[UI Components]()**
+
+<br>
+
+## LoadableButton
+
+The `LoadableButton` is a class that extends `UIButton` to provide loading functionality with an activity indicator.
 
 ### Properties
 
-Name | Type | Accessibility | Description
------------- | ------------- | ------------- | -------------
-`placeholderImage` | `UIImage?` | `read-write` `IBInspectable` | An image that will be used as a placeholder during loading process
-`loadableImage` | `LoadableImage` | `read-write` | A representation of an image that needs to be loaded
+| Name                          | Type                     | Default Value | Description                                                                                       |
+| ----------------------------- | ------------------------ | ------------- | ------------------------------------------------------------------------------------------------- |
+| `onStartLoading`              | `LoadableButtonEmptyAction` | -           | A closure to be executed when the loading starts.                                                |
+| `onFinishLoading`             | `LoadableButtonEmptyAction` | -           | A closure to be executed when the loading finishes.                                              |
+| `topBottomIndicatorPadding`   | `CGFloat`                | `10`          | The spacing for the activity indicator from the top and bottom of the button.                    |
+| `isLoading`                   | `Bool`                   | `false`       | A boolean value indicating whether the button is in the loading state.                             |
+| `activityIndicatorView`       | `UIView`                 | -             | The view representing the loading indicator.                                                      |
 
+### Usage
+
+1. **Set the Loading State**:
+
+    ```swift
+    let loadableButton: LoadableButton = // Your LoadableButton instance
+    
+    // Set the loading state
+    loadableButton.isLoading = true
+    ```
+
+2. **Customize the Loading Button**:
+
+    ```swift
+    let loadableButton: LoadableButton = // Your LoadableButton instance
+    
+    // Customize the loading button
+    loadableButton.topBottomIndicatorPadding = 15
+    loadableButton.activityIndicatorView = customActivityIndicatorView
+    ```
+
+3. **Handle Loading Events**:
+
+    ```swift
+    let loadableButton: LoadableButton = // Your LoadableButton instance
+    
+    loadableButton.onStartLoading = {
+        // Code to execute when loading starts
+    }
+    
+    loadableButton.onFinishLoading = {
+        // Code to execute when loading finishes
+    }
+    ```
 <br>
 
-## @ `LoadableImageView.LoadableImage` enum
+---
 
-**TYPE**: `enum`
+## LoadableImageView (`LoadableImage` enum)
 
 An enum that represents different ways of loading image for `LoadableImageView`
 
 <br>
 
 ### Cases
+
+1. **`fromUrl`**:
 
 ```swift
 .fromUrl(
@@ -1306,7 +1395,7 @@ Name | Type | Default value | Description
 
 <br>
 
----
+2. **`fromData`**:
 
 ```swift
 .fromData(
@@ -1324,7 +1413,7 @@ Name | Type | Default value | Description
 
 <br>
 
----
+3. **`named`**:
 
 ```swift
 .named(_ name: String)
@@ -1338,7 +1427,7 @@ Name | Type | Default value | Description
 
 <br>
 
----
+4. **`image`**:
 
 ```swift
 .image(_ image: UIImage)
@@ -1352,7 +1441,7 @@ Name | Type | Default value | Description
 
 <br>
 
----
+5. **`placeholder`**:
 
 ```swift
 .placeholder
@@ -1362,13 +1451,13 @@ Name | Type | Default value | Description
 
 <br>
 
-## @ `LoadableImageView.ImageStoringPolicy` enum
+---
 
-**TYPE**: `enum`
+## LoadableImageView (`ImageStoringPolicy` enum)
 
 Represents a way of storing loaded image by `LoadableImageView` class
 
-> For more imformation follow the docummentation of `LoadableImageView`
+> For more information follow the documentation of `LoadableImageView`
 
 <br>
 
@@ -1382,24 +1471,411 @@ Represents a way of storing loaded image by `LoadableImageView` class
 
 <br>
 
----
-
 ```swift
 .cache(timeout: TimeInterval? = nil)
 ```
 
 *Loaded image needs to be cached*
 
-> If timeout is not provided - image will be cached while target exist
+> If the timeout is not provided - an image will be cached while the target exists.
 
 Name | Type | Default value | Description
 ------------ | ------------ | ------------- | -------------
 `timeout` | `TimeInterval?` | `nil` | A duration after what cached image needs to be reloaded
 
 <br>
+
+---
+
+## SpinnerLoader
+
+#### Methods
+
+- `startSpinnerLoading(with color: UIColor? = nil, size: CGFloat? = nil)`
+
+    | Parameter | Type       | Default Value | Description                                           |
+    | ----------| ---------- | ------------- | ----------------------------------------------------- |
+    | `color`   | `UIColor?` | `nil`         | The color of the loader spinner.                      |
+    | `size`    | `CGFloat?` | `nil`         | The size of the loader spinner.                       |
+    
+    Starts loading with a spinner.
+
+- `stopSpinnerLoading()`
+
+    Stops loading.
+
+### Usage
+
+1. **Start Loading with Spinner**:
+
+    ```swift
+    yourView.startSpinnerLoading(with: .white, size: 15.0)
+    ```
+
+2. **Stop Loading**:
+
+    ```swift
+    yourView.stopSpinnerLoading()
+    ```
+
 <br>
+
+---
+
 <br>
+
+# **Utils**
+
 <br>
+
+---
+
+## ***Property Wrappers***:
+
+<br>
+
+## `@DefaultsProperty`
+
+A property wrapper that simplifies syncing a property with `UserDefaults`, providing automatic initialization and retrieval of values.
+
+### Initializer
+
+- **`init(_ key:, initial:, defaults:)`**:
+
+    | Parameter     | Type              | Default Value | Description                                           |
+    | ------------- | ----------------- | ------------- | ----------------------------------------------------- |
+    | `key`         | `String`          |       -       | The key for storing the value in UserDefaults.         |
+    | `initial`     | `Type`            |       -       | The initial value for cases when UserDefaults is empty.|
+    | `defaults`    | `UserDefaults`    |       `.standard`       | UserDefaults instance.|
+
+### Properties
+
+- `wrappedValue`: Gets or sets the value of the property wrapper.
+
+### Usage
+
+1. **Basic Usage**:
+
+    ```swift
+    @DefaultsProperty("userLoggedIn", initial: false)
+    var isUserLoggedIn: Bool
+    ```
+    
+2. **Custom UserDefaults**:
+
+    ```swift
+    let customUserDefaults = UserDefaults(suiteName: "com.example.app")
+    
+    @DefaultsProperty("darkModeEnabled", initial: false, defaults: customUserDefaults)
+    var isDarkModeEnabled: Bool
+    ```
+<br>
+
+---
+
+## `@KeychainProperty`
+
+A property wrapper facilitating the automatic synchronization of a property with the `Keychain`, offering seamless initialization and retrieval of values.
+
+### Initializer
+
+- **`init(_ key:, initial:, keychain:))`**
+
+    | Parameter     | Type              | Default Value | Description                                                             |
+    | ------------- | ----------------- | ------------- | ----------------------------------------------------------------------- |
+    | `key`         | `String`          |       -       | The key for storing the value in Keychain.                              |
+    | `initial`     | `Type`            |       -       | The initial value for cases when Keychain is empty.                     |
+    | `keychain`    | `Keychain`        |       `Keychain(service: Bundle.main.bundleIdentifier ?? "")`       | Keychain instance.|
+
+### Properties
+
+- `wrappedValue`: Gets or sets the value of the property wrapper.
+
+### Usage
+
+1. **Basic Usage**:
+
+    ```swift
+    @KeychainProperty("userAuthToken", initial: "")
+    var userAuthToken: String
+    ```
+    
+2. **Custom UserDefaults**:
+
+    ```swift
+    let customKeychain = Keychain(service: "com.example.app.keychain")
+    
+    @KeychainProperty("userPassword", initial: "", keychain: customKeychain)
+    var userPassword: String
+    ```
+<br>
+
+---
+
+## `@NullEncodable`
+
+A property wrapper simplifying the encoding of optional values as `null` in JSON representations, providing a convenient way to handle optional properties during encoding.
+
+### Initializer
+
+- **`init(_ wrappedValue:)`**:
+
+    | Parameter      | Type | Default Value | Description                                           |
+    | -------------- | ---- | ------------- | ----------------------------------------------------- |
+    | `wrappedValue` | `T?` | -             | The optional value to be encoded as null if nil.      |
+
+### Properties
+
+- **`wrappedValue`**: The value wrapped by `NullEncodable`.
+
+### Usage
+
+```swift
+struct SomeModel: Encodable {
+    @NullEncodable var someText: String?
+    @NullEncodable var someNumber: String?
+}
+
+let someModel = SomeModel(someText: "text to encode", someNumber: nil)
+let data = try JSONEncoder().encode(someModel)
+```
+
+> *The `@NullEncodable` property wrapper enables encoding of optional values as `null` in JSON representations. During encoding, non-nil values are represented as themselves, while `nil` values are encoded as `null`. This simplifies the handling of optional properties during encoding, ensuring consistent representation of optional values in JSON data.*
+<br>
+
+---
+
+<br>
+
+## AtomicAsyncOperation
+
+The `AtomicAsyncOperation` class encapsulates the logic of executing a single operation at a time, ensuring that the operation is not initiated concurrently by multiple requests. If an operation is already in progress, additional requests will be added to a completions list, and their closures will be invoked after the initial operation finishes. This approach minimizes redundant executions and provides a solution for scenarios such as lazy initialization of services or optimizing request execution.
+
+> ***NOTE***: *This class uses a background queue internally, so ensure that all UI actions are wrapped in the main queue.*
+
+### Initialization
+
+- **`init(action:)`**
+
+    | Parameter | Type                | Default Value | Description                                           |
+    | --------- | ------------------- | ------------- | ----------------------------------------------------- |
+    | `action`  | `Action` completion | -             | The execution action that needs to be performed.      |
+
+### Properties
+
+- **`action`**: The execution action closure.
+- **`isRunning`**: A boolean indicating whether the operation is currently in progress.
+
+### Methods
+
+- **`perform(completion:)`**: Perform the operation if it is not running yet, or add it to the completions list if it is already running.
+
+    | Parameter    | Type          | Default Value | Description                                                |
+    | ------------ | ------------- | ------------- | ---------------------------------------------------------- |
+    | `completion` | `Completion?` | nil           | A completion closure to be called when execution finishes. |
+
+### Usage
+
+```swift
+let asyncOperation = AtomicAsyncOperation { completion in
+    // Perform your asynchronous operation logic here
+    // For example, fetching data from a network API
+    fetchDataFromAPI { result in
+        // Process the result
+        // ...
+
+        // Notify completion when finished
+        completion()
+    }
+}
+
+// Trigger the asynchronous operation
+asyncOperation.perform {
+    // Closure to be executed when the operation completes
+    // This can be used to update the UI or perform additional tasks
+}
+```
+<br>
+
+---
+
+## `DelayedAction`
+
+The `DelayedAction` class provides a mechanism to delay the execution of a closure and allows for cancellation or rescheduling if needed.
+
+### Methods
+
+- **`cancel() -> Bool`**:
+
+    Cancels any pending execution of the action.
+
+    | Return Type | Description                                                           |
+    | ----------- | --------------------------------------------------------------------- |
+    | `Bool`      | Returns `true` if the cancellation was successful, `false` otherwise. |
+
+- **`perform(after:, queue:, action:)`**:
+
+    Schedules the execution of the action after a specified delay.
+
+    | Parameter | Type             | Default Value | Description                                            |
+    | --------- | ---------------- | ------------- | ------------------------------------------------------ |
+    | `delay`   | `TimeInterval`   | -             | The delay after which the action needs to be executed. |
+    | `queue`   | `DispatchQueue`  | `.main`       | The queue on which the action will be executed.        |
+    | `action`  | `() -> Void`     | -             | The action that needs to be executed.                  |
+
+### Usage
+
+1. **Delayed Execution**:
+
+    ```swift
+    let delayedAction = DelayedAction()
+
+    // Schedule an action to be executed after a delay
+    delayedAction.perform(after: 2.0) {
+        print("Delayed action executed!")
+    }
+
+    // Cancelling the pending execution (if needed)
+    delayedAction.cancel()
+    ```
+
+2. **Rescheduling an Action**:
+
+    ```swift
+    let delayedAction = DelayedAction()
+
+    delayedAction.perform(after: 3.0) {
+        print("Initial action executed!")
+    }
+
+    // Rescheduling the action to be executed sooner
+    delayedAction.perform(after: 1.0) {
+        print("Rescheduled action executed!")
+    }
+    ```
+<br>
+
+---
+
+## IdType
+
+The `IdType` protocol defines the requirements for types representing unique identifiers. It is commonly used when you have various types of entities (e.g., users, products, etc.) that need a standardized way to represent their identity. It ensures uniqueness and facilitates operations like equality comparisons `(==)` and hashing.
+
+### Protocol Overview
+
+- **`IdType: Hashable`**:
+
+    The protocol requires conformance to the `Hashable` protocol, allowing instances to be used in hash-based collections.
+
+- **`var id: ID { get }`**:
+
+    A property `id` of type `ID` representing the unique identifier for an instance. An associated type `ID` representing the identifier, also conforming to `Hashable`. This allows flexibility in the type of identifier, such as `String` or `Int`.
+
+### Subprotocols
+
+- **`StringIdType: IdType`**:
+
+    A subprotocol of `IdType` where the associated identifier type is `String`.
+
+- **`IntIdType: IdType`**:
+
+    A subprotocol of `IdType` where the associated identifier type is `Int`.
+
+### Default Implementation
+
+- **`hash(into hasher:, inout Hasher)`**:
+
+    An extension method that provides a default implementation for hashing, combining the hash value of the identifier.
+
+    | Parameter        | Type           | Description                                       |
+    | ---------------- | -------------- | ------------------------------------------------- |
+    | `hasher`         | `inout Hasher` | The hasher to use when combining the hash values. |
+
+### Operator Overload
+
+- **`==` Operator Overload**:
+
+    An overload of the equality operator (`==`) for instances conforming to `IdType`, comparing their identifiers for equality.
+
+#### Usage
+
+```swift
+// Example conforming type
+struct UserID: IntIdType {
+    let id: Int
+}
+
+// Example usage
+let user1 = UserID(id: 42)
+let user2 = UserID(id: 42)
+
+// Equality comparison
+let areEqual = (user1 == user2) // true
+
+// Hashing
+var hasher = Hasher()
+user1.hash(into: &hasher)
+let hashValue1 = hasher.finalize()
+
+print("Hash Value for User 1: \(hashValue1)")
+```
+
+<br>
+
+---
+
+## `SyncPropertyActor`
+
+The `SyncPropertyActor` is an actor-based container designed to provide thread-safe access to a property of a given type.
+
+### Initialization
+- **`init(_ value: T)`**: Initializes a new instance of SyncPropertyActor with the specified initial value.
+
+  | Parameter | Type | Description                                     |
+  | --------- | ---- | ----------------------------------------------- |
+  | `value`   | `T`  | The initial value to be stored in the property. |
+
+### Methods
+
+- **`setNewValue(_ value: T)`**: Sets a new value for the property, ensuring thread safety
+
+  | Parameter | Type | Description              |
+  | --------- | ---- | ------------------------ |
+  | `value`   | `T`  | The new value to be set. |
+
+- **`modify(with closure: (inout T) -> Void)`**: Modifies the property's value using a closure, ensuring thread safety.
+
+  | Parameter | Type                | Description                                    |
+  | --------- | ------------------- | ---------------------------------------------- |
+  | `closure` | `(inout T) -> Void` | A closure that takes an `inout` parameter representing the property's value. Use this closure to modify the value safely. |
+
+### Usage
+
+1. **Setting a new value**:
+
+    ```swift
+    private let nextProductsPageLink = SyncPropertyActor<URL?>(nil)
+    
+    Task {
+        // Use the setNewValue method to set the property to a new URL.
+        await nextProductsPageLink.setNewValue(URL(string: "https://example.com/nextpage"))
+    }
+    ```
+
+1. **Modifying existing value**:
+
+    ```swift
+    // Example of modifying the property within a task
+    Task {
+        nextProductsPageLink.modify { currentURL in
+            // Modify the current URL, for example, appending a query parameter
+            currentURL?.appendPathComponent("additionalPath")
+        }
+    }
+    ```
+<br>
+
+---
 
 ## @ `Weak<T>` class
 
