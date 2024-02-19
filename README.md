@@ -16,48 +16,48 @@
 ## ***Contents***:
 
 * **Extensions**
-    * [**Extensions (Foundation)**](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#--extensions-foundation)
-        * [Array](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#arraysafe)
-        * [Bundle](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#bundlecurrentversion)
-        * [CGSize](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#cgsizedimentions)
-        * [Codable](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#unknowncase)
-        * [Data](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#datagetobjectfromjsondata)
-        * [DataDecodingStrategy](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#datedecodingstrategycustomiso8601)
-        * [DispatchQueue](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#dispatchqueueonce)
-        * [Encodable](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#encodablejsondata)
-        * [Formatter](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#formatteriso8601)
-        * [General](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#nzutilsextensiondata)
-        * [Locale](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#localecountrylist)
-        * [NSObject](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#nsobjectclassname)
-        * [String](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#stringattributed)
-    * [**Extensions (UIKit)**](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#--extensions-uikit)
-        * [UIAlertController](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uialertcontrollereasybuild)
-        * [UIApplication](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiapplicationjailbreak)
-        * [UIButton](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uibuttonlocalized)
-        * [UIColor](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uicolorinversed)
-        * [UIControl](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uicontrolclosuresleeve)
-        * [UIImage](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiimageblurhash)
-        * [UILabel](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uilabelniblocalized)
-        * [UINavigationBar](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uinavigationbartranslucent)
-        * [UITextField](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uitextfieldlocalized)
-        * [UIView](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiviewadddashedborder)
-        * [UIViewController](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiviewcontrolleraddchild)
-        * [UIApplication](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uiapplicationopensettings)
-        * [UIColor](https://github.com/ddyachok/NerdzUtils/edit/patch-1/README.md#uicolorhex)
-* **[UI Components]()**
-    * [LoadableButton]()
-    * [LoadableImageView]()
-    * [SpinnerLoader]()
-* **[Utils]()**
-    * **[Property Wrappers]()**
-        * [DefaultsProperty]()
-        * [KeychainProperty]()
-        * [NullEncodable]()
-    * [AtomicAsyncOperation]()
-    * [DelayedAction]()
-    * [IdType]()
-    * [SyncPropertyActor]()
-    * [WeakWrapper]()
+    * [**Extensions (Foundation)**](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#--extensions-foundation)
+        * [Array](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#arraysafe)
+        * [Bundle](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#bundlecurrentversion)
+        * [CGSize](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#cgsizedimentions)
+        * [Codable](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#unknowncase)
+        * [Data](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#datagetobjectfromjsondata)
+        * [DataDecodingStrategy](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#datedecodingstrategycustomiso8601)
+        * [DispatchQueue](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#dispatchqueueonce)
+        * [Encodable](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#encodablejsondata)
+        * [Formatter](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#formatteriso8601)
+        * [General](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#nzutilsextensiondata)
+        * [Locale](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#localecountrylist)
+        * [NSObject](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#nsobjectclassname)
+        * [String](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#stringattributed)
+    * [**Extensions (UIKit)**](https://nerdzlab/NerdzUtils?tab=readme-ov-file#--extensions-uikit)
+        * [UIAlertController](https://nerdzlab/NerdzUtils?tab=readme-ov-file#uialertcontrollereasybuild)
+        * [UIApplication](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uiapplicationjailbreak)
+        * [UIButton](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uibuttonlocalized)
+        * [UIColor](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uicolorinversed)
+        * [UIControl](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uicontrolclosuresleeve)
+        * [UIImage](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uiimageblurhash)
+        * [UILabel](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uilabelniblocalized)
+        * [UINavigationBar](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uinavigationbartranslucent)
+        * [UITextField](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uitextfieldlocalized)
+        * [UIView](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uiviewadddashedborder)
+        * [UIViewController](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uiviewcontrolleraddchild)
+        * [UIApplication](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uiapplicationopensettings)
+        * [UIColor](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#uicolorhex)
+* **[UI Components](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#--ui-components)**
+    * [LoadableButton](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#loadablebutton)
+    * [LoadableImageView](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#loadableimageview)
+    * [SpinnerLoader](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#spinnerloader)
+* **[Utils](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#--utils)**
+    * **[Property Wrappers](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#--property-wrappers)**
+        * [DefaultsProperty](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#defaultsproperty)
+        * [KeychainProperty](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#keychainproperty)
+        * [NullEncodable](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#nullencodable)
+    * [AtomicAsyncOperation](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#atomicasyncoperation)
+    * [DelayedAction](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#delayedaction)
+    * [IdType](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#idtype)
+    * [SyncPropertyActor](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#syncpropertyactor)
+    * [WeakWrapper](https://github.com/nerdzlab/NerdzUtils?tab=readme-ov-file#weakwrapper)
 
 <br>
 
@@ -132,93 +132,6 @@ let size16x9 = CGSize.w16_h9
 let sizeScaled = CGSize(width: 10, height: 5).scaled(by: 2.0)
 
 // ... (use other aspect ratios and methods as needed)
-```
-<br>
-
----
-
-## UnknownCase
-
-The `UnknownCase` protocol simplifies handling of unknown or unexpected raw values when working with enums conforming to `RawRepresentable` and `CaseIterable`.
-
-### Features
-
-- **unknownCase**: A default case that represents an unknown or unexpected raw value.
-
-### Usage
-
-1. **Conform to the Protocol**:
-
-    Conform your enum to the `UnknownCase` protocol by adding conformance to `RawRepresentable` and `CaseIterable`. Ensure that the `RawValue` type is `Equatable` and `Codable`.
-
-    ```swift
-    enum MyEnum: String, UnknownCase {
-       case case1
-       case case2
-       case unknownCase
-    }
-    ```
-
-2. **Handle unknown cases**:
-
-    ```swift
-    let myValue = MyEnum(rawValue: "unknownValue")
-    // 'myValue' will be '.unknownCase' if the raw value is not found in the enum cases.
-    ```
-
-3. **Decoder Support**:
- 
-    The protocol includes decoding support, making it easier to handle unknown values when decoding from external representations.
-
-    ```swift
-    let jsonData = """
-        {"myKey": "unknownValue"}
-    """.data(using: .utf8)!
-
-    do {
-        let decodedValue = try JSONDecoder().decode(MyEnum.self, from: jsonData)
-        // 'decodedValue' will be '.unknownCase' if the raw value is not found in the enum cases.
-    } 
-    catch {
-        // Handle decoding error
-    }
-    ```
-<br>
-
----
-
-## Data+GetObjectFromJsonData
-
-The `Data+GetObjectFromJsonData` extension simplifies the process of decoding JSON data into Swift objects using the `Decodable` protocol.
-
-### Features
-
-- **object(of:)**: Decodes JSON data into a specified type.
-- **object()**: Decodes JSON data into a type inferred from the context.
-
-### Usage
-
-To use the `Data+GetObjectFromJsonData` extension, follow these steps:
-
-```swift
-struct MyObject: Decodable {
-    // Properties to be decoded from JSON
-}
-
-let jsonData = """
-{"key": "value"}
-""".data(using: .utf8)!
-
-do {
-    // Decode with specified type
-    let decodedObject: MyObject? = try jsonData.object(of: MyObject.self)
-
-    // Alternatively, infer type from the context
-    let inferredObject: MyObject? = try jsonData.object()
-}
-catch {
-    // Handle decoding error
-}
 ```
 <br>
 
@@ -665,7 +578,7 @@ The `UIButton+Localized` extension provides a convenient way to set localized te
 
    ```swift
    let button = UIButton(type: .system)
-   button.nz.textLocalization = "button.title.key"
+   button.nz.textLocalization = "buttonTitleKey"
    ```
    
 2. **Set Localized Text in Interface Builder**:
@@ -1365,94 +1278,6 @@ The `LoadableButton` is a class that extends `UIButton` to provide loading funct
 
 ---
 
-## LoadableImageView (`LoadableImage` enum)
-
-An enum that represents different ways of loading image for `LoadableImageView`
-
-<br>
-
-### Cases
-
-1. **`fromUrl`**:
-
-```swift
-.fromUrl(
-    _ url: URL?,
-    storingPolicy: ImageStoringPolicy,
-    blurHash: BlurHashInfo? = nil,
-    completion: ((UIImage?) -> Void)? = nil
-)
-```
-
-*Representation of an image in `URL` format*
-
-Name | Type | Default value | Description
------------- | ------------ | ------------- | -------------
-`url` | `URL?` | | A url from witch image should be loaded
-`storingPolicy` | `ImageStoringPolicy` | | A storing policy for loaded image
-`blurHash` | `BlurHashInfo?` | `nil` | An informatiom for image `blur.sh` if it is supported by image
-`completion` | `((UIImage?) -> Void)?` | `nil` | Completion closure that will be called after image is loaded
-
-<br>
-
-2. **`fromData`**:
-
-```swift
-.fromData(
-    _ data: Data?, 
-    scale: CGFloat = 1
-)
-```
-
-*Representation of an image in `Data` format*
-
-Name | Type | Default value | Description
------------- | ------------ | ------------- | -------------
-`data` | `Data?` | | A data from witch image needs to be loaded
-`scale` | `CGFloat` | `1` | A scale factor for data image
-
-<br>
-
-3. **`named`**:
-
-```swift
-.named(_ name: String)
-```
-
-*Representation  of a local image that can be retrived by name*
-
-Name | Type | Default value | Description
------------- | ------------ | ------------- | -------------
-`name` | `String` | | Image local name
-
-<br>
-
-4. **`image`**:
-
-```swift
-.image(_ image: UIImage)
-```
-
-*`UIImage` representation*
-
-Name | Type | Default value | Description
------------- | ------------ | ------------- | -------------
-`image` | `UIImage` | | Image that needs to be set
-
-<br>
-
-5. **`placeholder`**:
-
-```swift
-.placeholder
-```
-
-*Setting image to placeholder state*
-
-<br>
-
----
-
 ## LoadableImageView (`ImageStoringPolicy` enum)
 
 Represents a way of storing loaded image by `LoadableImageView` class
@@ -1611,41 +1436,6 @@ A property wrapper facilitating the automatic synchronization of a property with
 <br>
 
 ---
-
-## `@NullEncodable`
-
-A property wrapper simplifying the encoding of optional values as `null` in JSON representations, providing a convenient way to handle optional properties during encoding.
-
-### Initializer
-
-- **`init(_ wrappedValue:)`**:
-
-    | Parameter      | Type | Default Value | Description                                           |
-    | -------------- | ---- | ------------- | ----------------------------------------------------- |
-    | `wrappedValue` | `T?` | -             | The optional value to be encoded as null if nil.      |
-
-### Properties
-
-- **`wrappedValue`**: The value wrapped by `NullEncodable`.
-
-### Usage
-
-```swift
-struct SomeModel: Encodable {
-    @NullEncodable var someText: String?
-    @NullEncodable var someNumber: String?
-}
-
-let someModel = SomeModel(someText: "text to encode", someNumber: nil)
-let data = try JSONEncoder().encode(someModel)
-```
-
-> *The `@NullEncodable` property wrapper enables encoding of optional values as `null` in JSON representations. During encoding, non-nil values are represented as themselves, while `nil` values are encoded as `null`. This simplifies the handling of optional properties during encoding, ensuring consistent representation of optional values in JSON data.*
-<br>
-
----
-
-<br>
 
 ## AtomicAsyncOperation
 
