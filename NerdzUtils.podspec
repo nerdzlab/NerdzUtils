@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'NerdzUtils'
-  s.version          = '1.0.77'
+  s.version          = '1.0.91'
   s.summary          = 'NERDZ LAB utilities'
   s.homepage         = 'https://github.com/nerdzlab/NerdzUtils'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
