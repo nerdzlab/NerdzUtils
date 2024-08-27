@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -46,6 +46,8 @@
 		8409356427910C1F00F9BBD0 /* UIView+AddDashedBorder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8409356327910C1F00F9BBD0 /* UIView+AddDashedBorder.swift */; };
 		84CDD13927BE7AE1001AF5DA /* String+IsWhiteSpaceOrEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDD13827BE7AE1001AF5DA /* String+IsWhiteSpaceOrEmpty.swift */; };
 		84CDD13B27BE7B3F001AF5DA /* UIView+AsImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84CDD13A27BE7B3F001AF5DA /* UIView+AsImage.swift */; };
+		B03021462C7E5B26003639A7 /* UIView+ShowHideInStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03021452C7E5B26003639A7 /* UIView+ShowHideInStackView.swift */; };
+		B030214A2C7E5C85003639A7 /* SyncPropertyActor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03021492C7E5C85003639A7 /* SyncPropertyActor.swift */; };
 		B085747128E3647800FA9027 /* NullEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B085747028E3647800FA9027 /* NullEncodable.swift */; };
 		OBJ_54 /* UIAlertController+EasyBuild.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_21 /* UIAlertController+EasyBuild.swift */; };
 		OBJ_57 /* UINavigationBar+Translucent.swift in Sources */ = {isa = PBXBuildFile; fileRef = OBJ_24 /* UINavigationBar+Translucent.swift */; };
@@ -95,6 +97,8 @@
 		8409356327910C1F00F9BBD0 /* UIView+AddDashedBorder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AddDashedBorder.swift"; sourceTree = "<group>"; };
 		84CDD13827BE7AE1001AF5DA /* String+IsWhiteSpaceOrEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+IsWhiteSpaceOrEmpty.swift"; sourceTree = "<group>"; };
 		84CDD13A27BE7B3F001AF5DA /* UIView+AsImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+AsImage.swift"; sourceTree = "<group>"; };
+		B03021452C7E5B26003639A7 /* UIView+ShowHideInStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+ShowHideInStackView.swift"; sourceTree = "<group>"; };
+		B03021492C7E5C85003639A7 /* SyncPropertyActor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SyncPropertyActor.swift; sourceTree = "<group>"; };
 		B085747028E3647800FA9027 /* NullEncodable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullEncodable.swift; sourceTree = "<group>"; };
 		"NerdzUtils::NerdzUtils::Product" /* NerdzUtils.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NerdzUtils.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		OBJ_21 /* UIAlertController+EasyBuild.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAlertController+EasyBuild.swift"; sourceTree = "<group>"; };
@@ -191,6 +195,7 @@
 				8409356127910BC500F9BBD0 /* UIView+ApplyGradient.swift */,
 				8409356327910C1F00F9BBD0 /* UIView+AddDashedBorder.swift */,
 				84CDD13A27BE7B3F001AF5DA /* UIView+AsImage.swift */,
+				B03021452C7E5B26003639A7 /* UIView+ShowHideInStackView.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -358,6 +363,7 @@
 		OBJ_31 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				B03021492C7E5C85003639A7 /* SyncPropertyActor.swift */,
 				OBJ_35 /* WeakWrapper.swift */,
 				3D415D26255359B900E6942A /* AtomicAsyncOperation.swift */,
 				3DF1214A2626F1F800F8AFD5 /* DelayedAction.swift */,
@@ -490,10 +496,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 0;
 			files = (
+				B030214A2C7E5C85003639A7 /* SyncPropertyActor.swift in Sources */,
 				8409356027910B2A00F9BBD0 /* UIView+RoundCorners.swift in Sources */,
 				840935532790FD3500F9BBD0 /* String+NZExtensionData.swift in Sources */,
 				3D1F14E525583A8F00107B87 /* UIColor+Inversed.swift in Sources */,
 				8409356427910C1F00F9BBD0 /* UIView+AddDashedBorder.swift in Sources */,
+				B03021462C7E5B26003639A7 /* UIView+ShowHideInStackView.swift in Sources */,
 				3D60123526A199E90012D879 /* Bundle+CurrentAppVersion.swift in Sources */,
 				3D1F14B52556AD2800107B87 /* LoadableImageView.swift in Sources */,
 				3D03A048252A10EF00521395 /* DefaultsProperty.swift in Sources */,
