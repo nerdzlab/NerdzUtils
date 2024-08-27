@@ -18,7 +18,7 @@ public class SpinnerLoader {
     private var restorationAction: (() -> Void)?
 
     private lazy var indicator: UIActivityIndicatorView = {
-        UIActivityIndicatorView(style: .whiteLarge)
+        UIActivityIndicatorView(style: .large)
     }()
     
     fileprivate init(view: UIView) {
