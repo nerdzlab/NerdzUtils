@@ -9,7 +9,7 @@
 
 import UIKit
 
-open class LoadableButton: UIButton {
+open class LoadableButtonx: UIButton {
     public typealias LoadableButtonEmptyAction = () -> Void
     
     private enum Constants {
@@ -73,7 +73,7 @@ open class LoadableButton: UIButton {
     public override func setTitle(_ title: String?, for state: UIControl.State) {
         super.setTitle(title, for: state)
         
-        if isLoading {
+        if isLoading && title != nil {
             titleBeforeLoadingStateChange = title
         }
     }
@@ -81,7 +81,7 @@ open class LoadableButton: UIButton {
     public override func setImage(_ image: UIImage?, for state: UIControl.State) {
         super.setImage(image, for: state)
         
-        if isLoading {
+        if isLoading && image != nil {
             imageBeforeLoadingStateChange = image
         }
     }
@@ -122,5 +122,6 @@ open class LoadableButton: UIButton {
         isLoading ? onStartLoading?() : onFinishLoading?()
     }
 }
+
 
 #endif
