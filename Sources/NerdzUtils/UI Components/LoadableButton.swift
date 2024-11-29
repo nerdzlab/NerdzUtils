@@ -9,7 +9,7 @@
 
 import UIKit
 
-open class LoadableButtonx: UIButton {
+open class LoadableButton: UIButton {
     public typealias LoadableButtonEmptyAction = () -> Void
     
     private enum Constants {
