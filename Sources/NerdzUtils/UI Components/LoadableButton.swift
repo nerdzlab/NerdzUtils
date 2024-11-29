@@ -70,6 +70,22 @@ open class LoadableButton: UIButton {
         configureView()
     }
     
+    public override func setTitle(_ title: String?, for state: UIControl.State) {
+        super.setTitle(title, for: state)
+        
+        if isLoading {
+            titleBeforeLoadingStateChange = title
+        }
+    }
+    
+    public override func setImage(_ image: UIImage?, for state: UIControl.State) {
+        super.setImage(image, for: state)
+        
+        if isLoading {
+            imageBeforeLoadingStateChange = image
+        }
+    }
+    
     private func configureView() {
         addSubview(activityIndicatorView)
         activityIndicatorView.isHidden = true
