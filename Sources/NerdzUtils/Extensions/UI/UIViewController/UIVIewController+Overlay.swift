@@ -26,12 +26,13 @@ public enum OverlayPresentationError: Error {
 
 public extension NZUtilsExtensionData where Base: UIViewController {
     
+    typealias WindowConfiguratoinAction = (UIWindow) -> Void
+    
     /// Presenting current view controller as overlay
-    func presentAsOverlay() {
+    func presentAsOverlay(with configurationAction: @escaping WindowConfiguratoinAction = UIViewController.nz.defaultWindowConfiguration) {
         let window = UIWindow()
         window.rootViewController = base
-        window.windowLevel = .alert
-        window.backgroundColor = .clear
+        configurationAction(window)
         window.makeKeyAndVisible()
      
         UIViewController.presentedWindows.append(window)
@@ -50,6 +51,11 @@ public extension NZUtilsExtensionData where Base: UIViewController {
         
         window.resignKey()
         UIViewController.presentedWindows.remove(at: index)
+    }
+    
+    static func defaultWindowConfiguration(_ window: UIWindow) {
+        window.windowLevel = .alert
+        window.backgroundColor = .clear
     }
 }
 

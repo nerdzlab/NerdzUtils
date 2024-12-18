@@ -16,7 +16,7 @@ public extension NZUtilsExtensionData where Base: UIViewController {
     ///   - childController: Controller to add as a child
     ///   - container: Container in with needs to be added. If not provided - `view` will be used
     ///   - configurationAction: Configuration action to setup all constraints. If not provided - will becoe full size of a container
-    @available (iOS 9, *)
+    @available(iOS 9, *)
     func easilyAddChild(
         _ childController: UIViewController,
         on container: UIView? = nil,
@@ -33,7 +33,7 @@ public extension NZUtilsExtensionData where Base: UIViewController {
         childController.didMove(toParent: base)
     }
 
-    @available (iOS 9, *)
+    @available(iOS 9, *)
     static func setupFullscreen(_ childView: UIView, on parentView: UIView) {
         childView.leadingAnchor.constraint(equalTo: parentView.leadingAnchor).isActive = true
         childView.trailingAnchor.constraint(equalTo: parentView.trailingAnchor).isActive = true
