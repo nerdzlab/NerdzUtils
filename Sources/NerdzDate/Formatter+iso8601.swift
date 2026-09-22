@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import NerdzCore
 
 public extension NZExtensionData where Base: Formatter {
     /// Return iso8601 with fractional seconds
