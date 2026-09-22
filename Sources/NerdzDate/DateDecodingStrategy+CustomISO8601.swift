@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import NerdzCore
 
 extension JSONDecoder.DataDecodingStrategy: NZExtensionCompatible { }
 
