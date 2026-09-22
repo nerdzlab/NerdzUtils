@@ -5,7 +5,7 @@
 //  Created by Roman Kovalchuk on 28.04.2021.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
 
@@ -122,6 +122,5 @@ open class LoadableButton: UIButton {
         isLoading ? onStartLoading?() : onFinishLoading?()
     }
 }
-
 
 #endif

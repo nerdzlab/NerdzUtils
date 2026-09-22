@@ -5,9 +5,10 @@
 //  Created by new user on 12.09.2020.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
 public extension UITextField {
     

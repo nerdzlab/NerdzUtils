@@ -5,10 +5,12 @@
 //  Created by Roman Kovalchuk on 17.02.2022.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 public extension NZExtensionData where Base: UIView {
     
     // Method to get screenshot of view

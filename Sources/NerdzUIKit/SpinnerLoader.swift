@@ -5,11 +5,13 @@
 //  Created by new user on 08.11.2020.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
 @available(iOS 9.0, *)
+@MainActor
 public class SpinnerLoader {
     fileprivate static var loaders: [SpinnerLoader] = []
 
@@ -18,7 +20,13 @@ public class SpinnerLoader {
     private var restorationAction: (() -> Void)?
 
     private lazy var indicator: UIActivityIndicatorView = {
-        UIActivityIndicatorView(style: .large)
+        let indicator = UIActivityIndicatorView()
+
+        if #available(iOS 13.0, *) {
+            indicator.style = .large
+        }
+
+        return indicator
     }()
     
     fileprivate init(view: UIView) {

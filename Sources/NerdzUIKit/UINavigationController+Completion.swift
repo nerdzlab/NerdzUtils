@@ -1,8 +1,9 @@
-
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 public extension NZExtensionData where Base: UINavigationController {
     
     /// Pushing view controller view completion

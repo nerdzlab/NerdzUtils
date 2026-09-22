@@ -5,10 +5,12 @@
 //  Created by new user on 29.04.2020.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 public extension NZExtensionData where Base: UIAlertController {
     typealias ActionHandler = () -> Void
     

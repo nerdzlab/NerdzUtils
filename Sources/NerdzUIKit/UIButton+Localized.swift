@@ -5,15 +5,17 @@
 //  Created by Roman Kovalchuk on 14.01.2022.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 public extension NZExtensionData where Base: UIButton {
     /// Localized text
     /// Useful for setting localized text from nib files
     var textLocalization: String? {
-        set {
+        nonmutating set {
             if let identifier = newValue {
                 base.setTitle(identifier.nz.localized, for: .normal)
             }

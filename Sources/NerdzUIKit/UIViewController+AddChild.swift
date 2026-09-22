@@ -5,10 +5,12 @@
 //  Created by new user on 12.09.2020.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 public extension NZExtensionData where Base: UIViewController {
     
     /// Adding child to controller with all necessary configuration

@@ -5,9 +5,10 @@
 //  Created by new user on 20.05.2021.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
 public extension NZExtensionData where Base: UIImage {
     /// Scale image to specific width
