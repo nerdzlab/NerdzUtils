@@ -28,7 +28,7 @@ public enum OverlayPresentationError: Error {
 @MainActor
 public extension NZExtensionData where Base: UIViewController {
     
-    typealias WindowConfiguratoinAction = (UIWindow) -> Void
+    typealias WindowConfiguratoinAction = @MainActor (UIWindow) -> Void
     
     /// Presenting current view controller as overlay
     func presentAsOverlay(with configurationAction: @escaping WindowConfiguratoinAction = UIViewController.nz.defaultWindowConfiguration) {

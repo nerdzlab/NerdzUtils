@@ -22,7 +22,7 @@ public extension NZExtensionData where Base: UIViewController {
     func easilyAddChild(
         _ childController: UIViewController,
         on container: UIView? = nil,
-        configurationAction: ((UIView, UIView) -> Void) = UIViewController.nz.setupFullscreen
+        configurationAction: (@MainActor (UIView, UIView) -> Void) = UIViewController.nz.setupFullscreen
     ) {
         
         let finalContainer: UIView = container ?? base.view

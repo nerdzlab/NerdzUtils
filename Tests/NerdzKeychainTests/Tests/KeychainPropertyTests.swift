@@ -172,22 +172,7 @@ struct KeychainPropertyTests {
         }
 
         @Test
-        func testWhenOptionalValueSetToNilShouldReturnNil() {
-            // Arrange
-            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
-            defer { try? keychain.removeAll() }
-            var property = TestData.createOptionalTokenProperty(initial: TestData.initialToken, keychain: keychain)
-            property.wrappedValue = TestData.storedToken
-
-            // Act
-            property.wrappedValue = nil
-
-            // Assert
-            #expect(property.wrappedValue == nil)
-        }
-
-        @Test
-        func testWhenOptionalValueSetToNilShouldKeepStoredItem() throws {
+        func testWhenOptionalValueSetToNilShouldRemoveStoredItem() {
             // Arrange
             let key = TestData.tokenKey
             let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
@@ -199,7 +184,54 @@ struct KeychainPropertyTests {
             property.wrappedValue = nil
 
             // Assert
-            #expect(try keychain.getData(key) != nil)
+            #expect(keychain.allKeys().contains(key) == false)
+        }
+
+        @Test
+        func testWhenOptionalValueSetToNilShouldReportNoError() {
+            // Arrange
+            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
+            defer { try? keychain.removeAll() }
+            let recorder = TestErrorRecorder()
+            var property = TestData.createOptionalTokenProperty(keychain: keychain, onError: recorder.record)
+            property.wrappedValue = TestData.storedToken
+
+            // Act
+            property.wrappedValue = nil
+
+            // Assert
+            #expect(recorder.errors.isEmpty)
+        }
+
+        @Test
+        func testWhenOptionalValueSetToNilShouldFallBackToInitialValue() throws {
+            // Arrange
+            let initialValue = TestData.initialToken
+            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
+            defer { try? keychain.removeAll() }
+            var property = TestData.createOptionalTokenProperty(initial: initialValue, keychain: keychain)
+            property.wrappedValue = TestData.storedToken
+
+            // Act
+            property.wrappedValue = nil
+
+            // Assert
+            #expect(try #require(property.wrappedValue) == initialValue)
+        }
+
+        @Test
+        func testWhenOptionalValueSetToNilAndInitialValueIsNilShouldReturnNil() {
+            // Arrange
+            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
+            defer { try? keychain.removeAll() }
+            var property = TestData.createOptionalTokenProperty(initial: nil, keychain: keychain)
+            property.wrappedValue = TestData.storedToken
+
+            // Act
+            property.wrappedValue = nil
+
+            // Assert
+            #expect(property.wrappedValue == nil)
         }
 
         @Test
@@ -254,6 +286,125 @@ struct KeychainPropertyTests {
         }
     }
 
+    @Suite("Error Reporting")
+    struct ErrorReporting {
+
+        @Test
+        func testWhenStoredDataIsCorruptedShouldReportReadFailure() throws {
+            // Arrange
+            let key = TestData.tokenKey
+            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
+            defer { try? keychain.removeAll() }
+            let recorder = TestErrorRecorder()
+            let property = TestData.createTokenProperty(key: key, keychain: keychain, onError: recorder.record)
+            try keychain.set(TestData.corruptedPayload, key: key)
+
+            // Act
+            _ = property.wrappedValue
+
+            // Assert
+            let reportedError = try #require(recorder.errors.first)
+            #expect(reportedError.operation == .read)
+            #expect(reportedError.key == key)
+            #expect(reportedError.underlyingError != nil)
+        }
+
+        @Test
+        func testWhenValueCanNotBeEncodedShouldReportEncodeFailure() throws {
+            // Arrange
+            let key = TestData.measurementKey
+            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
+            defer { try? keychain.removeAll() }
+            let recorder = TestErrorRecorder()
+            var property = TestData.createMeasurementProperty(key: key, keychain: keychain, onError: recorder.record)
+
+            // Act
+            property.wrappedValue = TestData.nonEncodableMeasurement
+
+            // Assert
+            let reportedError = try #require(recorder.errors.first)
+            #expect(reportedError.operation == .encode)
+            #expect(reportedError.key == key)
+        }
+
+        @Test
+        func testWhenErrorHandlerNotProvidedShouldReturnInitialValueOnReadFailure() throws {
+            // Arrange
+            let initialValue = TestData.createCredentials()
+            let key = TestData.tokenKey
+            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
+            defer { try? keychain.removeAll() }
+            let property = TestData.createCredentialsProperty(key: key, initial: initialValue, keychain: keychain)
+
+            // Act
+            try keychain.set(TestData.corruptedPayload, key: key)
+
+            // Assert
+            #expect(property.wrappedValue == initialValue)
+        }
+
+        @Test
+        func testWhenValueStoredSuccessfullyShouldReportNoError() {
+            // Arrange
+            let storedValue = TestData.storedToken
+            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
+            defer { try? keychain.removeAll() }
+            let recorder = TestErrorRecorder()
+            var property = TestData.createTokenProperty(keychain: keychain, onError: recorder.record)
+
+            // Act
+            property.wrappedValue = storedValue
+
+            // Assert
+            #expect(recorder.errors.isEmpty)
+            #expect(property.wrappedValue == storedValue)
+        }
+
+        @Test(
+            .enabled(
+                if: KeychainTestEnvironment.isWriteFailureSimulatable,
+                KeychainTestEnvironment.writeFailureUnavailableReason
+            )
+        )
+        func testWhenWriteFailsShouldReportWriteFailure() throws {
+            // Arrange
+            let key = TestData.tokenKey
+            let keychain = KeychainTestEnvironment.makeWriteFailingKeychain()
+            defer { try? keychain.removeAll() }
+            let recorder = TestErrorRecorder()
+            var property = TestData.createTokenProperty(key: key, keychain: keychain, onError: recorder.record)
+
+            // Act
+            property.wrappedValue = TestData.storedToken
+
+            // Assert
+            let reportedError = try #require(recorder.errors.first)
+            #expect(reportedError.operation == .write)
+            #expect(reportedError.key == key)
+            #expect(reportedError.underlyingError != nil)
+        }
+
+        @Test(
+            .enabled(
+                if: KeychainTestEnvironment.isWriteFailureSimulatable,
+                KeychainTestEnvironment.writeFailureUnavailableReason
+            )
+        )
+        func testWhenWriteFailsShouldNotStoreValue() {
+            // Arrange
+            let initialValue = TestData.initialToken
+            let keychain = KeychainTestEnvironment.makeWriteFailingKeychain()
+            defer { try? keychain.removeAll() }
+            var property = TestData.createTokenProperty(initial: initialValue, keychain: keychain)
+
+            // Act
+            property.wrappedValue = TestData.storedToken
+
+            // Assert
+            #expect(property.wrappedValue == initialValue)
+        }
+    }
+
     @Suite("Codable Round Trip")
     struct CodableRoundTrip {
 
@@ -285,6 +436,23 @@ struct KeychainPropertyTests {
 
             // Assert
             #expect(property.wrappedValue.issuedAt == issueDate)
+        }
+
+        @Test
+        func testWhenDateWithFractionalSecondsStoredShouldTruncateToWholeSecond() {
+            // Arrange
+            let wholeSecondDate = TestData.fixedDate
+            let keychain = KeychainTestEnvironment.makeIsolatedKeychain()
+            defer { try? keychain.removeAll() }
+            var property = TestData.createCredentialsProperty(keychain: keychain)
+
+            // Act
+            property.wrappedValue = TestData.createCredentials(
+                issuedAt: wholeSecondDate.addingTimeInterval(TestData.subSecondOffset)
+            )
+
+            // Assert
+            #expect(property.wrappedValue.issuedAt == wholeSecondDate)
         }
 
         @Test
@@ -388,6 +556,14 @@ struct KeychainPropertyTests {
     }
 }
 
+private final class TestErrorRecorder {
+    private(set) var errors: [KeychainPropertyError] = []
+
+    func record(_ error: KeychainPropertyError) {
+        errors.append(error)
+    }
+}
+
 private struct TestStorage {
     @KeychainProperty<String> var token: String
 
@@ -424,6 +600,7 @@ private enum TestData {
     static let nonEncodableMeasurement = Double.infinity
 
     static let fixedDate = Date(timeIntervalSince1970: 1609459200)
+    static let subSecondOffset: TimeInterval = 0.25
     static let defaultIdentifier = "F9C4B0E2-0000-4000-A000-000000000001"
     static let defaultRefreshCount = 3
     static let updatedRefreshCount = 7
@@ -432,25 +609,28 @@ private enum TestData {
     static func createTokenProperty(
         key: String = tokenKey,
         initial: String = initialToken,
-        keychain: Keychain
+        keychain: Keychain,
+        onError errorHandler: @escaping KeychainPropertyErrorHandler = { _ in }
     ) -> KeychainProperty<String> {
-        KeychainProperty(key, initial: initial, keychain: keychain)
+        KeychainProperty(key, initial: initial, keychain: keychain, onError: errorHandler)
     }
 
     static func createOptionalTokenProperty(
         key: String = tokenKey,
         initial: String? = initialToken,
-        keychain: Keychain
+        keychain: Keychain,
+        onError errorHandler: @escaping KeychainPropertyErrorHandler = { _ in }
     ) -> KeychainProperty<String?> {
-        KeychainProperty(key, initial: initial, keychain: keychain)
+        KeychainProperty(key, initial: initial, keychain: keychain, onError: errorHandler)
     }
 
     static func createMeasurementProperty(
         key: String = measurementKey,
         initial: Double = initialMeasurement,
-        keychain: Keychain
+        keychain: Keychain,
+        onError errorHandler: @escaping KeychainPropertyErrorHandler = { _ in }
     ) -> KeychainProperty<Double> {
-        KeychainProperty(key, initial: initial, keychain: keychain)
+        KeychainProperty(key, initial: initial, keychain: keychain, onError: errorHandler)
     }
 
     static func createCredentialsProperty(

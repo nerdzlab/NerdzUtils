@@ -14,12 +14,14 @@ enum KeychainTestEnvironment {
 
     static let unavailableReason: Comment = "Keychain is not accessible from this test binary"
 
+    static let writeFailureUnavailableReason: Comment = "Keychain writes can not be made to fail from this test binary"
+
+    static let probeKey = "availability.probe"
+    static let probeValue = Data([0xA1, 0xB2])
+
     static let isKeychainAccessible: Bool = {
         let keychain = makeIsolatedKeychain()
         defer { try? keychain.removeAll() }
-
-        let probeKey = "availability.probe"
-        let probeValue = Data([0xA1, 0xB2])
 
         do {
             try keychain.set(probeValue, key: probeKey)
@@ -30,7 +32,24 @@ enum KeychainTestEnvironment {
         }
     }()
 
+    static let isWriteFailureSimulatable: Bool = {
+        let keychain = makeWriteFailingKeychain()
+        defer { try? keychain.removeAll() }
+
+        do {
+            try keychain.set(probeValue, key: probeKey)
+            return false
+        }
+        catch {
+            return true
+        }
+    }()
+
     static func makeIsolatedKeychain() -> Keychain {
         Keychain(service: "\(servicePrefix).\(UUID().uuidString)")
+    }
+
+    static func makeWriteFailingKeychain() -> Keychain {
+        makeIsolatedKeychain().synchronizable(true)
     }
 }

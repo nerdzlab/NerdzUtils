@@ -22,6 +22,15 @@ extension RGBAComponents {
         )
     }
 
+    init(red8Bit: Int, green8Bit: Int, blue8Bit: Int, alpha8Bit: Int) {
+        self.init(
+            red8Bit: red8Bit,
+            green8Bit: green8Bit,
+            blue8Bit: blue8Bit,
+            alpha: CGFloat(alpha8Bit) / Self.maxChannelValue
+        )
+    }
+
     var inversed: RGBAComponents {
         RGBAComponents(red: 1 - red, green: 1 - green, blue: 1 - blue, alpha: alpha)
     }
@@ -48,6 +57,11 @@ extension UIColor {
 
     static func hexString(red8Bit: Int, green8Bit: Int, blue8Bit: Int, prefixed: Bool) -> String {
         let body = String(format: "%02X%02X%02X", red8Bit, green8Bit, blue8Bit)
+        return prefixed ? "#\(body)" : body
+    }
+
+    static func hexString(red8Bit: Int, green8Bit: Int, blue8Bit: Int, alpha8Bit: Int, prefixed: Bool) -> String {
+        let body = String(format: "%02X%02X%02X%02X", red8Bit, green8Bit, blue8Bit, alpha8Bit)
         return prefixed ? "#\(body)" : body
     }
 }
