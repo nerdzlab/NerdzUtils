@@ -5,11 +5,10 @@
 //  Created by new user on 01.08.2021.
 //
 
-import UIKit
-
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
 public extension NZExtensionData where Base: UIApplication {
     

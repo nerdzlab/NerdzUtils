@@ -5,12 +5,12 @@
 //  Created by new user on 07.11.2020.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
 
 /// Represents a way of storing loaded image by `LoadableImageView` class
-public enum ImageStoringPolicy {
+public enum ImageStoringPolicy: Sendable {
     
     /// No storing needed
     case none

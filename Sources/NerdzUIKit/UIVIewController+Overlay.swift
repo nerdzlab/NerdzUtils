@@ -5,9 +5,10 @@
 //  Created by new user on 12.07.2021.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
 public enum OverlayPresentationError: Error {
     case noWindow
@@ -24,6 +25,7 @@ public enum OverlayPresentationError: Error {
     }
 }
 
+@MainActor
 public extension NZExtensionData where Base: UIViewController {
     
     typealias WindowConfiguratoinAction = (UIWindow) -> Void

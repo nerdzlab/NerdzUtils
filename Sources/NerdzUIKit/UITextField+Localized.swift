@@ -5,15 +5,17 @@
 //  Created by Roman Kovalchuk on 14.01.2022.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 public extension NZExtensionData where Base: UITextField {
     /// Localized text
     /// Useful for setting localized text from nib files
     var textLocalization: String? {
-        set {
+        nonmutating set {
             if let identifier = newValue {
                 base.text = identifier.nz.localized
             }
@@ -27,7 +29,7 @@ public extension NZExtensionData where Base: UITextField {
     /// Localized placeholder
     /// Useful for setting localized placeholder from nib files
     var placeholderLocalization: String? {
-        set {
+        nonmutating set {
             if let identifier = newValue {
                 base.placeholder = identifier.nz.localized
             }

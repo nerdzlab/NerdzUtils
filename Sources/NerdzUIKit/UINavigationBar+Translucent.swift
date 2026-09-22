@@ -5,10 +5,12 @@
 //  Created by new user on 20.04.2020.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 public extension NZExtensionData where Base: UINavigationBar {
     
     /// Change navigation bar translucent state

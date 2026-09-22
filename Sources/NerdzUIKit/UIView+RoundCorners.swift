@@ -5,10 +5,12 @@
 //  Created by Roman Kovalchuk on 14.01.2022.
 //
 
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 public extension NZExtensionData where Base: UIView {
     
     // Apply round corner and add border. An extension method of UIView.
@@ -27,4 +29,3 @@ public extension NZExtensionData where Base: UIView {
 }
 
 #endif
-

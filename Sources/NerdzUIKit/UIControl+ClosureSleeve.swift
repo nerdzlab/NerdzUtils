@@ -1,8 +1,9 @@
-
-#if canImport(UIKit)
+#if os(iOS)
 
 import UIKit
+import NerdzCore
 
+@MainActor
 class ClosureSleeve {
     typealias ClosureSleezeAction = () -> ()
     
@@ -18,6 +19,7 @@ class ClosureSleeve {
     }
 }
 
+@MainActor
 public extension NZExtensionData where Base: UIControl {
     /// Addind target for event by closure
     /// - Parameters:

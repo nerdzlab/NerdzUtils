@@ -5,10 +5,9 @@
 //  Created by new user on 31.08.2021.
 //
 
+#if os(iOS)
+
 import Foundation
-
-#if canImport(UIKit)
-
 import UIKit
 
 public extension UIColor {

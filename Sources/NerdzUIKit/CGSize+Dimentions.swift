@@ -5,7 +5,10 @@
 //  Created by new user on 19.05.2021.
 //
 
+#if os(iOS)
+
 import CoreGraphics
+import NerdzCore
 
 extension CGSize: NZExtensionCompatible { }
 
@@ -36,3 +39,5 @@ public extension NZExtensionData where Base == CGSize {
         CGSize(width: base.width * factor, height: base.height * factor)
     }
 }
+
+#endif
