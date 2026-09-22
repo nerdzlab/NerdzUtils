@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import NerdzCore
 import KeychainAccess
 
 /// A property wrapper that automatically syncing property into keychain
