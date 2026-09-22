@@ -26,27 +26,35 @@ public extension NZExtensionData where Base == Date {
     }
     
     func start(of component: Calendar.Component) -> Date {
-        var components = allComponents
-        
-        for innerComponent in component.nz.includedComponents {
-            components[innerComponent] = 0
-        }
-        
-        var result = Calendar.current.date(from: components) ?? base
-        
-        // Strange fix for weeks
-        if let weekday = base[.weekday], component == .weekOfMonth || component == .weekOfYear {
-            result = result.nz.adding(.day(-weekday + 1))
-        }
-        
-        return result
+        interval(of: component)?.start ?? base
     }
 
     func end(of component: Calendar.Component) -> Date {
-        start(of: component)
-            .nz.adding(DateRange(component: component, value: 1))
-            .nz.adding(.second(-1))
+        guard let interval = interval(of: component) else {
+            return base
+        }
+
+        return interval.end.nz.adding(.second(DateUnit.lastSecondOffset))
     }
+
+    private func interval(of component: Calendar.Component) -> DateInterval? {
+        let calendar = Calendar.current
+
+        guard component == .weekOfYear || component == .weekOfMonth else {
+            return calendar.dateInterval(of: component, for: base)
+        }
+
+        let weekday = calendar.component(.weekday, from: base)
+        let start = calendar.startOfDay(for: base).nz.adding(.day(DateUnit.sundayWeekday - weekday))
+
+        return DateInterval(start: start, end: start.nz.adding(.day(DateUnit.daysInWeek)))
+    }
+}
+
+private enum DateUnit {
+    static let sundayWeekday = 1
+    static let daysInWeek = 7
+    static let lastSecondOffset = -1
 }
 
 public extension Date {

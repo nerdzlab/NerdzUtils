@@ -9,43 +9,20 @@ struct CalendarComponentEasyUseTests {
     struct StaticAllComponents {
 
         @Test
-        func testWhenStaticListRequestedShouldContainEveryListedComponentOnce() {
+        func testWhenStaticListRequestedShouldContainEveryCalendarComponent() {
             // Arrange
-            let expected = TestData.staticComponents
+            let expected = TestData.expectedStaticComponents
 
             // Act
             let result = Calendar.Component.nz.allComponents
 
             // Assert
-            #expect(result == expected)
+            #expect(Set(result) == Set(expected))
+            #expect(result.count == expected.count)
         }
 
         @Test
-        func testWhenStaticListRequestedShouldContainDuplicatedTimeZoneEntry() {
-            // Arrange
-            let duplicated = TestData.duplicatedComponent
-
-            // Act
-            let occurrences = Calendar.Component.nz.allComponents.filter { $0 == duplicated }.count
-
-            // Assert
-            #expect(occurrences == TestData.duplicatedComponentOccurrences)
-        }
-
-        @Test(arguments: TestData.missingComponents)
-        func testWhenStaticListRequestedShouldNotContainUnlistedComponents(component: Calendar.Component) {
-            // Arrange
-            let all = Calendar.Component.nz.allComponents
-
-            // Act
-            let contains = all.contains(component)
-
-            // Assert
-            #expect(contains == false)
-        }
-
-        @Test
-        func testWhenStaticListUsedAsSetShouldDropDuplicates() {
+        func testWhenStaticListRequestedShouldNotRepeatAnyComponent() {
             // Arrange
             let all = Calendar.Component.nz.allComponents
 
@@ -53,7 +30,32 @@ struct CalendarComponentEasyUseTests {
             let unique = Set(all)
 
             // Assert
-            #expect(unique.count == all.count - TestData.duplicatedComponentOccurrences + 1)
+            #expect(unique.count == all.count)
+        }
+
+        @Test
+        func testWhenStaticListRequestedShouldContainTimeZoneExactlyOnce() {
+            // Arrange
+            let component = TestData.previouslyDuplicatedComponent
+            let expectedOccurrences = TestData.singleOccurrence
+
+            // Act
+            let occurrences = Calendar.Component.nz.allComponents.filter { $0 == component }.count
+
+            // Assert
+            #expect(occurrences == expectedOccurrences)
+        }
+
+        @Test(arguments: TestData.previouslyMissingComponents)
+        func testWhenStaticListRequestedShouldContainPreviouslyMissingComponents(component: Calendar.Component) {
+            // Arrange
+            let all = Calendar.Component.nz.allComponents
+
+            // Act
+            let contains = all.contains(component)
+
+            // Assert
+            #expect(contains)
         }
     }
 
@@ -127,7 +129,10 @@ private enum TestData {
     static let emptyChain: [Calendar.Component] = []
 
     static let leafComponents: [Calendar.Component] = [.nanosecond, .calendar, .timeZone]
-    static var missingComponents: [Calendar.Component] {
+    static let previouslyDuplicatedComponent: Calendar.Component = .timeZone
+    static let singleOccurrence = 1
+
+    static var previouslyMissingComponents: [Calendar.Component] {
         var components: [Calendar.Component] = [.weekdayOrdinal]
 
         if #available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *) {
@@ -136,27 +141,28 @@ private enum TestData {
 
         return components
     }
-    static let duplicatedComponent: Calendar.Component = .timeZone
-    static let duplicatedComponentOccurrences = 2
 
-    static let staticComponents: [Calendar.Component] = [
-        .nanosecond,
-        .second,
-        .minute,
-        .hour,
-        .day,
-        .month,
-        .year,
-        .era,
-        .weekday,
-        .quarter,
-        .weekOfMonth,
-        .weekOfYear,
-        .timeZone,
-        .yearForWeekOfYear,
-        .timeZone,
-        .calendar
-    ]
+    static var expectedStaticComponents: [Calendar.Component] {
+        let components: [Calendar.Component] = [
+            .nanosecond,
+            .second,
+            .minute,
+            .hour,
+            .day,
+            .month,
+            .year,
+            .era,
+            .weekday,
+            .quarter,
+            .weekOfMonth,
+            .weekOfYear,
+            .timeZone,
+            .yearForWeekOfYear,
+            .calendar
+        ]
+
+        return components + previouslyMissingComponents
+    }
 
     enum HierarchyCase: CaseIterable {
         case era

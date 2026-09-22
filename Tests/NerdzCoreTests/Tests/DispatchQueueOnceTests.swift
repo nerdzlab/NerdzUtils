@@ -7,9 +7,13 @@ import Foundation
 import Testing
 @testable import NerdzCore
 
-private final class TokenOwner { }
+private final class TokenOwner: @unchecked Sendable { }
 
 private enum TestData {
+
+    static let concurrentIterations = 64
+
+    static let singleExecutionCount = 1
 
     static func createToken() -> String {
         UUID().uuidString
@@ -21,11 +25,9 @@ private enum TestData {
 }
 
 @Suite("DispatchQueue Once")
-@MainActor
 struct DispatchQueueOnceTests {
 
     @Suite("Once Per Token")
-    @MainActor
     struct OncePerToken {
 
         @Test
@@ -84,7 +86,6 @@ struct DispatchQueueOnceTests {
     }
 
     @Suite("Once Per Object")
-    @MainActor
     struct OncePerObject {
 
         @Test
@@ -163,6 +164,62 @@ struct DispatchQueueOnceTests {
 
             // Assert
             #expect(captor.count == 2)
+        }
+    }
+
+    @Suite("Concurrent Access")
+    struct ConcurrentAccess {
+
+        @Test
+        func testWhenSameTokenIsUsedFromManyThreadsShouldExecuteActionOnce() {
+            // Arrange
+            let token = TestData.createToken()
+            let captor = CallbackCaptor<Void>()
+
+            // Act
+            DispatchQueue.concurrentPerform(iterations: TestData.concurrentIterations) { _ in
+                DispatchQueue.nz.once(for: token) {
+                    captor.record()
+                }
+            }
+
+            // Assert
+            #expect(captor.count == TestData.singleExecutionCount)
+        }
+
+        @Test
+        func testWhenSameObjectAndTokenAreUsedFromManyThreadsShouldExecuteActionOnce() {
+            // Arrange
+            let owner = TestData.createOwner()
+            let token = TestData.createToken()
+            let captor = CallbackCaptor<Void>()
+
+            // Act
+            DispatchQueue.concurrentPerform(iterations: TestData.concurrentIterations) { _ in
+                DispatchQueue.nz.once(per: owner, token: token) {
+                    captor.record()
+                }
+            }
+
+            // Assert
+            #expect(captor.count == TestData.singleExecutionCount)
+        }
+
+        @Test
+        func testWhenDifferentTokensAreUsedFromManyThreadsShouldExecuteEveryAction() {
+            // Arrange
+            let tokens = (0..<TestData.concurrentIterations).map { _ in TestData.createToken() }
+            let captor = CallbackCaptor<Void>()
+
+            // Act
+            DispatchQueue.concurrentPerform(iterations: tokens.count) { index in
+                DispatchQueue.nz.once(for: tokens[index]) {
+                    captor.record()
+                }
+            }
+
+            // Assert
+            #expect(captor.count == tokens.count)
         }
     }
 }

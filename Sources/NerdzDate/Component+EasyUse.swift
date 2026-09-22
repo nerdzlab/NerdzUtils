@@ -13,7 +13,7 @@ extension Calendar.Component: NZExtensionCompatible { }
 public extension NZExtensionData where Base == Calendar.Component {
     
     static var allComponents: [Calendar.Component] {
-        [
+        var components: [Calendar.Component] = [
             Base.nanosecond,
             Base.second,
             Base.minute,
@@ -23,14 +23,20 @@ public extension NZExtensionData where Base == Calendar.Component {
             Base.year,
             Base.era,
             Base.weekday,
+            Base.weekdayOrdinal,
             Base.quarter,
             Base.weekOfMonth,
             Base.weekOfYear,
             Base.timeZone,
             Base.yearForWeekOfYear,
-            Base.timeZone,
             Base.calendar
         ]
+
+        if #available(iOS 17.0, macOS 14.0, tvOS 17.0, watchOS 10.0, *) {
+            components.append(Base.isLeapMonth)
+        }
+
+        return components
     }
     
     var allComponents: [Calendar.Component] {
@@ -72,7 +78,7 @@ public extension NZExtensionData where Base == Calendar.Component {
         case .calendar, .timeZone:
             return []
             
-        @unknown default:
+        default:
             return []
         }
     }

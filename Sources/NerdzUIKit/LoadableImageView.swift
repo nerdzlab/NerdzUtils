@@ -32,7 +32,7 @@ public enum LoadableImage: Equatable {
             _ url: URL?,
             storingPolicy: ImageStoringPolicy = .cache(),
             blurHash: BlurHashInfo? = nil,
-            completion: ((UIImage?) -> Void)? = nil)
+            completion: (@Sendable (UIImage?) -> Void)? = nil)
     
     /// Representation of an image in `Data` format
     /// - *data*: A data from witch image needs to be loaded
@@ -173,7 +173,7 @@ public class LoadableImageView: UIImageView {
         with url: URL?, 
         storingPolicy: ImageStoringPolicy,
         hashInfo: BlurHashInfo? = nil,
-        completion: ((UIImage?) -> Void)? = nil) {
+        completion: (@Sendable (UIImage?) -> Void)? = nil) {
         clearExpiredCache()
         
         guard let url = url else {

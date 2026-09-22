@@ -8,49 +8,59 @@
 
 import Foundation
 
+private enum Constants {
+    static let versionDelimiter = "."
+    static let missingComponent = "0"
+}
+
 public extension NZExtensionData where Base == String {
     func isVersion(equalTo targetVersion: String) -> Bool {
         compare(toVersion: targetVersion) == .orderedSame
     }
-    
+
     func isVersion(greaterThan targetVersion: String) -> Bool {
         compare(toVersion: targetVersion) == .orderedDescending
     }
-    
+
     func isVersion(greaterThanOrEqualTo targetVersion: String) -> Bool {
         compare(toVersion: targetVersion) != .orderedAscending
     }
-    
+
     func isVersion(lessThan targetVersion: String) -> Bool {
         compare(toVersion: targetVersion) == .orderedAscending
     }
-    
+
     func isVersion(lessThanOrEqualTo targetVersion: String) -> Bool {
         compare(toVersion: targetVersion) != .orderedDescending
     }
-    
+
     private func compare(toVersion targetVersion: String) -> ComparisonResult {
-        
-        let versionDelimiter = "."
-        var result: ComparisonResult = .orderedSame
-        var versionComponents = base.components(separatedBy: versionDelimiter)
-        var targetComponents = targetVersion.components(separatedBy: versionDelimiter)
-        let spareCount = versionComponents.count - targetComponents.count
-        
-        if spareCount == 0 {
-            result = base.compare(targetVersion, options: .numeric)
-        }
-        else {
-            let spareZeros = repeatElement("0", count: abs(spareCount))
-            if spareCount > 0 {
-                targetComponents.append(contentsOf: spareZeros)
+        let versionComponents = base.components(separatedBy: Constants.versionDelimiter)
+        let targetComponents = targetVersion.components(separatedBy: Constants.versionDelimiter)
+        let componentCount = max(versionComponents.count, targetComponents.count)
+
+        for index in 0..<componentCount {
+            let versionComponent = versionComponents[safe: index] ?? Constants.missingComponent
+            let targetComponent = targetComponents[safe: index] ?? Constants.missingComponent
+            let result = Self.compare(component: versionComponent, toComponent: targetComponent)
+
+            guard result == .orderedSame else {
+                return result
             }
-            else {
-                versionComponents.append(contentsOf: spareZeros)
-            }
-            result = targetComponents.joined(separator: versionDelimiter)
-                .compare(versionComponents.joined(separator: versionDelimiter), options: .numeric)
         }
-        return result
+
+        return .orderedSame
+    }
+
+    private static func compare(component: String, toComponent targetComponent: String) -> ComparisonResult {
+        guard let value = Int(component), let targetValue = Int(targetComponent) else {
+            return component.compare(targetComponent, options: .numeric)
+        }
+
+        if value == targetValue {
+            return .orderedSame
+        }
+
+        return value < targetValue ? .orderedAscending : .orderedDescending
     }
 }

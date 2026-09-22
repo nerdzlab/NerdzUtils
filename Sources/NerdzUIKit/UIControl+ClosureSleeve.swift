@@ -4,20 +4,29 @@ import UIKit
 import NerdzCore
 
 @MainActor
-class ClosureSleeve {
-    typealias ClosureSleezeAction = () -> ()
-    
+final class ClosureSleeve: NSObject {
+    typealias ClosureSleezeAction = () -> Void
+
     let closure: ClosureSleezeAction
-    
-    init (_ closure: @escaping ClosureSleezeAction) {
+
+    init(_ closure: @escaping ClosureSleezeAction) {
         self.closure = closure
+        super.init()
     }
-    
+
     @objc
-    func invoke () {
+    func invoke() {
         closure()
     }
 }
+
+@MainActor
+private final class ClosureSleeveStorage {
+    var sleeves: [ClosureSleeve] = []
+}
+
+@MainActor
+private let closureSleeveStorageKey = UnsafeRawPointer(UnsafeMutableRawPointer.allocate(byteCount: 1, alignment: 1))
 
 @MainActor
 public extension NZExtensionData where Base: UIControl {
@@ -25,15 +34,16 @@ public extension NZExtensionData where Base: UIControl {
     /// - Parameters:
     ///   - controlEvents: Target control event
     ///   - closure: Closure to execute
-    func addAction(for controlEvents: UIControl.Event, _ closure: @escaping ()->()) {
+    func addAction(for controlEvents: UIControl.Event, _ closure: @escaping () -> Void) {
         let sleeve = ClosureSleeve(closure)
         base.addTarget(sleeve, action: #selector(ClosureSleeve.invoke), for: controlEvents)
-        objc_setAssociatedObject(
-            self,
-            String(ObjectIdentifier(base).hashValue) + String(controlEvents.rawValue),
-            sleeve,
-            objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN
-        )
+
+        let storage = objc_getAssociatedObject(base, closureSleeveStorageKey) as? ClosureSleeveStorage
+            ?? ClosureSleeveStorage()
+
+        storage.sleeves = storage.sleeves + [sleeve]
+
+        objc_setAssociatedObject(base, closureSleeveStorageKey, storage, .OBJC_ASSOCIATION_RETAIN)
     }
 }
 

@@ -8,7 +8,7 @@
 import Foundation
 import NerdzCore
 
-extension JSONDecoder.DataDecodingStrategy: NZExtensionCompatible { }
+extension JSONDecoder.DateDecodingStrategy: NZExtensionCompatible { }
 
 public extension NZExtensionData where Base == JSONDecoder.DateDecodingStrategy {
     /// Return formate for time with fractal seconds

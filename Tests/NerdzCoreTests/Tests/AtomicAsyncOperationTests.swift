@@ -12,7 +12,7 @@ private final class ActionController: @unchecked Sendable {
     let invocations = CallbackCaptor<Void>()
 
     private let lock = NSLock()
-    private var storedFinishes: [() -> Void] = []
+    private var storedFinishes: [@Sendable () -> Void] = []
     private var invocationCount = 0
 
     var count: Int {
@@ -39,7 +39,7 @@ private final class ActionController: @unchecked Sendable {
         }
     }
 
-    private func perform(finish: @escaping () -> Void) {
+    private func perform(finish: @escaping @Sendable () -> Void) {
         lock.lock()
         invocationCount += 1
         let isFirstInvocation = invocationCount == 1
@@ -62,8 +62,17 @@ private enum TestData {
 
     static let concurrentIterations = 20
 
+    static let singleExecutionCount = 1
+
     static func createController() -> ActionController {
         ActionController()
+    }
+
+    static func createSynchronousOperation(invocations: CallbackCaptor<Void>) -> AtomicAsyncOperation {
+        AtomicAsyncOperation { finish in
+            invocations.record()
+            finish()
+        }
     }
 }
 
@@ -234,6 +243,57 @@ struct AtomicAsyncOperationTests {
             await completions.wait(untilCount: iterations)
 
             #expect(completions.count == iterations)
+        }
+    }
+
+    @Suite("Synchronous Action")
+    struct SynchronousAction {
+
+        @Test
+        func testWhenActionFinishesSynchronouslyShouldCallCompletion() async {
+            // Arrange
+            let invocations = CallbackCaptor<Void>()
+            let operation = TestData.createSynchronousOperation(invocations: invocations)
+            let completions = CallbackCaptor<Void>()
+            let expectedCount = TestData.singleExecutionCount
+
+            // Act
+            operation.perform { completions.record() }
+
+            // Assert
+            #expect(await AsyncPoll.wait(until: { completions.count == expectedCount }))
+            #expect(invocations.count == expectedCount)
+        }
+
+        @Test
+        func testWhenActionFinishesSynchronouslyShouldResetIsRunning() async {
+            // Arrange
+            let invocations = CallbackCaptor<Void>()
+            let operation = TestData.createSynchronousOperation(invocations: invocations)
+
+            // Act
+            operation.perform()
+
+            // Assert
+            #expect(await AsyncPoll.wait(until: { invocations.count == TestData.singleExecutionCount }))
+            #expect(await AsyncPoll.wait(until: { operation.isRunning == false }))
+        }
+
+        @Test
+        func testWhenPerformedConcurrentlyWithSynchronousActionShouldCallEveryCompletion() async {
+            // Arrange
+            let invocations = CallbackCaptor<Void>()
+            let operation = TestData.createSynchronousOperation(invocations: invocations)
+            let completions = CallbackCaptor<Void>()
+            let iterations = TestData.concurrentIterations
+
+            // Act
+            DispatchQueue.concurrentPerform(iterations: iterations) { _ in
+                operation.perform { completions.record() }
+            }
+
+            // Assert
+            #expect(await AsyncPoll.wait(until: { completions.count == iterations }))
         }
     }
 }

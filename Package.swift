@@ -39,6 +39,12 @@ let package = Package(
         .testTarget(name: "NerdzCoreTests", dependencies: ["NerdzCore"]),
         .testTarget(name: "NerdzDateTests", dependencies: ["NerdzDate"]),
         .testTarget(name: "NerdzUIKitTests", dependencies: ["NerdzUIKit"]),
-        .testTarget(name: "NerdzKeychainTests", dependencies: ["NerdzKeychain"])
+        .testTarget(
+            name: "NerdzKeychainTests",
+            dependencies: [
+                "NerdzKeychain",
+                .product(name: "KeychainAccess", package: "KeychainAccess")
+            ]
+        )
     ]
 )
