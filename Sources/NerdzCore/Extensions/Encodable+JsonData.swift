@@ -11,7 +11,7 @@ extension Encodable {
     
     /// Return JSON data for given object
     @available(iOS 11.0, macOS 10.12, *)
-    var nz_jsonData: Data? {
+    package var nz_jsonData: Data? {
         let encoder = JSONEncoder()
         encoder.dateEncodingStrategy = .iso8601
         guard let json = try? encoder.encode(self) else { return nil }
