@@ -33,15 +33,17 @@ public class DelayedAction {
     
     /// Cancels the pending action, if there is one.
     ///
-    /// Cancelling after the action has already run has no effect, but still reports `true` because
-    /// an action was scheduled at some point.
-    ///
-    /// - Returns: `true` when an action had been scheduled, `false` when nothing was ever
-    ///   scheduled.
+    /// - Returns: `true` when an action was still pending and has been cancelled, `false` when
+    ///   nothing was scheduled or the scheduled action had already run.
     @discardableResult public func cancel() -> Bool {
-        workItem?.cancel()
-        
-        return workItem != nil
+        guard let workItem else {
+            return false
+        }
+
+        workItem.cancel()
+        self.workItem = nil
+
+        return true
     }
     
     /// Schedules the action, replacing any action that is still pending.
@@ -52,9 +54,18 @@ public class DelayedAction {
     ///   - action: The work to run once the delay has passed.
     public func perform(after delay: TimeInterval, queue: DispatchQueue = .main, action: @escaping Action) {
         workItem?.cancel()
-        let workItem = DispatchWorkItem(block: action)
+
+        var scheduled: DispatchWorkItem?
+        let workItem = DispatchWorkItem { [weak self] in
+            action()
+
+            if self?.workItem === scheduled {
+                self?.workItem = nil
+            }
+        }
+        scheduled = workItem
         self.workItem = workItem
-        
+
         queue.asyncAfter(deadline: .now() + delay, execute: workItem)
     }
 }

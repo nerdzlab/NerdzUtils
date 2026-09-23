@@ -39,10 +39,10 @@ struct BundleCurrentAppVersionTests {
     }
 
     @Test
-    func testWhenAccessedOnAnyBundleShouldAlwaysReadMainBundle() {
+    func testWhenAccessedOnBundleShouldReadThatBundle() {
         // Arrange
         let testBundle = TestData.createTestBundle()
-        let expectedVersion = TestData.createMainBundle().nz.appVersion
+        let expectedVersion = testBundle.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
 
         // Act
         let version = testBundle.nz.appVersion

@@ -53,6 +53,12 @@ read Behavior changes before upgrading.
 - `Calendar.Component.nz.allComponents` no longer lists `.timeZone` twice and now includes
   `.weekdayOrdinal`, plus `.isLeapMonth` on systems that have it.
 - `UIColor(hex:)` no longer returns black for unparseable input. It returns `nil`.
+- `Bundle.nz.appVersion` now reads the bundle it is called on rather than always reading
+  `Bundle.main`, so a framework bundle reports its own version. `Bundle.main.nz.appVersion` is
+  unchanged.
+- `DelayedAction.cancel()` now returns `false` when nothing is pending. It previously returned
+  `true` for every call after the first `perform`, including after the action had already run,
+  because the finished work item was never cleared.
 
 ### Fixed
 
@@ -75,6 +81,9 @@ read Behavior changes before upgrading.
   caller with no signal.
 - `DefaultsProperty` used `setValue(_:forKey:)`, which is key value coding rather than the
   `UserDefaults` API.
+- Tests covering navigation completions on the non animated path, where the completion runs
+  without waiting for a transition coordinator. The animated path still has no test, because it
+  needs a real window and a real transition.
 - Navigation completions passed to `pushViewController`, `popViewController`,
   `popToViewController` and `popToRootViewController` could silently never run. They were attached
   with `CATransaction.setCompletionBlock`, but a navigation transition is driven by the controller's
