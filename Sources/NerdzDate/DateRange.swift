@@ -24,10 +24,6 @@ public struct DateRange {
     let component: Calendar.Component
     let value: Int
     
-    fileprivate func fill(into components: inout DateComponents) {
-        components[component] = value
-    }
-    
     /// Creates a range of seconds.
     ///
     /// - Parameter value: The number of seconds. Negative values shift a date backwards.

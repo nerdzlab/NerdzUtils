@@ -173,7 +173,7 @@ struct DelayedActionTests {
         }
 
         @Test
-        func testWhenActionIsExecutedShouldStillReturnTrueOnCancel() async {
+        func testWhenActionIsExecutedShouldReturnFalseOnCancel() async {
             // Arrange
             let action = TestData.createAction()
             let captor = CallbackCaptor<Void>()
@@ -188,7 +188,22 @@ struct DelayedActionTests {
             let isCancelled = action.cancel()
 
             // Assert
-            #expect(isCancelled)
+            #expect(isCancelled == false)
+        }
+
+        @Test
+        func testWhenActionIsCancelledTwiceShouldReturnFalseOnSecondCancel() {
+            // Arrange
+            let action = TestData.createAction()
+
+            action.perform(after: TestData.longDelay, queue: TestData.createQueue()) { }
+            _ = action.cancel()
+
+            // Act
+            let isCancelled = action.cancel()
+
+            // Assert
+            #expect(isCancelled == false)
         }
     }
 }
