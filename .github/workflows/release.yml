@@ -72,6 +72,7 @@ jobs:
           echo "found=true" >> "$GITHUB_OUTPUT"
 
           repo="${GITHUB_REPOSITORY#*/}"
+          mkdir -p _site
           links=""
           for catalog in $catalogs; do
             module="$(basename "$(dirname "$catalog")")"
