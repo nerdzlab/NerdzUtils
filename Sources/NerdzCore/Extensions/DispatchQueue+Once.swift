@@ -13,10 +13,12 @@ public extension NZExtensionData where Base: DispatchQueue {
     /// - Parameters:
     ///   - token: A uniqueue associated with
     ///   - action: Execution acrtion
+    #if canImport(ObjectiveC)
     static func once(per object: AnyObject, token: String, action: () -> Void) {
         let finalToken = OnceStorage.shared.token(for: object) + "." + token
         once(for: finalToken, action: action)
     }
+    #endif
 
     /// Execute once per provided token
     /// - Parameters:
@@ -46,6 +48,7 @@ private final class OnceStorage: @unchecked Sendable {
         action()
     }
 
+    #if canImport(ObjectiveC)
     func token(for object: AnyObject) -> String {
         lock.lock()
         defer { lock.unlock() }
@@ -64,4 +67,5 @@ private final class OnceStorage: @unchecked Sendable {
 
         return token
     }
+    #endif
 }
