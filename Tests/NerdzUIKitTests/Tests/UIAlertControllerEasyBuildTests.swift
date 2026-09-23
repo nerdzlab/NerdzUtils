@@ -129,6 +129,7 @@ struct UIAlertControllerEasyBuildTests {
         func testWhenSourceAssignedShouldConfigurePopoverPresentationController() throws {
             // Arrange
             let sheet = TestData.actionSheet()
+            sheet.modalPresentationStyle = .popover
             let source = TestData.sourceView()
 
             // Act
