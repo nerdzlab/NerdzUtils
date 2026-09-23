@@ -126,10 +126,22 @@ struct UIAlertControllerEasyBuildTests {
     struct PopoverSource {
 
         @Test
+        func testWhenSourceAssignedShouldReturnSameController() {
+            // Arrange
+            let sheet = TestData.actionSheet()
+            let source = TestData.sourceView()
+
+            // Act
+            let returned = sheet.nz.source(source)
+
+            // Assert
+            #expect(returned === sheet)
+        }
+
+        @Test(.enabled(if: PopoverAvailability.isSupported, "UIKit vends no popover presentation controller on this idiom"))
         func testWhenSourceAssignedShouldConfigurePopoverPresentationController() throws {
             // Arrange
             let sheet = TestData.actionSheet()
-            sheet.modalPresentationStyle = .popover
             let source = TestData.sourceView()
 
             // Act
