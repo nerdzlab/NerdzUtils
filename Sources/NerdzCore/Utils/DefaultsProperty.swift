@@ -35,7 +35,7 @@ import Foundation
                 return
             }
             
-            defaults.setValue(data, forKey: key)
+            defaults.set(data, forKey: key)
         }
     }
 }

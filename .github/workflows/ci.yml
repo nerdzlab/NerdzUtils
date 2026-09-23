@@ -11,7 +11,7 @@ concurrency:
 
 jobs:
   test-linux:
-    name: Build and test (Linux)
+    name: Portable targets (Linux)
     runs-on: ubuntu-latest
     container: swift:6.0-jammy
     steps:
@@ -20,6 +20,28 @@ jobs:
 
       - name: Show environment
         run: swift --version
+
+      - name: Build the portable targets
+        run: |
+          swift build --target NerdzCore
+          swift build --target NerdzDate
+
+      - name: Build the portable targets with complete strict concurrency
+        run: |
+          swift build --target NerdzCore -Xswiftc -strict-concurrency=complete
+          swift build --target NerdzDate -Xswiftc -strict-concurrency=complete
+
+  test-macos:
+    name: Build and test (macOS)
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Show environment
+        run: |
+          xcodebuild -version
+          swift --version
 
       - name: Build
         run: swift build
