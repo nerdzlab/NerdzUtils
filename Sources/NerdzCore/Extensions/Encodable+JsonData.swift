@@ -9,7 +9,10 @@ import Foundation
 
 extension Encodable {
     
-    /// Return JSON data for given object
+    /// The receiver encoded as UTF8 JSON data, or `nil` when encoding fails.
+    ///
+    /// Encoding uses a `JSONEncoder` with the `.iso8601` date encoding strategy, which matches the
+    /// decoding side of ``NZExtensionData/object(of:)``.
     @available(iOS 11.0, macOS 10.12, *)
     package var nz_jsonData: Data? {
         let encoder = JSONEncoder()

@@ -8,9 +8,14 @@
 import Foundation
 
 public extension NZExtensionData where Base == String {
-    /// Form an attributed string from `String` class
-    /// - Parameter attributes: An array of attributes that needs to be applied
-    /// - Returns: Transformed attributed string
+    /// Wraps the string into an attributed string with the given attributes.
+    ///
+    /// ```swift
+    /// let title = "Hello".nz.attributed(with: [.foregroundColor: UIColor.red])
+    /// ```
+    ///
+    /// - Parameter attributes: The attributes applied to the whole string.
+    /// - Returns: An attributed string holding the receiver and the given attributes.
     func attributed(with attributes: [NSAttributedString.Key: Any]) -> NSAttributedString {
         return NSAttributedString(string: base, attributes: attributes)
     }

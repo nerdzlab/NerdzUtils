@@ -11,22 +11,46 @@ private struct UncheckedSendableBox<Value>: @unchecked Sendable {
     let value: Value
 }
 
-/// A class incapsulate a logic of a single operation at a time
-/// If operation already in progress - next requests will just be added into completions list that will be called after operation finish
-/// This approach decreasing an omount of executions by not running same operation when it's currently initiated by somebody else, and just notifying all requests completions after initial operation finish
-/// Useful, for example, when you need to lazy initialize some service when somebody requesting a data. In this case you can guarantee that service will not be initialised twice
-/// Or when you want to optimise requests executing.
-/// If you save all retrieved data to database - this class might be a good solution to avoid race conditions and unnecessary database storing execution
-/// **NOTE**:  Operation is using backeground queue underhood, so wrap all your UI actiong into `main` queue
+/// An operation that runs its action one at a time and notifies every waiting caller when it ends.
+///
+/// Calling ``perform(completion:)`` while the action is already running does not start a second
+/// run. The completion is appended to a list instead, and every collected completion is called once
+/// the running action reports that it finished. This collapses a burst of identical requests into a
+/// single execution, which suits lazy service initialization, request deduplication or writing a
+/// fetched payload to a database only once.
+///
+/// The action receives a `finish` closure and owns the decision of when to call it, so the action
+/// may complete synchronously or asynchronously. Until `finish` is called the operation stays
+/// running and keeps collecting completions.
+///
+/// ```swift
+/// let operation = AtomicAsyncOperation { finish in
+///     service.load { finish() }
+/// }
+///
+/// operation.perform { print("ready") }
+/// operation.perform { print("also ready") }
+/// ```
+///
+/// - Important: The action is started on a private background queue and completions are called on
+///   that queue, so dispatch any UI work to the main queue yourself.
 public class AtomicAsyncOperation: @unchecked Sendable {
+    /// The work performed by the operation, which receives the closure that reports completion.
     public typealias Action = (@escaping @Sendable () -> Void) -> Void
+
+    /// A closure called once the running action has finished.
     public typealias Completion = () -> Void
 
-    /// Executing action
-    /// The user of this class is responsible to call back a closure to notify class about Action finishing
+    /// The work the operation performs.
+    ///
+    /// The closure it receives must be called when the work is done, otherwise the operation stays
+    /// running forever and pending completions are never called.
     public let action: Action
 
-    /// Specifying if operation is in the process of execution
+    /// A Boolean value indicating whether the action is currently running.
+    ///
+    /// It becomes `true` when a first ``perform(completion:)`` call starts the action, and returns
+    /// to `false` once the action calls its finish closure.
     public var isRunning: Bool {
         lock.lock()
         defer { lock.unlock() }
@@ -39,14 +63,22 @@ public class AtomicAsyncOperation: @unchecked Sendable {
     private let lock = NSLock()
     private let queue = DispatchQueue(label: "AtomicAsyncOperationQueue", attributes: .concurrent)
 
-    /// Initialize operation with action that needs to be executed
-    /// - Parameter action: Execution action
+    /// Creates an operation around the given action.
+    ///
+    /// - Parameter action: The work to perform. It must call the closure it receives to report
+    ///   that the work is done.
     public init(action: @escaping Action) {
         self.action = action
     }
 
-    /// Performing operation if it is not running yet, or adding into completions list if it is running
-    /// - Parameter completion: Completion that needs to be called when execution finished
+    /// Starts the action, or joins the run that is already in progress.
+    ///
+    /// The call returns immediately, because the action is started asynchronously on a background
+    /// queue. The completion is called when the current run finishes, whether this call started it
+    /// or merely joined it.
+    ///
+    /// - Parameter completion: The closure called when the run finishes. Pass `nil` to start the
+    ///   action without being notified.
     public func perform(completion: Completion? = nil) {
         let completionBox = UncheckedSendableBox(value: completion)
 

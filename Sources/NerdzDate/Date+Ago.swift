@@ -15,6 +15,23 @@ import NerdzCore
 extension Date: NZExtensionCompatible { }
 
 public extension NZExtensionData where Base == Date {
+
+    /// Describes how long ago the date was, relative to the current moment.
+    ///
+    /// The difference between the date and now is measured with `Calendar.current` in years,
+    /// months, days, hours, minutes and seconds. The largest unit with a value above zero wins,
+    /// and the result is that value, a suffix taken from ``TimeAgoStyle``, and the word `ago`,
+    /// for example `3 d ago` or `3 days ago`.
+    ///
+    /// When no unit is above zero the result is `Just now`. That covers the current second and
+    /// every date in the future, because a future date produces negative components.
+    ///
+    /// The wording is fixed English and is not localized. On iOS 13 and newer, `RelativeDateTimeFormatter`
+    /// is the localized alternative.
+    ///
+    /// - Parameter style: Whether the unit is abbreviated (``TimeAgoStyle/short``) or spelled out
+    ///   (``TimeAgoStyle/full``).
+    /// - Returns: A phrase such as `5 m ago`, `1 month ago` or `Just now`.
     func agoString(style: TimeAgoStyle) -> String {
         let interval = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: base, to: .nz.now)
         
@@ -42,8 +59,13 @@ public extension NZExtensionData where Base == Date {
     }
 }
 
+/// The wording used by `Date.nz.agoString(style:)`.
 public enum TimeAgoStyle {
-    case short, full
+    /// Abbreviated units: `s`, `m`, `h`, `d`, `mo`, `y`.
+    case short
+
+    /// Spelled out units that agree in number, such as `second`, `seconds`, `month`, `months`.
+    case full
     
     func suffix(for component: TimeAgoComponent, isPlural: Bool) -> String {
         switch component {
@@ -57,8 +79,28 @@ public enum TimeAgoStyle {
     }
 }
 
+/// The units `Date.nz.agoString(style:)` can report.
+///
+/// The units are ordered from the smallest to the largest. Weeks are deliberately absent, so a
+/// ten day old date reads as `10 days ago` rather than as a number of weeks.
 public enum TimeAgoComponent {
-    case second, minute, hour, day, month, year
+    /// A number of seconds.
+    case second
+
+    /// A number of minutes.
+    case minute
+
+    /// A number of hours.
+    case hour
+
+    /// A number of days.
+    case day
+
+    /// A number of months.
+    case month
+
+    /// A number of years.
+    case year
     
     func text(for value: Int, style: TimeAgoStyle) -> String {
         let suffix: String = style.suffix(for: self, isPlural: value != 1)
