@@ -75,6 +75,11 @@ read Behavior changes before upgrading.
   caller with no signal.
 - `DefaultsProperty` used `setValue(_:forKey:)`, which is key value coding rather than the
   `UserDefaults` API.
+- Navigation completions passed to `pushViewController`, `popViewController`,
+  `popToViewController` and `popToRootViewController` could silently never run. They were attached
+  with `CATransaction.setCompletionBlock`, but a navigation transition is driven by the controller's
+  transition coordinator rather than by the surrounding transaction. They now run through the
+  transition coordinator, and run immediately when there is no transition in flight.
 
 ### Added
 
