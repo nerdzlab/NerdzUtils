@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-linux:
+    name: Portable targets (Linux)
+    runs-on: ubuntu-latest
+    container: swift:6.0-jammy
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Show environment
+        run: swift --version
+
+      - name: Build the portable targets
+        run: |
+          swift build --target NerdzCore
+          swift build --target NerdzDate
+
+      - name: Build the portable targets with complete strict concurrency
+        run: |
+          swift build --target NerdzCore -Xswiftc -strict-concurrency=complete
+          swift build --target NerdzDate -Xswiftc -strict-concurrency=complete
+
+  test-macos:
+    name: Build and test (macOS)
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Show environment
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Build
+        run: swift build
+
+      - name: Test
+        run: swift test
+
+      - name: Build with complete strict concurrency
+        run: swift build --build-tests -Xswiftc -strict-concurrency=complete
+
+  test-ios:
+    name: Build and test (iOS Simulator)
+    runs-on: macos-15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Show environment
+        run: |
+          xcodebuild -version
+          swift --version
+
+      - name: Select an available iPhone simulator
+        id: sim
+        run: |
+          UDID=$(xcrun simctl list devices available --json | python3 -c "import json,sys; d=json.load(sys.stdin)['devices']; ids=[x['udid'] for r in d for x in d[r] if x.get('isAvailable') and x.get('name','').startswith('iPhone')]; print(ids[0] if ids else '')")
+          if [ -z "$UDID" ]; then
+            echo "No available iPhone simulator found." >&2
+            exit 1
+          fi
+          echo "udid=$UDID" >> "$GITHUB_OUTPUT"
+
+      - name: Test NerdzUIKit
+        run: >
+          xcodebuild test
+          -scheme NerdzUtils-Package
+          -destination "platform=iOS Simulator,id=${{ steps.sim.outputs.udid }}"
+          -only-testing:NerdzUIKitTests
+          -enableCodeCoverage YES

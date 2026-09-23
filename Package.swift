@@ -1,32 +1,50 @@
-// swift-tools-version:5.2
-// The swift-tools-version declares the minimum version of Swift required to build this package.
+// swift-tools-version:5.9
 
 import PackageDescription
 
 let package = Package(
     name: "NerdzUtils",
     platforms: [
-            .iOS(.v13)
+        .iOS(.v12),
+        .macOS(.v10_13),
+        .tvOS(.v12),
+        .watchOS(.v4),
+        .visionOS(.v1)
     ],
-    
     products: [
-        // Products define the executables and libraries produced by a package, and make them visible to other packages.
-        .library(
-            name: "NerdzUtils",
-            targets: ["NerdzUtils"]),
+        .library(name: "NerdzCore", targets: ["NerdzCore"]),
+        .library(name: "NerdzDate", targets: ["NerdzDate"]),
+        .library(name: "NerdzUIKit", targets: ["NerdzUIKit"]),
+        .library(name: "NerdzKeychain", targets: ["NerdzKeychain"]),
+        .library(name: "NerdzUtils", targets: ["NerdzUtils"])
     ],
-    
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
         .package(url: "https://github.com/kishikawakatsumi/KeychainAccess.git", from: "4.2.0")
     ],
-    
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
+        .target(name: "NerdzCore"),
+        .target(name: "NerdzDate", dependencies: ["NerdzCore"]),
+        .target(name: "NerdzUIKit", dependencies: ["NerdzCore"]),
+        .target(
+            name: "NerdzKeychain",
+            dependencies: [
+                "NerdzCore",
+                .product(name: "KeychainAccess", package: "KeychainAccess")
+            ]
+        ),
         .target(
             name: "NerdzUtils",
-            dependencies: ["KeychainAccess"]
+            dependencies: ["NerdzCore", "NerdzDate", "NerdzUIKit", "NerdzKeychain"]
+        ),
+        .testTarget(name: "NerdzCoreTests", dependencies: ["NerdzCore"]),
+        .testTarget(name: "NerdzDateTests", dependencies: ["NerdzDate"]),
+        .testTarget(name: "NerdzUIKitTests", dependencies: ["NerdzUIKit"]),
+        .testTarget(
+            name: "NerdzKeychainTests",
+            dependencies: [
+                "NerdzKeychain",
+                .product(name: "KeychainAccess", package: "KeychainAccess")
+            ]
         )
     ]
 )
