@@ -201,7 +201,7 @@ See [CHANGELOG.md](CHANGELOG.md) for the full list.
 
 ## Documentation
 
-API reference for `NerdzCore` and `NerdzDate` is published at [nerdzlab.github.io/NerdzUtils](https://nerdzlab.github.io/NerdzUtils/), and is built from the DocC catalogs in this repository.
+API reference is built from the DocC catalogs in this repository and published on release: [NerdzCore](https://nerdzlab.github.io/NerdzUtils/nerdzcore/documentation/nerdzcore/) and [NerdzDate](https://nerdzlab.github.io/NerdzUtils/nerdzdate/documentation/nerdzdate/).
 
 ## License
 

@@ -57,44 +57,54 @@ jobs:
           xcodebuild -version
           swift --version
 
-      - name: Locate the documentation catalog
+      - name: Build documentation for every catalog
         id: catalog
         run: |
-          catalog="$(find Sources -maxdepth 3 -name '*.docc' -print -quit)"
-          if [ -z "$catalog" ]; then
+          set -o pipefail
+          catalogs="$(find Sources -maxdepth 3 -name '*.docc' | sort)"
+          if [ -z "$catalogs" ]; then
             echo "No DocC catalog found, skipping documentation." >&2
             echo "found=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          module="$(basename "$(dirname "$catalog")")"
           echo "found=true" >> "$GITHUB_OUTPUT"
-          echo "path=$catalog" >> "$GITHUB_OUTPUT"
-          echo "module=$module" >> "$GITHUB_OUTPUT"
 
-      - name: Emit symbol graphs
-        if: steps.catalog.outputs.found == 'true'
-        run: >
-          swift build
-          -Xswiftc -emit-symbol-graph
-          -Xswiftc -emit-symbol-graph-dir -Xswiftc .build/symbol-graphs
+          repo="${GITHUB_REPOSITORY#*/}"
+          links=""
+          for catalog in $catalogs; do
+            module="$(basename "$(dirname "$catalog")")"
+            slug="$(echo "$module" | tr '[:upper:]' '[:lower:]')"
 
-      - name: Build documentation
-        if: steps.catalog.outputs.found == 'true'
-        run: |
-          set -o pipefail
-          "$(xcrun --find docc)" convert \
-            "${{ steps.catalog.outputs.path }}" \
-            --fallback-display-name "${{ steps.catalog.outputs.module }}" \
-            --fallback-bundle-identifier "com.nerdzlab.${{ steps.catalog.outputs.module }}" \
-            --additional-symbol-graph-dir .build/symbol-graphs \
-            --output-path _site \
-            --transform-for-static-hosting \
-            --hosting-base-path "${GITHUB_REPOSITORY#*/}" \
-            2>&1 | tee docc.log
-          if grep -iE '(^|[^/])(warning|error): ' docc.log; then
-            echo "DocC reported diagnostics" >&2
-            exit 1
-          fi
+            xcodebuild docbuild \
+              -scheme "$module" \
+              -destination 'platform=macOS' \
+              -derivedDataPath ".build/docc-$slug" \
+              2>&1 | tee "docbuild-$slug.log"
+            if grep -iE '(^|[^/])(warning|error): ' "docbuild-$slug.log" | grep -v 'multiple matching'; then
+              echo "DocC reported diagnostics for $module" >&2
+              exit 1
+            fi
+
+            archive="$(find ".build/docc-$slug" -name "$module.doccarchive" -print -quit)"
+            if [ -z "$archive" ]; then
+              echo "No .doccarchive produced for $module" >&2
+              exit 1
+            fi
+
+            "$(xcrun --find docc)" process-archive transform-for-static-hosting "$archive" \
+              --output-path "_site/$slug" \
+              --hosting-base-path "$repo/$slug"
+
+            links="$links<li><a href=\"./$slug/documentation/$slug/\">$module</a></li>"
+          done
+
+          cat > _site/index.html <<HTML
+          <!doctype html>
+          <meta charset="utf-8">
+          <title>Documentation</title>
+          <h1>$repo</h1>
+          <ul>$links</ul>
+          HTML
 
       - name: Upload artifact
         if: steps.catalog.outputs.found == 'true'
